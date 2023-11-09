@@ -9,4 +9,8 @@ class StudentController extends Controller
     public function showIndex() {
         return view('student.index');
     }
+
+    public function showLogin() {
+        return view('student.login');
+    }
 }

@@ -1,0 +1,33 @@
+ /* our custom colors */
+.ouryellow {
+    color: #FFA828;
+}
+
+.ouryellowbg {
+    background: #FFA828;
+}
+
+.ourmaroonbg {
+    background: #630606;
+    /* background: linear-gradient(to top left, #630606, rgb(184, 0, 0)); */
+}
+
+.ourmaroon {
+    color: #630606;
+}
+
+.usep_background {
+    background:
+        linear-gradient(0deg, rgba(255, 168, 40, 0.70) 0%, rgba(255, 168, 40, 0.70) 100%),
+        url('/images/cover.jpg'),
+        lightgray;
+    background-position: right;
+    background-size: cover;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.error-border {
+    border: 1px solid red !important;
+}
