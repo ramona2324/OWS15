@@ -27,3 +27,5 @@ Route::get('/test', [GoogleAuthController::class, 'showTest'])
 // google sso route
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])
     ->name('google_redirect');
+Route::get('/student/auth/google/callback', [GoogleAuthController::class, 'callback'])
+    ->name('google_callback');
