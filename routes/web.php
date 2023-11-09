@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,7 @@ require __DIR__ . '/student.php';
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', [GoogleAuthController::class, 'showTest'])
+->name('test');
 
