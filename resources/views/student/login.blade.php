@@ -36,8 +36,8 @@
                 <div class=" w-1/2 p-2">
                     <h2 class="my-2">Login using your USeP email</h2>
                     {{-- google_redirect --}}
-                    {{-- {{ route('google_redirect') }} --}}
-                    <a href="">
+                    {{--  --}}
+                    <a href="{{ route('google_redirect') }}">
                         <button type="button"
                         class="text-white w-max bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">
                         <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

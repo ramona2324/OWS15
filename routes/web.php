@@ -22,5 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/test', [GoogleAuthController::class, 'showTest'])
-->name('test');
+    ->name('test');
 
+// google sso route
+Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])
+    ->name('google_redirect');
