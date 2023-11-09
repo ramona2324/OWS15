@@ -3,6 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 
-
-Route::get('/student', [StudentController::class, 'showIndex'])
-    ->name('student_home');
+    // all student routes here
+Route::group(['prefix' => 'student'], function () {
+    Route::get('/', [StudentController::class, 'showIndex'])
+        ->name('student_home');
+    Route::get('/login', [StudentController::class, 'showLogin'])
+        ->name('student_showlogin');
+    Route::get('/signup-step1', [StudentController::class, 'showSignup1'])
+        ->name('signup1');
+    // for google single sign on
+    Route::get('/auth/google/callback/', [GoogleAuthController::class, 'callback'])
+        ->name('google_callback');
+});
