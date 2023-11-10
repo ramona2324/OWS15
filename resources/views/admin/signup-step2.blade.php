@@ -37,17 +37,17 @@
         class="p-8 bg-white rounded-lg min-h-full m-5 mt-0 md:w-1/2 min-h-full flex flex-col sm:w-full md:mt-5  shadow-lg">
         <form action="{{ route('admin_signup1store') }}" method="POST" class=" flex flex-col m-0">
             @csrf
-            <div class="flex justify-between align">
-                <h1 class="text-2xl font-bold text-gray-900">Create Admin Account</h1>
-                <h3>Step 2</h3>
+            <div class="flex justify-between items-center font-bold">
+                <h1 class="text-2xl  text-gray-800">Create Admin Account</h1>
+                <h3 class="text-gray-700">Step 2</h3>
             </div>
-            <div class="flex mt-4 ">
+            <div class="flex mt-4 gap-4">
                 <span
-                    class=" text-red-500 text-xs font-small mr-2  py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                    class=" text-red-500 text-xs font-small py-0.5 rounded-full ">
                     * Required
                 </span>
                 <span
-                    class=" text-gray-500 text-xs font-small mr-2  py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                    class=" text-gray-500 text-xs font-small py-0.5 rounded-full ">
                     Put N/A to Not Applicable fields
                 </span>
             </div>
@@ -62,7 +62,7 @@
                         <label for="admin_lname" class="block text-gray-600 font-bold text-sm">Office<span
                                 class="text-red-500">*</span></label>
                         <input type="text" name="admin_lname" id="admin_lname" readonly required
-                            class="mt-1 h-10 px-4 py-2 w-full rounded-full text-gray-600 border border-gray-300 focus:outline-none focus:border-none"
+                            class="mt-1 h-10 px-4 py-2 w-full rounded-full text-gray-600 border border-gray-300 focus:outline-none "
                             value="OSAS">
                         @include('partials.__input_error', ['fieldName' => 'admin_lname'])
                     </div>
@@ -71,7 +71,7 @@
                         <label for="admin_lname" class="block text-gray-600 font-bold text-sm">Admin Type<span
                                 class="text-red-500">*</span></label>
                         <input type="text" name="admin_lname" id="admin_lname" readonly required
-                            class="mt-1 h-10 px-4 py-2 w-full rounded-full text-gray-600 border border-gray-300 focus:outline-none focus:border-none"
+                            class="mt-1 h-10 px-4 py-2 w-full rounded-full text-gray-600 border border-gray-300 focus:outline-none "
                             value="Super Admin">
                         @include('partials.__input_error', ['fieldName' => 'admin_lname'])
                     </div>
@@ -89,7 +89,7 @@
                                 file:mr-4 file:py-2 file:px-4 mt-1
                                 rounded-full border border-gray-300
                                 file:text-sm file:font-semibold
-                                  file:bg-yellow-500
+                                  file:bg-yellow-400 file:border-none file:text-slate-700
                             value="{{ old('admin_image') }}" />
                         @include('partials.__input_error', ['fieldName' => 'admin_image'])
                     </div>
