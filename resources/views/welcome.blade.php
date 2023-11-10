@@ -1,5 +1,7 @@
 @include('partials.__header')
 
+<!-- testing github -->
+
 <div class="flex flex-col justify-center items-center ">
     <img src="{{ asset('images/osaslogo.png') }}" class="h-10 mt-20 sm:h-40" />
     <p class="text-dark text-5xl font-medium mt-4">OSAS</p>
