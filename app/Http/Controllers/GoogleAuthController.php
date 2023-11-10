@@ -11,12 +11,12 @@ class GoogleAuthController extends Controller
         return view('test');
     }
 
-    public function redirect()
+    public function redirect() // first route the sso go through
     {
         return Socialite::driver('google')->redirect();
     }
 
-    public function callback()
+    public function callback() 
     {
         try {
             // $randomPassword = Str::random(10);

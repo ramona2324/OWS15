@@ -1,4 +1,5 @@
 <?php
+// all external routes are put here
 
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\StudentController;
@@ -21,6 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// test route only
 Route::get('/test', [GoogleAuthController::class, 'showTest'])
     ->name('test');
 
