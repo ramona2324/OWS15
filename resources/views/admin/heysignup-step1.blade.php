@@ -1,6 +1,6 @@
-
 @include('partials.__header')
 
+<x-messages />
 <div class="min-h-screen min-w-full flex flex-col md:flex-row">
     {{-- left card --}}
     <div class="bg-white rounded-lg md:w-1/2 sm:w-full min-h-full m-5 md:mr-0 shadow-lg ">
@@ -34,16 +34,16 @@
     {{-- right card --}}
     <div
         class="p-8 bg-white rounded-lg min-h-full m-5 mt-0 md:w-1/2 min-h-full flex flex-col sm:w-full md:mt-5  shadow-lg">
-        <form action="{{ route('admin_signup1store') }}" method="POST" class=" flex flex-col m-0">
+        <form action="{{ route('admin_signupStore') }}" method="POST" class=" flex flex-col m-0">
             @csrf
             <h1 class="text-2xl font-bold text-gray-900">Create Admin Account</h1>
-            <div class="flex mt-4 gap-4">
+            <div class="flex mt-4 ">
                 <span
-                    class=" text-red-500 text-xs font-small py-0.5 rounded-full ">
+                    class=" text-red-500 text-xs font-small mr-2  py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
                     * Required
                 </span>
                 <span
-                    class=" text-gray-500 text-xs font-small py-0.5 rounded-full ">
+                    class=" text-gray-500 text-xs font-small mr-2  py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
                     Put N/A to Not Applicable fields
                 </span>
             </div>
@@ -143,11 +143,31 @@
 
         {{-- terms and conditions and privacy policy --}}
         <div class="lg:mt-8 mt-4 text-gray-700 text-base">
-            <p>By signing up, you agree to our <a href="{{ route('terms_conditions') }}" target="_blank"
-                    class="ouryellow font-bold">Terms of Service</a> and <a href="{{ route('data_privacy') }}"
+            <p>By signing up, you agree to our <a href="{{ route('terms-conditions') }}" target="_blank"
+                    class="ouryellow font-bold">Terms of Service</a> and <a href="{{ route('data-privacy-policy') }}"
                     target="_blank" class="ouryellow font-bold">Privacy Policy</a>.</p>
         </div>
     </div>
 </div>
+<script>
+    // JavaScript to add and remove error class on focus and blur
+    // const inputFields = document.querySelectorAll('input[type="text"], input[type="number"], input[type="email"], input[type="password"]');
+    const requiredInputIds = ['admin_lname', 'admin_fname', 'email', 'employee_id', 'password',
+        'password_confirmation'
+    ];
 
+    requiredInputIds.forEach(inputId => {
+        const inputField = document.getElementById(inputId);
+
+        inputField.addEventListener('focus', () => {
+            inputField.classList.remove('error-border');
+        });
+
+        inputField.addEventListener('blur', () => {
+            if (inputField.value.trim() === '') {
+                inputField.classList.add('error-border');
+            }
+        });
+    });
+</script>
 @include('partials.__footer')

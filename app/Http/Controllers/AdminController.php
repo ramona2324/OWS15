@@ -15,4 +15,8 @@ class AdminController extends Controller
     public function showSignup1() {
         return view('admin.signup-step1');
     }
+
+    public function storeSignup1() {
+        
+    }
 }
