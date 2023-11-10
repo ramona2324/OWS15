@@ -112,7 +112,7 @@
             </div>
 
             {{-- password div --}}
-            <div class="lg:grid grid-cols-2 gap-6">
+            <div class="lg:grid mt-4 grid-cols-2 gap-6">
                 {{-- Input password --}}
                 <div class="mt-4">
                     <label for="password" class="block text-gray-600 text-sm font-bold">Password <span
