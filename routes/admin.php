@@ -9,4 +9,6 @@ Route::get('/test', [AdminController::class, 'showTest'])
 
 // all admin routes here
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/signup', [AdminController::class, 'showSignup1'])
+        ->name('admin_signup1');
 });
