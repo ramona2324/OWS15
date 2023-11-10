@@ -2,7 +2,7 @@
 // all external routes are put here
 
 use App\Http\Controllers\GoogleAuthController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/student.php';
@@ -31,3 +31,9 @@ Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])
     ->name('google_redirect');
 Route::get('/student/auth/google/callback', [GoogleAuthController::class, 'callback'])
     ->name('google_callback');
+
+// other external routes
+Route::get('/data-privacy', [Controller::class, 'showDataPrivacyPolicy'])
+    ->name('data_privacy');
+Route::get('/terms-conditions', [Controller::class, 'showTermsAndConditions'])
+    ->name('terms_conditions');

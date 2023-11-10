@@ -9,4 +9,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    public function showDataPrivacyPolicy() {
+        return view('data_privacy_stmt');
+    }
+
+    public function showTermsAndConditions() {
+        return view('terms_conditions');
+    }
 }

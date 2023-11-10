@@ -35,8 +35,8 @@
             <h2 class="w-full font-semibold text-center text-lg">Welcome, {{ $student->student_fname }}!</h2>
             <img class="w-24 rounded-full border-yellow-500 border-2" src="{{ $student->student_picture }}"
                 alt="">
-            <div class="gap-2 w-full flex align-middle justify-center text-center">
-                <h3 class="m-0 text-sm">OSAS id:</h3>
+            <div class="gap-2 w-full flex items-center justify-center text-center">
+                <h3 class="m-0 text-sm">OSAS ID:</h3>
                 <h3 class="m-0 text-base font-semibold">{{ str_pad($student->student_osasid, 5, '0', STR_PAD_LEFT) }}
                 </h3>
             </div>
@@ -53,8 +53,8 @@
 
         {{-- terms and conditions and privacy policy --}}
         <div class="lg:mt-auto mt-4 text-gray-700 text-base">
-            <p>By signing up, you agree to our <a href="{{ route('terms-conditions') }}" target="_blank"
-                    class="ouryellow font-bold">Terms of Service</a> and <a href="{{ route('data-privacy-policy') }}"
+            <p>By signing up, you agree to our <a href="{{ route('terms_conditions') }}" target="_blank"
+                    class="ouryellow font-bold">Terms of Service</a> and <a href="{{ route('data_privacy') }}"
                     target="_blank" class="ouryellow font-bold">Privacy Policy</a>.</p>
         </div>
     </div>
