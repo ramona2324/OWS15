@@ -41,7 +41,6 @@ class AdminController extends Controller
         $validated['password'] = bcrypt($validated['password']); // incrypting the inputted password
         $newAdmin = Admin::create($validated);
         
-        
         return redirect(route('admin_signup2'))
             ->with('message', 'Successfully Created an Admin Account');
 

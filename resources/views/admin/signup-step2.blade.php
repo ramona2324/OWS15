@@ -1,7 +1,6 @@
 @include('partials.__header')
 
-{{-- code below will only work with alpine.js installed --}}
-{{-- <x-messages />  --}}
+<x-messages /> 
 
 <div class="min-h-screen min-w-full flex flex-col md:flex-row">
     {{-- left card --}}

@@ -1,5 +1,6 @@
+@include('partials.__header') {{-- using partials "DRY - don't repeat yourself" --}}
 
-@include('partials.__header')
+<x-messages />
 
 <div class="min-h-screen min-w-full flex flex-col md:flex-row">
     {{-- left card --}}
