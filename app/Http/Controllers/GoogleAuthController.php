@@ -31,7 +31,7 @@ class GoogleAuthController extends Controller
 
             if ($findStudent) { // if login
                 Auth::login($findStudent);
-                return redirect('/')->with('message', 'Successfully Logged In!');
+                return redirect( route('student_home') )->with('message', 'Successfully Logged In!');
             } else { // if signup
                 try {
                     $newStudent = Student::create([
@@ -51,7 +51,7 @@ class GoogleAuthController extends Controller
                 // Store 'google_id' in the session
                 session()->put('google_id', $google_user_id->user['id']);
 
-                return redirect(route('/'));
+                return redirect(route('welcome'));
 
                 // return redirect('/student')->with('message', 'Successfully created your student account!');
             }
