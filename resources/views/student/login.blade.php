@@ -57,8 +57,8 @@
         {{-- terms and conditions and privacy policy --}}
    
         <div class="lg:mt-auto mt-4 text-gray-700 text-base">
-            <p>By signing up, you agree to our <a href="{{ route('terms-conditions') }}" target="_blank"
-                    class="ouryellow font-bold">Terms of Service</a> and <a href="{{ route('data-privacy-policy') }}"
+            <p>By signing up, you agree to our <a href="{{ route('terms_conditions') }}" target="_blank"
+                    class="ouryellow font-bold">Terms of Service</a> and <a href="{{ route('data_privacy') }}"
                     target="_blank" class="ouryellow font-bold">Privacy Policy</a>.</p>
         </div>
     </div>
