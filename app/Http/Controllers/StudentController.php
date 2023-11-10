@@ -13,4 +13,8 @@ class StudentController extends Controller
     public function showLogin() {
         return view('student.login');
     }
+
+    public function showSignup1() {
+        return view('student.signup-step1');
+    }
 }

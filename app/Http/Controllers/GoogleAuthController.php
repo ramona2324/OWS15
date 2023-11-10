@@ -51,7 +51,7 @@ class GoogleAuthController extends Controller
                 // Store 'google_id' in the session
                 session()->put('google_id', $google_user_id->user['id']);
 
-                return redirect(route('welcome'));
+                return redirect( route('signup_step1') );
 
                 // return redirect('/student')->with('message', 'Successfully created your student account!');
             }
