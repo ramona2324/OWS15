@@ -53,7 +53,7 @@ class GoogleAuthController extends Controller
 
                 return redirect( route('signup_step1') );
 
-                // return redirect('/student')->with('message', 'Successfully created your student account!');
+                
             }
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -61,3 +61,6 @@ class GoogleAuthController extends Controller
         }
     }
 }
+
+
+// return redirect('/student')->with('message', 'Successfully created your student account!');
