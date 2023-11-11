@@ -16,6 +16,8 @@ class AdminController extends Controller
         return view('test');
     }
 
+    //-------------------------functions for views-------------------------
+
     // returns view
     public function showSignup1()
     {
@@ -25,6 +27,12 @@ class AdminController extends Controller
     {
         return view('admin.signup-step2');
     }
+    public function showLogin()
+    {
+        return view('admin.login');
+    }
+
+    //-------------------------functions for functionality-------------------------
 
     // storing signup step 1
     public function storeSignup1(Request $request)
@@ -50,7 +58,7 @@ class AdminController extends Controller
         session()->put('admin_id', $newAdmin->admin_id);
 
         return redirect(route('admin_signup2'))
-            ->with('message', 'Successfully Created an Admin Account');
+            ->with('message', 'Successfully saved your info');
     }
 
     // for signup step 2
@@ -112,7 +120,7 @@ class AdminController extends Controller
 
         $admin->update($validated); // updating the data of that admin
 
-        return redirect(route('admin_signup2'))->with('message', 'Admin data updated successfully');
+        return redirect(route('admin_login'))->with('message', 'Successfully created Super Admin account');
     }
     // creating a thumbnail
     public function createThumbnail($path, $width, $height) // $path is the path of the thumbnail
