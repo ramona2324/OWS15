@@ -31,4 +31,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // admin_signup2store
     Route::post('/signup2-store', [AdminController::class, 'storeSignup2'])
         ->name('admin_signup2store');
+
+    Route::post('/process-login', [AdminController::class, 'processLogin'])
+        ->name('admin_processlogin');
 });

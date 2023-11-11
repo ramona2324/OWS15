@@ -122,7 +122,8 @@ class AdminController extends Controller
 
         return redirect(route('admin_login'))->with('message', 'Successfully created Super Admin account');
     }
-    // creating a thumbnail
+
+    // creating a small thumbnail
     public function createThumbnail($path, $width, $height) // $path is the path of the thumbnail
     { //  creates a thumbnail image 
 
@@ -134,6 +135,23 @@ class AdminController extends Controller
             }
         );
         $img->save($path); // save the resized image back to the original path
+    }
+
+    // admin login
+    public function processLogin(Request $request)
+    {
+
+        $validated = $request->validate([
+            "email" => ['required', 'email'],
+            'password' => 'required'
+        ]);
+
+        if (auth()->attempt($validated)) {
+            session()->regenerate();
+            return back()->with('message', 'Welcome back');
+        }
+
+        return back()->with(['custom-error' => 'Login failed! Incorrect Email or Password']);
     }
 }
 
