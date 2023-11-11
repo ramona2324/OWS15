@@ -56,6 +56,7 @@ class AdminController extends Controller
     // for signup step 2
     public function storeSignup2(Request $request)
     {
+        // dd($request->all()); // for debugging only
 
         $adminId = session('admin_id'); // Retrieve 'admin_id' from the session
 
@@ -74,6 +75,7 @@ class AdminController extends Controller
         // code for image upload
         // checking if there is a file
         if ($request->hasFile('admin_image')) {
+
             $request->validate([ // validation for right format and size
                 "admin_image" => 'mimes:jpeg,png,bmp,tiff | max:4096'
             ]);
@@ -139,3 +141,5 @@ class AdminController extends Controller
 // -> publish using [php artisan vendor:publish --provider="Intervention\Image\ImageServiceProvider"]
 // -> register alias in app(config) in alias array ['Image' => Intervention\Image\Facades\Image::class,]
 // so that I can use this Image in Facades
+
+// [php artisan storage:link] -> to connect the public storage to storage>app
