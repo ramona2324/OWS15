@@ -27,6 +27,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // manage admins 
     Route::get('/manage', [AdminController::class, 'showAdminManage'])
         ->name('admin_manage');
+    // admin profile
+    Route::get('/profile/{admin}', [AdminController::class, 'showProfile'])
+        ->name('admin_profile');
     // create admin
     Route::get('/create', [AdminController::class, 'showCreateAdmin'])
         ->name('admin_create');

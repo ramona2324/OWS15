@@ -47,6 +47,18 @@ class AdminController extends Controller
         $admin_types = AdminType::all();
         return view('admin.manage', compact('admins', 'offices', 'admin_types'));
     }
+    public function showProfile($admin_id) {
+        // Fetch the admin's data from the database based on the $adminId
+        $admin = Admin::find($admin_id);
+
+        // Check if the admin exists
+        if (!$admin) { // You can handle what to do if the admin is not found, such as displaying an error message or redirecting to a 404 page.
+            return view('errors.admin_not_found');  // For example, you can return a view with an error message:
+        }
+
+        // Pass the admin data to the view and display it
+        return view('admin.profile', ['admin' => $admin]);
+    }
     public function showCreateAdmin() {
         $offices = Office::all();
         $admin_types = AdminType::all();

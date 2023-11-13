@@ -96,7 +96,7 @@
         <div class=" flex flex-col lg:flex-row lg:flex-wrap items-center mb-4 rounded ">
             @foreach ($admins as $admin)
                 @php $default_profile = "https://api.dicebear.com/7.x/initials/svg?seed=".$admin->admin_fname."" @endphp
-                <a href="" {{-- {{ route('admin.profile', ['admin' => $admin->admin_id]) }} --}}
+                <a href=" {{ route('admin_profile', ['admin' => $admin->admin_id]) }} " 
                     class="border-box lg:w-80 truncate w-full m-2 p-2 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm ">
                     <div class="flex items-center p-2">
                         <img class="mr-2 border-4 h-10 w-10 rounded-full"
