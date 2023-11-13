@@ -6,7 +6,7 @@
 @include('partials.__admin_sidebar')
 
 {{-- right side of sidebar --}}
-<div class="md:ml-64 pb-4">
+<div class="md:ml-60 pb-4">
 
     {{-- reusable page header --}}
     @include('partials.__admin_pageheader')
@@ -33,7 +33,7 @@
         {{-- title + button container --}}
         <div class="flex items-center justify-center py-2 mb-4 rounded text-slate-800 ">
             <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
-                Attendane Scanner
+                Attendance Scanner
             </h2>
         </div>
 
