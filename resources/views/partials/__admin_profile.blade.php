@@ -30,7 +30,7 @@
     </div>
     <ul class="py-2" aria-labelledby="user-menu-button">
         <li>
-            <form action="/admin/logout" method="POST" class="block w-full">
+            <form action=" {{ route('admin_processlogout') }} " method="POST" class="block w-full">
                 @csrf
                 <input type="submit" value="Logout"
                     class="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " />

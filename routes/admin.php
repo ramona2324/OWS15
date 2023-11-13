@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         ->name('admin_dashboard');
     // office 
     Route::get('/offices', [AdminController::class, 'showOfficeIndex'])
-    ->name('admin_offices');
+        ->name('admin_offices');
 
     //-------------------------for functionality routing-------------------------
 
@@ -41,4 +41,8 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // processign of admin login
     Route::post('/process-login', [AdminController::class, 'processLogin'])
         ->name('admin_processlogin');
+
+    // processign of admin logout
+    Route::post('/process-logout', [AdminController::class, 'processLogout'])
+        ->name('admin_processlogout');
 });

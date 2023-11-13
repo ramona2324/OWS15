@@ -145,7 +145,7 @@ class AdminController extends Controller
         $img->save($path); // save the resized image back to the original path
     }
 
-    // admin login
+    // login
     public function processLogin(Request $request)
     {
 
@@ -160,6 +160,14 @@ class AdminController extends Controller
         }
 
         return back()->with(['custom-error' => 'Login failed! Incorrect Email or Password']);
+    }
+
+    // logout
+    public function processLogout(Request $request) {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect( route('admin_login') )->with('message', 'Logout successful');
     }
 }
 
