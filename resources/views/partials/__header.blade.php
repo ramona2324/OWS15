@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/style.css">
     {{-- box icons --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    {{-- material icons --}}
+    {{-- material icons [rounded] --}}
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     {{-- alpine js --}}

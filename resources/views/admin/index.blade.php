@@ -11,7 +11,7 @@
             {{-- {{ route('qr_scanner2') }} --}}
             <button type="button"
                 class="text-gray-900 flex items-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm p-2">
-                <span class="material-symbols-outlined">
+                <span class="material-symbols-rounded">
                     qr_code_scanner
                 </span>
             </button>
@@ -43,7 +43,7 @@
                 {{-- {{ route('manage_admins') }} --}}
                 <div class="flex flex-col items-center justify-center h-24 rounded border"
                     style="background: #14E06D">
-                    <span class="material-symbols-outlined">manage_accounts</span>
+                    <span class="material-symbols-rounded">manage_accounts</span>
                     <p class="text-sm">Manage Admins</p>
                 </div>
             </a>
