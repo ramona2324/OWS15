@@ -179,7 +179,7 @@
                             <div class="mt-4">
                                 <label for="office_id" class="block text-gray-600 font-bold text-sm">
                                     Office <span class="text-red-500">*</span></label>
-                                <select name="office_id" id="office_id"
+                                <select name="office_id" id="office_id" required
                                     class="text-base  h-10 mt-1 px-4 py-2 w-full rounded-full border border-gray-300 focus:outline-none focus:border-yellow-400">
                                     <option value="" selected>Select an Office</option>
                                     @foreach ($offices as $office)
@@ -194,7 +194,7 @@
                             <div class="mt-4">
                                 <label for="admintype_id" class="block text-gray-600 font-bold text-sm">Admin
                                     Type <span class="text-red-500">*</span></label>
-                                <select name="admintype_id" id="admintype_id"
+                                <select name="admintype_id" id="admintype_id" required
                                     class="text-base h-10 mt-1 px-4 py-2 w-full rounded-full border border-gray-300 focus:outline-none focus:border-yellow-400">
                                     <option value="" selected>Select Admin Type</option>
                                     @foreach ($admin_types as $admin_type)
