@@ -36,6 +36,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // office 
     Route::get('/offices', [AdminController::class, 'showOfficeIndex'])
         ->name('admin_offices');
+    // qr scanner 
+    Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
+        ->name('qr_scanner');
 
     //-------------------------for functionality routing-------------------------
 

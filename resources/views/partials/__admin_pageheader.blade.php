@@ -1,7 +1,6 @@
 {{-- right side header --}}
 <div class="flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 flex justify-end ">
-    <a href="">
-        {{-- {{ route('qr_scanner2') }} --}}
+    <a href=" {{ route('qr_scanner') }} ">
         <button type="button"
             class="text-gray-900 flex items-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm p-2">
             <span class="material-symbols-rounded">
@@ -10,6 +9,7 @@
         </button>
     </a>
 
+    {{-- profile button --}}
     <button type="button"
         class="z-40  flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 "
         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
@@ -28,7 +28,7 @@
             alt="user photo">
     </button>
 
-    <!-- Dropdown menu -->
+    <!-- menu after profile button click -->
     <div class="absolute right-8 top-12 z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow "
         id="user-dropdown">
         <div class="px-4 py-3">

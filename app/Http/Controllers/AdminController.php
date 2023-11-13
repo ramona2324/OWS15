@@ -64,6 +64,9 @@ class AdminController extends Controller
         $admin_types = AdminType::all();
         return view('admin.create', compact('offices', 'admin_types'));
     }
+    public function showQRscanner() {
+        return view('admin.student_event.qr-scanner');
+    }
 
     //-------------------------functions for functionality-------------------------
 
