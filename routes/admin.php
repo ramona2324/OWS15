@@ -27,6 +27,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // manage admins 
     Route::get('/manage', [AdminController::class, 'showAdminManage'])
         ->name('admin_manage');
+    // create admin
+    Route::get('/create', [AdminController::class, 'showCreateAdmin'])
+        ->name('admin_create');
     // office 
     Route::get('/offices', [AdminController::class, 'showOfficeIndex'])
         ->name('admin_offices');
@@ -40,6 +43,10 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // admin_signup2store
     Route::post('/signup2-store', [AdminController::class, 'storeSignup2'])
         ->name('admin_signup2store');
+
+    // admin_signup2store
+    Route::post('/create-store', [AdminController::class, 'storeCreate'])
+        ->name('admin_store_create');
 
     // processign of admin login
     Route::post('/process-login', [AdminController::class, 'processLogin'])

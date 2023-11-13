@@ -76,10 +76,8 @@
             <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
                 Manage Admins
             </h2>
-            {{-- for medium --}}
-            {{-- {{ route('admin.create') }} --}}
-            <form action="" method="GET" class="block absolute right-8 md:right-10">
-                @csrf
+            {{-- for medium screens and up --}}
+            <a href=" {{ route('admin_create') }} " class="block absolute right-8 md:right-10">
                 <button type="submit"
                     class="hidden md:inline-flex items-center px-1 py-1 text-sm font-medium text-center bg-gray-200 rounded-lg hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                     <div
@@ -90,7 +88,7 @@
                     </div>
                     <h3 class="px-2">Add Admin</h3>
                 </button>
-                {{-- for small --}}
+                {{-- for small screens --}}
                 <button type="submit"
                     class="md:hidden  inline-flex items-center px-1 py-1 text-sm font-medium text-center bg-gray-200 rounded-lg hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
                     <div
@@ -100,7 +98,8 @@
                         </span>
                     </div>
                 </button>
-            </form>
+            </a>
+          
         </div>
 
         <div class=" flex flex-col lg:flex-row lg:flex-wrap items-center mb-4 rounded ">
