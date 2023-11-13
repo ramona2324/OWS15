@@ -4,7 +4,6 @@
 
 {{-- right side section --}}
 <div class="md:ml-60">
-
     {{-- right side header --}}
     <div class="flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 flex justify-end ">
         <a href="">
@@ -20,10 +19,10 @@
     </div>
 
     {{-- main content --}}
-    <div class="p-4  m-4 shadow-lg bg-white border-gray-200 rounded-lg "
-        style="min-height: 90vh">
-        {{-- breadcrumbs --}}
-        <div class=" flex items-center py-2 mb-4 rounded ">
+    <div class="p-4 m-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 90vh">
+        {{-- navigation container --}}
+        <div class="flex items-center  mb-4 rounded ">
+            {{-- breadcrumb nav container --}}
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items space-x-1 md:space-x-3">
                     <li aria-current="page" class="inline-flex items-center">
@@ -47,8 +46,8 @@
             </a>
         </div>
 
-        </div>
     </div>
+</div>
 </div>
 
 @include('partials.__footer')

@@ -1,16 +1,27 @@
-@include('partials.__header', ['$title'])
+@include('partials.__header')
 
 @include('partials.__admin_sidebar')
 
-<div class=" md:ml-64 pb-4">
-    <div class=" px-4 py-6 m-4 flex justify-end">
+{{-- right side section --}}
+<div class="md:ml-60">
+    {{-- right side header --}}
+    <div class="flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 flex justify-end ">
+        <a href="">
+            {{-- {{ route('qr_scanner2') }} --}}
+            <button type="button"
+                class="text-gray-900 flex items-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm p-2">
+                <span class="material-symbols-rounded">
+                    qr_code_scanner
+                </span>
+            </button>
+        </a>
         @include('partials.__admin_profile')
     </div>
 
     {{-- main content --}}
-    <div class="p-4 m-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
+    <div class="p-4 m-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 90vh">
         {{-- navigation container --}}
-        <div class="justify-between flex items-center py-2 mb-4 rounded  ">
+        <div class="justify-between flex items-center  mb-4 rounded  ">
             {{-- breadcrumb nav container --}}
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items space-x-1">
@@ -38,7 +49,7 @@
             </nav>
             <div class="flex">
                 <!-- Previous Button -->
-                <a href="#"
+                <a href=" {{ route('go_back') }}"
                     class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white  rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
                     <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
@@ -77,7 +88,7 @@
                             add
                         </span>
                     </div>
-                    <h3 class="px-1 ">Add Admin</h3>
+                    <h3 class="px-2">Add Admin</h3>
                 </button>
                 {{-- for small --}}
                 <button type="submit"
@@ -95,12 +106,11 @@
         <div class=" flex flex-col lg:flex-row lg:flex-wrap items-center mb-4 rounded ">
             @foreach ($admins as $admin)
                 @php $default_profile = "https://api.dicebear.com/7.x/initials/svg?seed=".$admin->admin_fname."" @endphp
-                <a href=""
-                {{-- {{ route('admin.profile', ['admin' => $admin->admin_id]) }} --}}
+                <a href="" {{-- {{ route('admin.profile', ['admin' => $admin->admin_id]) }} --}}
                     class="border-box lg:w-80 truncate w-full m-2 p-2 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm ">
                     <div class="flex items-center p-2">
                         <img class="mr-2 border-4 h-10 w-10 rounded-full"
-                            src="{{ $admin->admin_image ? asset('/storage/admin/thumbnail/'. 'small_' . $admin->admin_image) : "$default_profile" }}">
+                            src="{{ $admin->admin_image ? asset('/storage/admin/thumbnail/' . 'small_' . $admin->admin_image) : "$default_profile" }}">
                         <div>
                             <h5 class=" text-lg font-semibold tracking-tight text-gray-700 ">
                                 {{ $admin->admin_fname }} {{ $admin->admin_lname }}
