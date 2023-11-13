@@ -1,4 +1,3 @@
-</body>
 
 {{-- for sidebar button toggle --}}
 <script> 
@@ -12,5 +11,30 @@
         });
     });
 </script>
+
+{{-- script for user menu-button --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const button = document.getElementById('user-menu-button');
+        const dropdown = document.getElementById('user-dropdown');
+
+        button.addEventListener('click', function() {
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'block';
+            }
+        });
+
+        // Close the dropdown when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+</body>
 
 </html>

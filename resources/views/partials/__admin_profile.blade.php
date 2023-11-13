@@ -12,7 +12,7 @@
         }
     @endphp
     <img class="h-10 w-10 rounded-full border-4"
-        src="{{ Auth::check() && Auth::user()->admin_image ? asset('/storage/admin/thumbnail/' . Auth::user()->admin_image) : $default_profile }}"
+        src="{{ Auth::check() && Auth::user()->admin_image ? asset('/storage/admin/thumbnail/' . 'small_' . Auth::user()->admin_image) : $default_profile }}"
         alt="user photo">
 </button>
 <!-- Dropdown menu -->
