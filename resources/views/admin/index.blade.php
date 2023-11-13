@@ -1,6 +1,6 @@
 @include('partials.__header')
 
-@include('partials.__sidebar')
+@include('partials.__admin_sidebar')
 
 {{-- right side section --}}
 <div class="md:ml-60">
