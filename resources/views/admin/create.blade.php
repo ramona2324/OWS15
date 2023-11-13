@@ -3,9 +3,9 @@
 @include('partials.__admin_sidebar')
 
 <div class=" md:ml-64 pb-4">
-    <div class=" px-4 py-6 m-4 flex justify-end">
-        @include('partials.__admin_profile')
-    </div>
+
+    {{-- reusable page header --}}
+    @include('partials.__admin_pageheader')
 
     {{-- main content --}}
     <div class="p-4 mx-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
@@ -38,8 +38,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
-                            <p
-                                class=" text-sm font-medium text-gray-700 hover:text-blue-600 ">
+                            <p class=" text-sm font-medium text-gray-700 hover:text-blue-600 ">
                                 Create
                             </p>
                         </div>
@@ -52,8 +51,7 @@
         <div class="flex flex-row mt-2 mb-4 gap-4">
 
             {{-- left --}}
-            <div
-                class="w-1/3 hidden min-h-full md:flex items-center justify-center rounded-lg bg-gray-50 ">
+            <div class="w-1/3 hidden min-h-full md:flex items-center justify-center rounded-lg bg-gray-50 ">
                 <img src="{{ asset('images/admin/create.png') }}" class="h-max" />
             </div>
 
@@ -63,18 +61,15 @@
                 <form action="{{ route('admin_store_create') }}" method="POST" class=" flex flex-col m-0"
                     enctype="multipart/form-data">
                     @csrf
-                    <h2
-                        class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
+                    <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
                         Create New Admin
                     </h2>
-                    <div class="flex opacity-50">
-                        <span
-                            class=" text-red-500 text-xs font-small mr-2  py-0.5 rounded-full ">
+                    <div class="flex mt-4 gap-4">
+                        <span class=" text-red-500 text-xs font-small py-0.5 rounded-full ">
                             * Required
                         </span>
-                        <span
-                            class=" text-gray-500 text-xs font-small mr-2  py-0.5 rounded-full ">
-                            Put N/A to not applicable fields
+                        <span class=" text-gray-500 text-xs font-small py-0.5 rounded-full ">
+                            Put N/A to Not Applicable fields
                         </span>
                     </div>
                     {{-- create account inputs --}}
@@ -127,11 +122,11 @@
                                 </label>
                                 <input type="file" name="admin_image" id="admin_image"
                                     class="block w-full text-sm text-slate-500
-                                        file:mr-4 file:py-2 file:px-4 mt-1
-                                        rounded-full border border-gray-300
-                                        file:text-sm file:font-semibold
-                                          file:bg-yellow-500
-                                    value="{{ old('admin_image') }}" />
+                                    file:mr-4 file:py-2 file:px-4 mt-1
+                                    rounded-full border border-gray-300
+                                    file:text-sm file:font-semibold
+                                      file:bg-yellow-400 file:border-none file:text-slate-700
+                                value="{{ old('admin_image') }}" />
                                 @include('partials.__input_error', ['fieldName' => 'admin_image'])
                             </div>
                         </div>
