@@ -24,6 +24,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // dashboard
     Route::get('/', [AdminController::class, 'showIndex'])
         ->name('admin_dashboard');
+    // office 
+    Route::get('/offices', [AdminController::class, 'showOfficeIndex'])
+    ->name('admin_offices');
 
     //-------------------------for functionality routing-------------------------
 

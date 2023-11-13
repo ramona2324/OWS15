@@ -35,6 +35,10 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+    public function showOfficeIndex()
+    {
+        return view('admin.office.index');
+    }
 
     //-------------------------functions for functionality-------------------------
 
