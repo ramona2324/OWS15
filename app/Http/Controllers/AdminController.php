@@ -31,6 +31,10 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
+    public function showDashboard()
+    {
+        return view('admin.index');
+    }
 
     //-------------------------functions for functionality-------------------------
 
@@ -148,7 +152,7 @@ class AdminController extends Controller
 
         if (auth()->attempt($validated)) {
             session()->regenerate();
-            return back()->with('message', 'Welcome back');
+            return redirect( route('admin_dashboard') )->with('message', 'Successfully Logged In!');
         }
 
         return back()->with(['custom-error' => 'Login failed! Incorrect Email or Password']);

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable // extending authenticable makes it process authentication like login, see config>auth.php
 {
     use HasFactory; //  adds the ability to generate timestamps for the model.
 

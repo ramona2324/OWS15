@@ -10,7 +10,7 @@ Route::get('/test', [AdminController::class, 'showTest'])
 // all admin routes here
 Route::group(['prefix' => 'admin'], function () { // all routes here have /admin/ prefix
 
-    //-------------------------for routing views-------------------------
+    //-------------------------for views routing-------------------------
 
     // signup first step
     Route::get('/signup', [AdminController::class, 'showSignup1'])
@@ -21,8 +21,11 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     // admin login
     Route::get('/login', [AdminController::class, 'showLogin'])
         ->name('admin_login');
+    // dashboard
+    Route::get('/', [AdminController::class, 'showDashboard'])
+        ->name('admin_dashboard');
 
-    //-------------------------for routing functionality-------------------------
+    //-------------------------for functionality routing-------------------------
 
     // admin_signup1store
     Route::post('/signup1-store', [AdminController::class, 'storeSignup1'])
@@ -32,6 +35,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     Route::post('/signup2-store', [AdminController::class, 'storeSignup2'])
         ->name('admin_signup2store');
 
+    // processign of admin login
     Route::post('/process-login', [AdminController::class, 'processLogin'])
         ->name('admin_processlogin');
 });
