@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class AdminType extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'admintype_id';
+
+    protected $fillable = [
+        'admintype_name',
+        'admintype_desc',
+    ];
+
+
 }

@@ -97,10 +97,10 @@
                 @php $default_profile = "https://api.dicebear.com/7.x/initials/svg?seed=".$admin->admin_fname."" @endphp
                 <a href=""
                 {{-- {{ route('admin.profile', ['admin' => $admin->admin_id]) }} --}}
-                    class="border-box lg:w-80 truncate w-full m-2 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm ">
+                    class="border-box lg:w-80 truncate w-full m-2 p-2 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm ">
                     <div class="flex items-center p-2">
                         <img class="mr-2 border-4 h-10 w-10 rounded-full"
-                            src="{{ $admin->admin_image ? asset('/storage/admin/thumbnail/' . $admin->admin_image) : "$default_profile" }}">
+                            src="{{ $admin->admin_image ? asset('/storage/admin/thumbnail/'. 'small_' . $admin->admin_image) : "$default_profile" }}">
                         <div>
                             <h5 class=" text-lg font-semibold tracking-tight text-gray-700 ">
                                 {{ $admin->admin_fname }} {{ $admin->admin_lname }}
@@ -112,7 +112,7 @@
                     </div>
                     <div class="p-1 px-2 pt-0 flex flex-row justify-between text-gray-500">
                         <div class="flex items-center">
-                            <span class="text-sm material-symbols-outlined mr-1 text-md">
+                            <span class="text-sm material-symbols-rounded mr-1 text-md">
                                 admin_panel_settings
                             </span>
                             <p class=" font-normal text-sm  ">
@@ -120,7 +120,7 @@
                             </p>
                         </div>
                         <div class="flex items-center">
-                            <span class="text-sm material-symbols-outlined mr-1">
+                            <span class="text-sm material-symbols-rounded mr-1">
                                 meeting_room
                             </span>
                             <p class=" font-normal text-sm  ">

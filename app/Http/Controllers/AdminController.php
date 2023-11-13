@@ -53,7 +53,6 @@ class AdminController extends Controller
     // storing signup step 1
     public function storeSignup1(Request $request)
     {
-
         $validated = $request->validate([
             "admin_lname" => ['required', 'min:2', 'alpha_spaces'],
             "admin_fname" => ['required', 'min:2', 'alpha_spaces'],
@@ -89,6 +88,8 @@ class AdminController extends Controller
         ]);
 
         $validated['admintype_id'] = 1; // assigning Super Admin type
+
+        $validated['office_id'] = 1; // assigning office to OSAS
 
         $admin = Admin::find($adminId); // Find the admin by ID and update the attributes
 
