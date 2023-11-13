@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Admin;
+use App\Models\Office;
+use App\Models\AdminType;
 use Intervention\Image\Facades\Image; // see notes below
 
 class AdminController extends Controller
@@ -38,6 +40,12 @@ class AdminController extends Controller
     public function showOfficeIndex()
     {
         return view('admin.office.index');
+    }
+    public function showAdminManage() {
+        $admins = Admin::all();
+        $offices = Office::all();
+        $admin_types = AdminType::all();
+        return view('admin.manage', compact('admins', 'offices', 'admin_types'));
     }
 
     //-------------------------functions for functionality-------------------------

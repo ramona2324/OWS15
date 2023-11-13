@@ -1,5 +1,10 @@
 <?php
 
+// basic syntax for creating a model and migration
+[
+    php artisan make:model ModelName -m
+]
+
 php artisan cache:clear
 php artisan config:clear
 
