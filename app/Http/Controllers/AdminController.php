@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
-    public function showDashboard()
+    public function showIndex()
     {
         return view('admin.index');
     }

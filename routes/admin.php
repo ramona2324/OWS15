@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
     Route::get('/login', [AdminController::class, 'showLogin'])
         ->name('admin_login');
     // dashboard
-    Route::get('/', [AdminController::class, 'showDashboard'])
+    Route::get('/', [AdminController::class, 'showIndex'])
         ->name('admin_dashboard');
 
     //-------------------------for functionality routing-------------------------
