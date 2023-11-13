@@ -49,7 +49,7 @@
             </nav>
             <div class="flex">
                 <!-- Previous Button -->
-                <a href=""
+                <a href=" {{ route('admin_dashboard') }}"
                     class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white  rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
                     <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
@@ -119,7 +119,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="p-1 px-2 pt-0 flex flex-row justify-between text-gray-500">
+                    <div class="p-1 px-2 pt-0 mt-2 flex flex-row justify-between text-gray-500">
                         <div class="flex items-center">
                             <span class="text-sm material-symbols-rounded mr-1 text-md">
                                 admin_panel_settings

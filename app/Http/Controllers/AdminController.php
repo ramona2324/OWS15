@@ -195,7 +195,7 @@ class AdminController extends Controller
         }
 
         Admin::create($validated);
-        return redirect(route('admin.manage'))->with('message', 'Successfully create new admin account!');
+        return redirect( route('admin_manage') )->with('message', 'Successfully create new admin account!');
         // return redirect('/admin/login')->with('message',
     }
 
