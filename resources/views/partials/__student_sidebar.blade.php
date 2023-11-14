@@ -15,7 +15,7 @@
     <div class="h-full border-2 border-red-700 rounded-lg m-3 mr-0 shadow-lg px-3 py-4 overflow-y-auto bg-white ">
         <div class="flex flex-col justify-center items-center mt-9 pb-6">
             <a href="{{ route('student_dashboard') }}">
-                <img src="{{ asset('images/ows_logo.png') }}" class="h-10  sm:h-16" />
+                <img src="{{ asset('images/ows_logo.png') }}" class="h-10  sm:h-20" />
             </a>
         </div>
         <ul class="space-y-2 text-gray-100 font-medium mt-9">
