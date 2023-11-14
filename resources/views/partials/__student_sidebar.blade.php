@@ -23,19 +23,19 @@
         <ul class="space-y-2 text-gray-100 font-medium mt-9">
             <li
                 class="rounded-lg {{ request()->routeIs('admin_dashboard', 'admin.manage', 'admin.create') ? 'ouryellowbg' : '' }}">
-                <a href="{{ route('admin_dashboard') }}" class="@include('partials.__admin_sidenav_class_attrib')">
+                <a href="{{ route('admin_dashboard') }}" class="@include('partials.__student_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">dashboard</span>
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
             <li class="rounded-lg {{ Route::currentRouteName() == 'admin_offices' ? 'ouryellowbg' : '' }}">
-                <a href="{{ route('admin_offices') }}" class="@include('partials.__admin_sidenav_class_attrib')">
+                <a href="{{ route('admin_offices') }}" class="@include('partials.__student_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">meeting_room</span>
                     <span class="flex-1 ml-3 whitespace-nowrap">Offices</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="@include('partials.__admin_sidenav_class_attrib')">
+                <a href="#" class="@include('partials.__student_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">
                         clear_all
                     </span>
@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="@include('partials.__admin_sidenav_class_attrib')">
+                <a href="#" class="@include('partials.__student_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">
                         how_to_reg
                     </span>
@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="@include('partials.__admin_sidenav_class_attrib')">
+                <a href="#" class="@include('partials.__student_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">
                         school
                     </span>
