@@ -8,8 +8,8 @@
         <span class="sr-only">Open user menu</span>
         @php
             $default_profile = 'https://api.dicebear.com/7.x/initials/svg?seed=';
-            if (Auth::check() && Auth::user()->admin_fname) {
-                $default_profile .= Auth::user()->admin_fname;
+            if (Auth::check() && Auth::user()->student_fname) {
+                $default_profile .= Auth::user()->student_fname;
             } else {
                 // Handle the case where the user is not logged in or admin_fname is null
                 $default_profile .= 'default_seed'; // You can replace "default_seed" with a default value or handle it as needed
@@ -25,8 +25,8 @@
         id="user-dropdown">
         <div class="px-4 py-3">
             @if (Auth::check())
-                <span class="block text-sm text-gray-900 ">{{ Auth::user()->admin_fname }}
-                    {{ Auth::user()->admin_lname }}</span>
+                <span class="block text-sm text-gray-900 ">{{ Auth::user()->student_fname }}
+                    {{ Auth::user()->student_lname }}</span>
                 <span class="block text-sm  text-gray-500 truncate ">{{ Auth::user()->email }}</span>
             @else
                 <p>You are not logged in.</p>
@@ -34,7 +34,7 @@
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
-                <form action=" {{ route('admin_processlogout') }} " method="POST" class="block w-full">
+                <form action=" {{ route('student_processlogout') }} " method="POST" class="block w-full">
                     @csrf
                     <input type="submit" value="Logout"
                         class="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " />
