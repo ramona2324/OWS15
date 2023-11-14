@@ -28,11 +28,11 @@
 
         {{-- main content --}}
         <div class="md:grid grid-cols-3 gap-4 mb-4 md:p-4 p-2 border rounded-lg">
-            <div class="p-4 justify-center align-middle flex flex-col">
-                <p class="text-gray-500 text-md">
+            <div class="p-4 justify-center text-gray-600 align-middle flex flex-col">
+                <p class=" text-md">
                     School Year: 2023-2024
                 </p>
-                <p class="text-gray-500 text-md">
+                <p class=" text-md">
                     Semester: 2nd
                 </p>
             </div>
@@ -43,7 +43,7 @@
                     @else src="https://api.dicebear.com/7.x/initials/svg?seed=" @endif />
                 </div>
 
-                <div class="text-slate-700">
+                <div class="text-slate-600 mt-2">
                     @if (Auth::check())
                         <span class="block text-lg font-bold  ">{{ Auth::user()->student_fname }}
                             {{ Auth::user()->student_lname }}</span>
