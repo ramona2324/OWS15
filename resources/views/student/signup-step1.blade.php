@@ -7,7 +7,7 @@
         <div class="m-3 p-3 md:p-8 rounded-lg flex flex-col relative"style=" height:96%; ">
             <div class="mb-6">
                 <h1 class="text-3xl font-bold text-white">Welcome to OSAS Web Services</h1>
-                
+
             </div>
             <div class="hidden md:block absolute inset-0 flex items-center justify-center">
                 <!-- Image at the very center -->
@@ -39,6 +39,24 @@
                 <h3 class="m-0 text-sm">OSAS ID:</h3>
                 <h3 class="m-0 text-base font-semibold">{{ str_pad($student->student_osasid, 5, '0', STR_PAD_LEFT) }}
                 </h3>
+            </div>
+            {{-- input courese --}}
+            <div class="mt-4 w-full">
+                <label for="course_id" class="block text-gray-600 font-bold text-sm">
+                    Course
+                    <span class="text-red-500">*</span></label>
+                <select name="course_id" id="course_id" required
+                    class="text-base h-10 mt-1 px-4 py-2 w-full rounded-full border border-gray-300 focus:outline-none focus:border-yellow-400">
+                    <option value="" class="" selected>Select Course</option>
+                    @foreach ($courses as $course)
+                        <option
+                        class=""
+                         value="{{ $course->course_id }}" @if (old('course_id') == $course->course_id) selected @endif>
+                            {{ $course->course_name }}
+                        </option>
+                    @endforeach
+                </select>
+                {{-- @include('partials.__input_error', ['fieldName' => 'admintype_id']) --}}
             </div>
         </div>
         <div class="mt-6">
