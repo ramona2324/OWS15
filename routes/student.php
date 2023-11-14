@@ -7,7 +7,7 @@ use App\Http\Controllers\StudentController;
 Route::group(['prefix' => 'student'], function () { // all routes here have /student/ prefix
 
     Route::get('/', [StudentController::class, 'showIndex'])
-        ->name('student_home');
+        ->name('student_dashboard');
     Route::get('/login', [StudentController::class, 'showLogin'])
         ->name('student_showlogin');
     Route::get('/signup-step1', [StudentController::class, 'showSignup1'])

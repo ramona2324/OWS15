@@ -14,14 +14,14 @@
     aria-label="Sidebar" style="height: 96vh">
     <div class="h-full border-2 border-red-700 rounded-lg m-3 mr-0 shadow-lg px-3 py-4 overflow-y-auto bg-white ">
         <div class="flex flex-col justify-center items-center mt-9 pb-6">
-            <a href="{{ route('admin_dashboard') }}">
+            <a href="{{ route('student_dashboard') }}">
                 <img src="{{ asset('images/ows_logo.png') }}" class="h-10  sm:h-16" />
             </a>
         </div>
         <ul class="space-y-2 text-gray-100 font-medium mt-9">
             <li
-                class="rounded-lg {{ request()->routeIs('admin_dashboard', 'admin.manage', 'admin.create') ? 'ouryellowbg' : '' }}">
-                <a href="{{ route('admin_dashboard') }}" class="@include('partials.__student_sidenav_class_attrib')">
+                class="rounded-lg {{ request()->routeIs('student_dashboard') ? 'bg-yellow-200' : '' }}">
+                <a href="{{ route('student_dashboard') }}" class="@include('partials.__student_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">dashboard</span>
                     <span class="ml-3">Dashboard</span>
                 </a>
