@@ -63,4 +63,6 @@
         </div>
     </div>
 </div>
+
+
 @include('partials.__footer')
