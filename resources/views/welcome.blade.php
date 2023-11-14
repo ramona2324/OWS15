@@ -6,18 +6,19 @@
 <div class="min-h-screen min-w-full flex flex-col md:flex-row  ">
     <!--left-->
     <div class="bg-white ouryellowbg shadow-lg rounded-lg md:w-1/2 sm:w-full min-h-full m-5 md:mr-0  ">
-        <div class="m-3 p-3 md:p-8 rounded-lg flex flex-col relative"style=" height:96%; ">
+        <div class="m-3 p-3 md:p-8 md:pb-2 rounded-lg flex flex-col relative"style=" height:96%; ">
             <div class="mb-6">
-                <h1 class="text-3xl font-bold text-white">Welcome OSAS Web Services</h1>
-                <p class="mt-4 text-white text-xl">To get started, please provide the following information to create
-                    your student account.</p>
+                <h1 class="text-3xl font-bold text-white">Welcome to OSAS Web Services</h1>
+                {{-- <p class="mt-4 text-white text-xl">
+                    To get started, please provide the following information to create
+                    your student account.
+                </p> --}}
             </div>
-            <div class="hidden md:block absolute inset-0 flex items-center justify-center">
+            <div class="hidden w-full mt-6 align-bottom md:block flex items-center justify-center">
                 <!-- Image at the very center -->
-                <img src="/images/student/welcome_vector.png" alt="" class="mt-12 mx-auto w-80 ">
-                {{-- public\images\student\login_image.png --}}
+                <img src="/images/student/welcome_vector.png" alt="" class="m-auto w-96 ">
             </div>
-            <div class="flex justify-center mt-auto">
+            <div class="flex items-center  w-full relative justify-center mt-auto">
                 <div class="w-12 h-12 rounded-full ouryellowbg flex items-center justify-center">
                     <i class='bx bxl-facebook-square' style='color:#ffffff; font-size: 30px;'></i>
                 </div>
