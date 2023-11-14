@@ -15,6 +15,9 @@ Route::group(['prefix' => 'student'], function () { // all routes here have /stu
     // student signup step1
     Route::get('/signup-step1', [StudentController::class, 'showSignup1'])
         ->name('student_signup1');
+    // admin profile
+    Route::get('/profile/{student}', [StudentController::class, 'showProfile'])
+        ->name('student_profile');
 
     //-------------------------for functionality routing-------------------------
 

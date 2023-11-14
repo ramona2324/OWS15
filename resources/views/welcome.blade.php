@@ -36,7 +36,7 @@
         class="shadow-lg p-8 bg-white rounded-lg min-h-full m-5 mt-0 md:w-1/2 min-h-full flex flex-col sm:w-full md:mt-5">
         <div class="flex flex-col justify-center items-center ">
             <img src="{{ asset('images/ows_logo.png') }}" class="h-10 mt-20 sm:h-40" />
-            <a href="{{ route('student_showlogin') }}">
+            <a href="{{ route('student_login') }}">
                 <button type="button"
                     class="mt-20 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
                     GET STARTED

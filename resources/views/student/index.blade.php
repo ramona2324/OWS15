@@ -7,7 +7,7 @@
 
     {{-- reusable page header --}}
     @include('partials.__student_pageheader')
-   
+
     {{-- main content --}}
     <div class="p-4 m-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 90vh">
         {{-- navigation container --}}
@@ -28,7 +28,7 @@
 
         {{-- 1st, 3 col --}}
         <div class="grid grid-cols-3 gap-4 mb-4">
-           
+
         </div>
 
     </div>

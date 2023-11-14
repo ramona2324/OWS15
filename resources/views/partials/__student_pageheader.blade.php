@@ -1,22 +1,18 @@
 {{-- right side header --}}
 <div class="flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 flex justify-end ">
-   
+
     {{-- profile button --}}
     <button type="button"
         class="z-40  flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 "
         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span class="sr-only">Open user menu</span>
-        @php
-            $default_profile = 'https://api.dicebear.com/7.x/initials/svg?seed=';
-            if (Auth::check() && Auth::user()->student_fname) {
-                $default_profile .= Auth::user()->student_fname;
-            } else {
-                // Handle the case where the user is not logged in or admin_fname is null
-                $default_profile .= 'default_seed'; // You can replace "default_seed" with a default value or handle it as needed
-            }
-        @endphp
+
         <img class="h-10 w-10 rounded-full border-4"
-            src="{{ Auth::check() && Auth::user()->admin_image ? asset('/storage/admin/thumbnail/' . 'small_' . Auth::user()->admin_image) : $default_profile }}"
+            @if (Auth::user()->student_picture) src="{{ Auth::user()->student_picture }}"
+            @else
+            {{-- Provide a default image or leave it empty --}}
+            {{-- Example with a default image: --}}
+            src="https://api.dicebear.com/7.x/initials/svg?seed=" @endif
             alt="user photo">
     </button>
 
@@ -25,7 +21,7 @@
         id="user-dropdown">
         <div class="px-4 py-3">
             @if (Auth::check())
-                <span class="block text-sm text-gray-900 ">{{ Auth::user()->student_fname }}
+                <span class="block text-md font-bold text-slate-700 ">{{ Auth::user()->student_fname }}
                     {{ Auth::user()->student_lname }}</span>
                 <span class="block text-sm  text-gray-500 truncate ">{{ Auth::user()->email }}</span>
             @else
@@ -33,6 +29,13 @@
             @endif
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
+            <li class="text-center">
+                <a href="" class="block w-full">
+                    <p class="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                        My Profile
+                    </p>
+                </a>
+            </li>
             <li>
                 <form action=" {{ route('student_processlogout') }} " method="POST" class="block w-full">
                     @csrf
