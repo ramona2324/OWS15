@@ -1,5 +1,9 @@
 {{-- right side header --}}
 <div class="flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 flex justify-end ">
+    
+    {{-- <div class="flex w-full h-full items-center "> 
+        <h3 class=" inline-flex items-center text-lg font-medium text-gray-700 ">Student Space</h3>
+    </div> --}}
 
     {{-- profile button --}}
     <button type="button"

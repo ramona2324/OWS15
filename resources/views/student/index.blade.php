@@ -26,7 +26,7 @@
             </nav>
         </div>
 
-        {{-- main content --}}
+        {{-- 3 cols div --}}
         <div class="md:grid grid-cols-3 gap-4 mb-4 md:p-4 p-2 border rounded-lg">
             <div class="p-4 justify-center text-gray-600 align-middle flex flex-col">
                 <p class=" text-md">
@@ -36,7 +36,7 @@
                     Semester: 2nd
                 </p>
             </div>
-            <div class="p-4 items-center flex-column items-center justify-center text-center rounded-lg border-4 border-yellow-200">
+            <div class="p-4 items-center flex-column items-center justify-center text-center rounded-xl border-4 border-yellow-200">
                 <div class="w-full justify-center flex">
                     <img class="h-20 rounded-full border-4"
                         @if (Auth::user()->student_picture) src="{{ Auth::user()->student_picture }}"
