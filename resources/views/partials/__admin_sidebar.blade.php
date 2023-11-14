@@ -12,7 +12,7 @@
 <aside id="logo-sidebar"
     class=" fixed top-0 left-0 mt-15 z-30 w-60 transition-transform -translate-x-full md:translate-x-0"
     aria-label="Sidebar" style="height: 96vh">
-    <div class="h-full rounded-lg m-3 mr-0 shadow-lg ourmaroonbg px-3 py-4 overflow-y-auto bg-gray-50 ">
+    <div class="h-full rounded-lg m-3 mr-0 shadow-lg bg-red-800 px-3 py-4 overflow-y-auto bg-gray-50 ">
         <div class="flex flex-col justify-center items-center mt-9 pb-6">
             <a href="{{ route('admin_dashboard') }}">
                 <img src="{{ asset('images/ows_logo.png') }}" class="h-10  sm:h-16" />
@@ -20,7 +20,7 @@
         </div>
         <ul class="space-y-2 text-gray-100 font-medium mt-9">
             <li
-                class="rounded-lg {{ request()->routeIs('admin_dashboard', 'admin.manage', 'admin.create') ? 'ouryellowbg' : '' }}">
+                class="rounded-lg {{ request()->routeIs('admin_dashboard', 'admin.manage', 'admin.create') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
                 <a href="{{ route('admin_dashboard') }}" class="@include('partials.__admin_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">dashboard</span>
                     <span class="ml-3">Dashboard</span>
