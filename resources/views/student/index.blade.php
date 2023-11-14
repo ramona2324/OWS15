@@ -36,11 +36,14 @@
                     Semester: 2nd
                 </p>
             </div>
-            <div class="p-4 items-center flex-column items-center justify-center text-center rounded-xl border-4 border-yellow-200">
+            <div
+                class="p-4 items-center flex-column items-center justify-center text-center rounded-xl border-4 border-yellow-200">
                 <div class="w-full justify-center flex">
-                    <img class="h-20 rounded-full border-4"
-                        @if (Auth::user()->student_picture) src="{{ Auth::user()->student_picture }}"
-                    @else src="https://api.dicebear.com/7.x/initials/svg?seed=" @endif />
+                    @if (Auth::check() && Auth::user()->student_picture)
+                        <img src="{{ Auth::user()->student_picture }}" />
+                    @else
+                        <img src="https://api.dicebear.com/7.x/initials/svg?seed=" />
+                    @endif
                 </div>
 
                 <div class="text-slate-600 mt-2">
