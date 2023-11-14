@@ -13,12 +13,10 @@
     class=" fixed top-0 left-0 mt-15 z-30 w-60 transition-transform -translate-x-full md:translate-x-0"
     aria-label="Sidebar" style="height: 96vh">
     <div class="h-full rounded-lg m-3 mr-0 shadow-lg ourmaroonbg px-3 py-4 overflow-y-auto bg-gray-50 ">
-        <div class="flex flex-col justify-center items-center mt-9">
+        <div class="flex flex-col justify-center items-center mt-9 pb-6">
             <a href="{{ route('admin_dashboard') }}">
-                <img src="{{ asset('images/osaslogo.png') }}" class="h-10  sm:h-16" />
+                <img src="{{ asset('images/ows_logo.png') }}" class="h-10  sm:h-16" />
             </a>
-            <p class="text-white text-lg font-medium mt-1">OSAS</p>
-            <p class="text-white text-sm font-medium">Management System</p>
         </div>
         <ul class="space-y-2 text-gray-100 font-medium mt-9">
             <li
