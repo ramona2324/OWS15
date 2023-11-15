@@ -21,7 +21,6 @@ Route::group(['prefix' => 'student'], function () { // all routes here have /stu
 
     //-------------------------for functionality routing-------------------------
 
-
     // for google single sign on
     Route::get('/auth/google/callback/', [GoogleAuthController::class, 'callback'])
         ->name('google_callback');
@@ -29,4 +28,10 @@ Route::group(['prefix' => 'student'], function () { // all routes here have /stu
     // processign of admin logout
     Route::post('/process-logout', [StudentController::class, 'processLogout'])
         ->name('student_processlogout');
+
+    // processing signup step 1
+    Route::post('/store-signup1/{student_id}', [StudentController::class, 'storeSignup1'])
+    ->name('student_storeSignup1');
+
+
 });

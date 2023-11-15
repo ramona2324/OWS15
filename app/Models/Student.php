@@ -20,6 +20,7 @@ class Student extends Authenticatable // extending authenticable makes it proces
         'student_fname',
         'student_mi',
         'student_picture',
+        'course_id',
         'email',
         'google_id',
     ];
@@ -33,4 +34,8 @@ class Student extends Authenticatable // extending authenticable makes it proces
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function course() { // define relationships between the Admin
+        return $this->belongsTo(Course::class, 'course_id');
+    }
 }

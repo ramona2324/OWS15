@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+
+    //-------------------------functions for views-------------------------
+
     public function showIndex()
     {
         return view('student.index');
@@ -18,8 +21,8 @@ class StudentController extends Controller
         return view('student.login');
     }
 
-    public function showSignup1()
-    {
+    public function showSignup1() {
+
         // retrieve all courses
         $courses = Course::all();
 
@@ -27,12 +30,12 @@ class StudentController extends Controller
         $google_id = session('google_id');
         $student = Student::where('google_id', $google_id)->get();
         foreach ($student as $student_instance) {
-            return view('student.signup-step1', compact('courses') )->with('student', $student_instance);
+            return view('student.signup-step1', compact('courses'))->with('student', $student_instance);
         }
-
     }
 
-    public function showProfile($student_id) {
+    public function showProfile($student_id)
+    {
         // Fetch the admin's data from the database based on the $adminId
         $student = Student::find($student_id);
 
@@ -45,12 +48,32 @@ class StudentController extends Controller
         return view('student.profile', ['student' => $student]);
     }
 
+    //-------------------------functions for functionality-------------------------
+
     // logout
-    public function processLogout(Request $request)
-    {
+    public function processLogout(Request $request) {
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect(route('student_login'))->with('message', 'Logout successful');
+    }
+
+    // storing signup1
+    public function storeSignup1(Request $request, $student_id) {
+
+        $validated = $request->validate([
+            "course_id" => ['required'],
+        ]);
+
+        $student = Student::find($student_id); // Find the admin by ID and update the attributes
+
+        if ($student) {
+            $student->update($validated); // Update the data of that student
+            // Additional logic if needed
+            return response()->json(['message' => 'Student information updated successfully']);
+        } else {
+            return response()->json(['error' => 'Student not found'], 404);
+        }
+
     }
 }

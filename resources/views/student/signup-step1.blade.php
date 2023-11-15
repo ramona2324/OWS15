@@ -41,8 +41,15 @@
             </div>
 
         </div>
+
+        @php
+            // Assuming you have a Student model and a column named 'google_id' in your database
+            $student = \App\Models\Student::where('google_id', session('google_id'))->first();
+        @endphp
+
         <div class="mt-6">
-            <form action=" {{ route('student_storeSignup1') }} " method="POST" class="block w-full">
+            <form action=" {{ route('student_storeSignup1', ['student_id' => $student->student_osasid] ) }} " method="POST"
+                class="block w-full">
                 @csrf
 
                 {{-- input courese --}}
