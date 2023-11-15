@@ -30,7 +30,6 @@ class StudentController extends Controller
             return view('student.signup-step1', compact('courses') )->with('student', $student_instance);
         }
 
-        
     }
 
     public function showProfile($student_id) {
