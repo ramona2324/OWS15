@@ -51,10 +51,11 @@
                         <span class="block text-lg font-bold  ">{{ Auth::user()->student_fname }}
                             {{ Auth::user()->student_lname }}</span>
                         <span class="block text-md truncate ">{{ Auth::user()->email }}</span>
+                        <p class="text-sm"> {{ Auth::user()->Course->course_name }} </p>
                     @else
                         <p>You are not logged in.</p>
                     @endif
-                    <p class="text-sm">Bachelor of Science in Information Technology </p>
+                    
                 </div>
             </div>
             <div class="p-4 justify-center items-center flex flex-col">
