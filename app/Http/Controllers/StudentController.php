@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Student;
+use App\Models\QRCode;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -21,7 +23,8 @@ class StudentController extends Controller
         return view('student.login');
     }
 
-    public function showSignup1() {
+    public function showSignup1()
+    {
 
         // retrieve all courses
         $courses = Course::all();
@@ -51,7 +54,8 @@ class StudentController extends Controller
     //-------------------------functions for functionality-------------------------
 
     // logout
-    public function processLogout(Request $request) {
+    public function processLogout(Request $request)
+    {
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -59,7 +63,8 @@ class StudentController extends Controller
     }
 
     // storing signup1
-    public function storeSignup1(Request $request, $student_id) {
+    public function storeSignup1(Request $request, $student_id)
+    {
 
         $validated = $request->validate([
             "course_id" => ['required'],
@@ -70,10 +75,24 @@ class StudentController extends Controller
         if ($student) {
             $student->update($validated); // Update the data of that student
             // Additional logic if needed
-            return redirect( route('student_dashboard') )->with('message', 'Successfully save student info!');
+            return redirect(route('student_dashboard'))->with('message', 'Successfully save student info!');
         } else {
             return response()->json(['error' => 'Student not found'], 404);
         }
+    }
 
+    public function displayQRCode()
+    {
+        if (Auth::check()) {
+            $student_qrcode = QRCode::where('student_osasid', Auth::user()->student_osasid)->first();
+
+            if ($student_qrcode) {
+                return response()->json(['qrcode_filename' => $student_qrcode->qrcode_filename]);
+            } else {
+                return response()->json(['error' => 'No QR code found for the logged-in student.']);
+            }
+        } else {
+            return response()->json(['error' => 'You are not logged in.']);
+        }
     }
 }

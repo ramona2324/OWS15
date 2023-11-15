@@ -31,7 +31,9 @@ Route::group(['prefix' => 'student'], function () { // all routes here have /stu
 
     // processing signup step 1, takes student_id parameter from view
     Route::post('/store-signup1/{student_id}', [StudentController::class, 'storeSignup1'])
-    ->name('student_storeSignup1');
+        ->name('student_storeSignup1');
 
-
+    // qr code in profile
+    Route::get('/qrcode/display', [StudentController::class, 'displayQRCode'])
+        ->name('display_qr');
 });

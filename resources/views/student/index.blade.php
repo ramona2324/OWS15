@@ -64,15 +64,9 @@
                     Create QR CODE
                 </button>
                 @auth
-                    @php
-                        $student_qrcode = \App\Models\QRCode::where('student_osasid', Auth::user()->student_osasid)->first();
-                    @endphp
-
-                    @if ($student_qrcode)
-                        <span class="block text-md truncate">{{ $student_qrcode->qrcode_filename }}</span>
-                    @else
-                        <p>No QR code found for the logged-in student.</p>
-                    @endif
+                    <div id="qrcode-container">
+                        {{-- Content will be dynamically loaded here --}}
+                    </div>
                 @else
                     <p>You are not logged in.</p>
                 @endauth
@@ -82,5 +76,32 @@
     </div>
 </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        // Ajax request to get QR code data
+        $.ajax({
+            url: "{{ route('display_qr') }}",
+            method: 'GET',
+            success: function (response) {
+                // Check for errors in the response
+                if (response.error) {
+                    console.log('AJAX request successful:', response);
+                    $('#qrcode-container').html('<p>' + response.error + '</p>');
+                } else {
+                    // Update the container with the QR code filename
+                    $('#qrcode-container').html('<span class="block text-md truncate">' + response.qrcode_filename + '</span>');
+                }
+            },
+            error: function (error) {
+                console.log('AJAX request failed:', error);
+                // Handle errors if the Ajax request fails
+                $('#qrcode-container').html('<p>An error occurred while fetching the QR code data.</p>');
+            }
+        });
+    });
+</script>
 
 @include('partials.__footer')
