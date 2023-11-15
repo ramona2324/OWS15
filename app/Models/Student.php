@@ -35,7 +35,7 @@ class Student extends Authenticatable // extending authenticable makes it proces
         'password' => 'hashed',
     ];
 
-    public function course() { // define relationships between the Admin
+    public function course() { // define relationships between the student
         return $this->belongsTo(Course::class, 'course_id');
     }
 }

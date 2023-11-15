@@ -43,11 +43,12 @@
         </div>
 
         @php
-            // Assuming you have a Student model and a column named 'google_id' in your database
+            // getting the student containing the google id of the current student who signup
             $student = \App\Models\Student::where('google_id', session('google_id'))->first();
         @endphp
 
         <div class="mt-6">
+            {{-- routes to that method which takes a parameter of the current student id --}}
             <form action=" {{ route('student_storeSignup1', ['student_id' => $student->student_osasid] ) }} " method="POST"
                 class="block w-full">
                 @csrf

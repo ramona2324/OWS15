@@ -1,5 +1,8 @@
 <?php
 
+// custom response for testing
+return response()->json(['message' => 'Student information updated successfully']);
+
 // to fix server error 500
 [
 mv .env.example .env 
