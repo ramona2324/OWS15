@@ -55,7 +55,7 @@
                     @else
                         <p>You are not logged in.</p>
                     @endif
-                    
+
                 </div>
             </div>
             <div class="p-4 justify-center items-center flex flex-col">
@@ -63,6 +63,19 @@
                     class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">
                     Create QR CODE
                 </button>
+                @auth
+                    @php
+                        $student_qrcode = \App\Models\QRCode::where('student_osasid', Auth::user()->student_osasid)->first();
+                    @endphp
+
+                    @if ($student_qrcode)
+                        <span class="block text-md truncate">{{ $student_qrcode->qrcode_filename }}</span>
+                    @else
+                        <p>No QR code found for the logged-in student.</p>
+                    @endif
+                @else
+                    <p>You are not logged in.</p>
+                @endauth
             </div>
         </div>
 
