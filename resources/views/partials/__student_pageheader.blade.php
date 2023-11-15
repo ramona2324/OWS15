@@ -1,6 +1,6 @@
 {{-- right side header --}}
 <div class="flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 flex justify-end ">
-    
+
     {{-- <div class="flex w-full h-full items-center "> 
         <h3 class=" inline-flex items-center text-lg font-medium text-gray-700 ">Student Space</h3>
     </div> --}}
@@ -12,10 +12,9 @@
         <span class="sr-only">Open user menu</span>
 
         <img class="h-10 w-10 rounded-full border-4"
-            @if (Auth::user()->student_picture) src="{{ Auth::user()->student_picture }}"
+            @if ( Auth::user()->student_picture ) src="{{ Auth::user()->student_picture }}"
             @else
             {{-- Provide a default image or leave it empty --}}
-            {{-- Example with a default image: --}}
             src="https://api.dicebear.com/7.x/initials/svg?seed=" @endif
             alt="user photo">
     </button>
