@@ -6,9 +6,25 @@ use App\Http\Controllers\StudentController;
 // all student routes here
 Route::group(['prefix' => 'student'], function () { // all routes here have /student/ prefix
 
-    // student dashboard
-    Route::get('/', [StudentController::class, 'showIndex'])
-        ->name('student_dashboard');
+    // Example route using the 'student' guard
+    Route::middleware('auth:student')->group(function () {
+
+        // student dashboard
+        Route::get('/', [StudentController::class, 'showIndex'])
+            ->name('student_dashboard');
+
+        //-------------------------for functionality routing-------------------------
+
+        // processign of admin logout
+        Route::post('/process-logout', [StudentController::class, 'processLogout'])
+            ->name('student_processlogout');
+
+        // qr code in profile
+        Route::get('/qrcode/display', [StudentController::class, 'displayQRCode'])
+            ->name('display_qr');
+
+    }); // end auth:student guard
+
     // student login
     Route::get('/login', [StudentController::class, 'showLogin'])
         ->name('student_login');
@@ -25,15 +41,7 @@ Route::group(['prefix' => 'student'], function () { // all routes here have /stu
     Route::get('/auth/google/callback/', [GoogleAuthController::class, 'callback'])
         ->name('google_callback');
 
-    // processign of admin logout
-    Route::post('/process-logout', [StudentController::class, 'processLogout'])
-        ->name('student_processlogout');
-
     // processing signup step 1, takes student_id parameter from view
     Route::post('/store-signup1/{student_id}', [StudentController::class, 'storeSignup1'])
         ->name('student_storeSignup1');
-
-    // qr code in profile
-    Route::get('/qrcode/display', [StudentController::class, 'displayQRCode'])
-        ->name('display_qr');
 });

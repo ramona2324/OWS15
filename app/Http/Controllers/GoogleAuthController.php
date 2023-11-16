@@ -30,7 +30,7 @@ class GoogleAuthController extends Controller
             $findStudent = Student::where('google_id', $google_user_id->getId())->first();
 
             if ($findStudent) { // if login
-                Auth::login($findStudent);
+                Auth::guard('student')->login($findStudent);
                 return redirect( route('student_dashboard') )->with('message', 'Welcome back!');
             } else { // if signup
                 try {
