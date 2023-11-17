@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         ->name('admin_login');
     // dashboard
     Route::get('/', [AdminController::class, 'showIndex'])
-        ->name('admin_dashboard');
+        ->name('admin_dashboard')->middleware('admin_auth');
     // manage admins 
     Route::get('/manage', [AdminController::class, 'showAdminManage'])
         ->name('admin_manage');
