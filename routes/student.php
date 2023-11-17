@@ -23,6 +23,8 @@ Route::group(['prefix' => 'student'], function () { // all routes here have /stu
         // qr code in profile
         Route::get('/qrcode/display', [StudentController::class, 'displayQRCode'])
             ->name('display_qr');
+        Route::get('qrcode/generate/{student_osasid}', [StudentController::class, 'generateQR'])
+            ->name('generate_qr');
     }); // end auth:student guard
 
     //-------------------------for view routing-------------------------

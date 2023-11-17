@@ -30,4 +30,5 @@ class DashboardQRcode extends Component
             $this->studentQrCode = \App\Models\QRCode::where('student_osasid', Auth::user()->student_osasid)->first();
         }
     }
+
 }

@@ -9,6 +9,7 @@ use App\Models\QRCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Session\TokenMismatchException;
+use SimpleSoftwareIO\QrCode\Facades\QrCode as QR;
 
 class StudentController extends Controller
 {
@@ -71,13 +72,13 @@ class StudentController extends Controller
     // storing signup1
     public function storeSignup1(Request $request, $student_id)
     {
-        try { 
+        try {
             $validated = $request->validate([
                 "course_id" => ['required'],
             ]);
-    
+
             $student = Student::find($student_id); // Find the admin by ID and update the attributes
-    
+
             if ($student) {
                 $student->update($validated); // Update the data of that student
                 // Additional logic if needed
@@ -104,5 +105,17 @@ class StudentController extends Controller
         } else {
             return response()->json(['error' => 'You are not logged in.']);
         }
+    }
+
+    public function generateQR($student_id)
+    {
+        // Use the student_id parameter in the QR code content
+        $qrContent = 'Student ID: ' . $student_id;
+
+        // Set the size of the QR code
+        QR::size(100);
+
+        // Generate the QR code with the specified content
+        QR::generate($qrContent, '../public/images/student/qrcodes/qrcode_' . $student_id . '.svg');
     }
 }
