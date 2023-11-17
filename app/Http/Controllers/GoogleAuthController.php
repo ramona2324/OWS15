@@ -53,7 +53,6 @@ class GoogleAuthController extends Controller
 
                 return redirect( route('student_signup1') );
 
-                
             }
         } catch (Exception $e) {
             dd($e->getMessage());

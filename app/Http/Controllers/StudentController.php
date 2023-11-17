@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\QRCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Session\TokenMismatchException;
 
 class StudentController extends Controller
 {
@@ -56,28 +58,36 @@ class StudentController extends Controller
     // logout
     public function processLogout(Request $request)
     {
-        auth()->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect(route('student_login'))->with('message', 'Logout successful');
+        try {
+            auth()->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect(route('student_login'))->with('message', 'Logout successful');
+        } catch (TokenMismatchException $e) {
+            return redirect()->route('student_login')->withErrors(['csrf' => 'CSRF token expired. Please try again.']);
+        }
     }
 
     // storing signup1
     public function storeSignup1(Request $request, $student_id)
     {
-
-        $validated = $request->validate([
-            "course_id" => ['required'],
-        ]);
-
-        $student = Student::find($student_id); // Find the admin by ID and update the attributes
-
-        if ($student) {
-            $student->update($validated); // Update the data of that student
-            // Additional logic if needed
-            return redirect(route('student_dashboard'))->with('message', 'Successfully save student info!');
-        } else {
-            return response()->json(['error' => 'Student not found'], 404);
+        try { 
+            $validated = $request->validate([
+                "course_id" => ['required'],
+            ]);
+    
+            $student = Student::find($student_id); // Find the admin by ID and update the attributes
+    
+            if ($student) {
+                $student->update($validated); // Update the data of that student
+                // Additional logic if needed
+                return redirect(route('student_dashboard'))->with('message', 'Successfully save student info!');
+            } else {
+                return response()->json(['error' => 'Student not found'], 404);
+            }
+        } catch (Exception $e) {
+            dd($e->getMessage());
+            back();
         }
     }
 
