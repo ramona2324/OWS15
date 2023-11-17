@@ -81,7 +81,7 @@ class StudentController extends Controller
         }
     }
 
-    public function displayQRCode()
+    public function displayQRCode() // create qrcode button if no qrcode yet
     {
         if (Auth::check()) {
             $student_qrcode = QRCode::where('student_osasid', Auth::user()->student_osasid)->first();

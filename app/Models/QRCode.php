@@ -11,7 +11,7 @@ class QRCode extends Model
 
     protected $table = 'qr_codes';
 
-    protected $primaryKey = 'qrocode_id';
+    protected $primaryKey = 'qrcode_id';
 
     protected $fillable = [ // the attributes for creating a model of qrcode
         'qrcode_filename',

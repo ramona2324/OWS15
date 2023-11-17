@@ -21,7 +21,7 @@ require __DIR__ . '/admin.php';
 
 Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome'); // I added an alias
 
 // google sso route
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])

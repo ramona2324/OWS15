@@ -12,11 +12,11 @@
         <span class="sr-only">Open user menu</span>
 
         <img class="h-10 w-10 rounded-full border-4"
-            @if ( Auth::user()->student_picture ) src="{{ Auth::user()->student_picture }}"
+            @if (Auth::user()->student_picture) {{-- if user uploaded a photo --}}
+                src="{{ Auth::user()->student_picture }}"
             @else
             {{-- Provide a default image or leave it empty --}}
-            src="https://api.dicebear.com/7.x/initials/svg?seed=" @endif
-            alt="user photo">
+            src="https://api.dicebear.com/7.x/initials/svg?seed=" @endif>
     </button>
 
     <!-- menu after profile button click -->

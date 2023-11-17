@@ -10,8 +10,9 @@ Route::get('/test', [AdminController::class, 'showTest'])
 // all admin routes here
 Route::group(['prefix' => 'admin'], function () { // all routes here have /admin/ prefix
 
+    // only accessible after login
     Route::group(['middleware' => 'admin_auth'], function () {
-
+        //-------------------------for views routing-------------------------
         // dashboard
         Route::get('/', [AdminController::class, 'showIndex'])
             ->name('admin_dashboard');
@@ -31,17 +32,16 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
             ->name('qr_scanner');
 
-        // admin_signup2store
+        //-------------------------for functionality routing-------------------------
+        // creating new admin
         Route::post('/create-store', [AdminController::class, 'storeCreate'])
             ->name('admin_store_create');
-
         // processign of admin logout
         Route::post('/process-logout', [AdminController::class, 'processLogout'])
             ->name('admin_processlogout');
-    });
+    }); //end of auth:admin middleware
 
     //-------------------------for views routing-------------------------
-
     // signup first step
     Route::get('/signup', [AdminController::class, 'showSignup1'])
         ->name('admin_signup1');
@@ -54,16 +54,13 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
 
 
     //-------------------------for functionality routing-------------------------
-
     // admin_signup1store
     Route::post('/signup1-store', [AdminController::class, 'storeSignup1'])
         ->name('admin_signup1store');
-
     // admin_signup2store
     Route::post('/signup2-store', [AdminController::class, 'storeSignup2'])
         ->name('admin_signup2store');
-
-    // processign of admin login
+    // processing of admin login
     Route::post('/process-login', [AdminController::class, 'processLogin'])
         ->name('admin_processlogin');
 });

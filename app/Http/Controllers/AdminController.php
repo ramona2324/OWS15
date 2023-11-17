@@ -237,7 +237,7 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        if (auth()->guard('admin')->attempt($validated)) {
+        if (auth()->guard('admin')->attempt($validated)) { // guarded athentication
             session()->regenerate();
             return redirect( route('admin_dashboard') )->with('message', 'Successfully Logged In!');
         }

@@ -16,7 +16,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'admin',
+        'guard' => 'admin', // I made the admin guard default
         'passwords' => 'users',
     ],
 
@@ -38,7 +38,8 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        // this web is the only default here
+        'web' => [ 
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -72,6 +73,7 @@ return [
     */
 
     'providers' => [
+        // this users is the only default here
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,

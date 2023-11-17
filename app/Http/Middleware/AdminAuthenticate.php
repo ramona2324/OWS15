@@ -1,4 +1,5 @@
 <?php
+// custom middleware to check if admin guard is authenticated, redirect if not
 
 namespace App\Http\Middleware;
 

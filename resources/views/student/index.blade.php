@@ -76,8 +76,7 @@
                     <p>You are not logged in.</p>
                 @endauth
 
-
-                {{-- trying this livewire --}}
+                {{-- trying my first livewire component --}}
                 @livewire('my-first-livewire')
             </div>
         </div>
@@ -85,7 +84,5 @@
     </div>
 </div>
 </div>
-
-
 
 @include('partials.__footer')
