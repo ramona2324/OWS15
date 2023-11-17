@@ -75,6 +75,10 @@
                 @else
                     <p>You are not logged in.</p>
                 @endauth
+
+
+                {{-- trying this livewire --}}
+                @livewire('my-first-livewire')
             </div>
         </div>
 
