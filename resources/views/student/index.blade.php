@@ -59,10 +59,8 @@
                 </div>
             </div>
             <div class="p-4 justify-center items-center flex flex-col">
-            
-
+                {{-- calling dynamic livewire component --}}
                 @livewire('dashboard-q-rcode')
-                
             </div>
         </div>
 
