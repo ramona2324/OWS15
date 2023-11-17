@@ -1,5 +1,27 @@
 <?php
 
+// error to logs
+try {
+    // Your code here
+} catch (Exception $e) {
+    Log::error($e->getMessage());
+    back();
+}
+
+// crsf error handler
+try {
+    } catch (TokenMismatchException $e) {
+        return redirect()->route('student_login')->withErrors(['csrf' => 'CSRF token expired. Please try again.']);
+    }
+
+// error handler
+ try { 
+    } catch (Exception $e) {
+        dd($e->getMessage());
+
+        back();
+    }
+
 // custom response for testing
 return response()->json(['message' => 'Student information updated successfully']);
 
@@ -19,8 +41,8 @@ php artisan key:generate
     php artisan make:model ModelName -m
 ]
 
+// refresh all
 php artisan cache:clear
 php artisan config:clear
-
 php artisan route:clear
 php artisan optimize

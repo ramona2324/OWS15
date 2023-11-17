@@ -15,7 +15,6 @@ use Illuminate\Session\TokenMismatchException;
 class AdminController extends Controller
 {
 
-
     public function showTest() // for testing purposes only
     {
         return view('test');
