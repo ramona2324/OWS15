@@ -18,4 +18,10 @@ class MyFirstLivewire extends Component
     {
         return view('livewire.my-first-livewire');
     }
+
+    public function poll()
+    {
+        // Fetch the updated data from the database
+        $this->admins = Admin::all();
+    }
 }

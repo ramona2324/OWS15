@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.1000ms>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 
     <h1>Present Admins</h1>
