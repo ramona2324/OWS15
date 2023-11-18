@@ -9,7 +9,8 @@ use App\Models\QRCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Session\TokenMismatchException;
-use SimpleSoftwareIO\QrCode\Facades\QrCode as QR;
+use SimpleSoftwareIO\QrCode\Facades\QrCode as QR_Code;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -112,10 +113,15 @@ class StudentController extends Controller
         // Use the student_id parameter in the QR code content
         $qrContent = 'Student ID: ' . $student_id;
 
-        // Set the size of the QR code
-        QR::size(100);
+        $filename = $student_id . '_' . time() . '.svg';
 
-        // Generate the QR code with the specified content
-        QR::generate($qrContent, '../public/images/student/qrcodes/qrcode_' . $student_id . '.svg');
+        // Set the size of the QR code
+        QR_Code::size(100);
+
+        // Generate the QR code
+        QR_Code::generate($qrContent, public_path('images/student/qrcode/' . $filename));
+
+        // Store the generated QR code in the storage directory
+        Storage::disk('public')->put('student/qrcode/' . $filename, file_get_contents(public_path('images/student/qrcode/' . $filename)));
     }
 }
