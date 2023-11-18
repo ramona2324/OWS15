@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\QRCode;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Session\TokenMismatchException;
@@ -111,17 +112,29 @@ class StudentController extends Controller
     public function generateQR($student_id)
     {
         // Use the student_id parameter in the QR code content
-        $qrContent = 'Student ID: ' . $student_id;
 
-        $filename = $student_id . '_' . time() . '.svg';
+        $qrContent = str_pad($student_id, 5, '0', STR_PAD_LEFT);
+
+        $filename = $qrContent . '_' . time() . '.svg';
 
         // Set the size of the QR code
-        QR_Code::size(100);
+        QR_Code::size(200);
 
         // Generate the QR code
         QR_Code::generate($qrContent, public_path('images/student/qrcode/' . $filename));
 
         // Store the generated QR code in the storage directory
         Storage::disk('public')->put('student/qrcode/' . $filename, file_get_contents(public_path('images/student/qrcode/' . $filename)));
+
+        // saving it to database
+        $data = [
+            'qrcode_filename' => $filename,
+            'student_osasid' => $student_id,
+        ];
+
+        // Creating a new instance of the QRCode model and saving it to the database
+        QRCode::create($data);
+
+        return redirect(route('student_dashboard'))->with('message', 'Successfully created your QR Code!');
     }
 }

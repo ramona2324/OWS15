@@ -6,7 +6,7 @@
     @endphp
 
     @if ($studentQrCode)
-        <span class="block text-md truncate">{{ $studentQrCode->qrcode_filename }}</span>
+        <img src="{{ asset('images/student/qrcode/' . $studentQrCode->qrcode_filename) }}" alt="QR Code" class="block">
     @else
         <a href=" {{ route('generate_qr', ['student_osasid' => $student_id]) }}">
             <button type="button"

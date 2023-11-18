@@ -15,5 +15,4 @@ class Office extends Model
         'office_name',
         'office_desc',
     ];
-   
 }
