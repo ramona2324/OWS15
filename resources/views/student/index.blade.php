@@ -55,14 +55,12 @@
                     @else
                         <p>You are not logged in.</p>
                     @endif
-                    
+
                 </div>
             </div>
             <div class="p-4 justify-center items-center flex flex-col">
-                <button type="button"
-                    class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">
-                    Create QR CODE
-                </button>
+                {{-- calling dynamic livewire component --}}
+                @livewire('dashboard-q-rcode')
             </div>
         </div>
 
