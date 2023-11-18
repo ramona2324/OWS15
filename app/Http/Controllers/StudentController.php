@@ -118,10 +118,9 @@ class StudentController extends Controller
         $filename = 'QR' . $qrContent . '_' . time() . '.svg';
 
         // Set the size of the QR code
-        QR_Code::size(200);
-
-        // Generate the QR code
-        QR_Code::generate($qrContent, public_path('images/student/qrcode/' . $filename));
+        QR_Code::size(200)
+        ->margin(2)
+        ->generate($qrContent, public_path('images/student/qrcode/' . $filename));
 
         // Store the generated QR code in the storage directory
         Storage::disk('public')->put('student/qrcode/' . $filename, file_get_contents(public_path('images/student/qrcode/' . $filename)));
