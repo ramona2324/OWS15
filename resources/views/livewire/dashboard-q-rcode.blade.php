@@ -6,6 +6,7 @@
     @endphp
 
     @if ($studentQrCode)
+        {{-- display the qr code if it's present --}}
         <img src="{{ asset('images/student/qrcode/' . $studentQrCode->qrcode_filename) }}" alt="QR Code" class="block">
     @else
         <a href=" {{ route('generate_qr', ['student_osasid' => $student_id]) }}">

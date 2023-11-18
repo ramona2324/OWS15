@@ -1,4 +1,5 @@
 <?php
+// livewire controller for the dashboard qr code
 
 namespace App\Livewire;
 
@@ -12,6 +13,7 @@ class DashboardQRcode extends Component
     // mounting data
     public function mount()
     {
+        // gets the qr code of the authenticated student
         if (Auth::check()) {
             $this->studentQrCode = \App\Models\QRCode::where('student_osasid', Auth::user()->student_osasid)->first();
         }

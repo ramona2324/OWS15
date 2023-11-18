@@ -111,10 +111,10 @@ class StudentController extends Controller
 
     public function generateQR($student_id)
     {
-        // Use the student_id parameter in the QR code content
-
+        // the content is the padded student_osasid
         $qrContent = str_pad($student_id, 5, '0', STR_PAD_LEFT);
 
+        // filename is the osasid with time and its extension.
         $filename = $qrContent . '_' . time() . '.svg';
 
         // Set the size of the QR code
@@ -126,7 +126,7 @@ class StudentController extends Controller
         // Store the generated QR code in the storage directory
         Storage::disk('public')->put('student/qrcode/' . $filename, file_get_contents(public_path('images/student/qrcode/' . $filename)));
 
-        // saving it to database
+        // array to supply creation of QRCode model instance
         $data = [
             'qrcode_filename' => $filename,
             'student_osasid' => $student_id,
@@ -135,6 +135,7 @@ class StudentController extends Controller
         // Creating a new instance of the QRCode model and saving it to the database
         QRCode::create($data);
 
+        // going back to dashboard
         return redirect(route('student_dashboard'))->with('message', 'Successfully created your QR Code!');
     }
 }
