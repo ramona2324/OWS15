@@ -66,22 +66,14 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                     <div class="p-4 md:p-5 text-center">
-                        <form id="scanForm" action=" {{ route('submit_scannedqr') }} " method="POST">
+                        {{-- <form id="scanForm" action=" {{ route('submit_scannedqr') }} " method="POST">
                             @csrf
                             <input type="hidden" id="scannedValue" name="scannedValue">
-                        </form>
-
+                        </form> --}}
+                        @livewire('scanComponent')
                         <h3 class="mb-5 text-lg font-bold text-gray-600 ">
                             Confirm Attendance?
                         </h3>
-                        @php $student = ''; @endphp
-                        @if ($student)
-                            <p>Name: {{ $student->student_fname }}</p>
-                            <p>OSAS ID: {{ $student->student_osasid }}</p>
-                            <!-- Add other student details as needed -->
-                        @else
-                            <p>Student not found</p>
-                        @endif
                         <div class="flex gap-4 text-center">
                             <button data-modal-hide="popup-modal" type="button"
                                 class="text-gray-500 w-1/2 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 ">
@@ -120,8 +112,7 @@
 
     scanner.addListener('scan', function(c) {
         if (c) {
-            document.getElementById('scannedValue').value = c;
-            submitForm();
+            document.getElementById('scan_receiver').value = c;
             showModal();
         }
     });
@@ -130,8 +121,6 @@
     function submitForm() {
         // Get the form element
         var form = document.getElementById('scanForm');
-
-        // Perform any additional actions before submitting the form if needed
 
         // Submit the form
         form.submit();
