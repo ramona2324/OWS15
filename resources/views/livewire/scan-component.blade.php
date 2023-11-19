@@ -2,14 +2,17 @@
     {{-- The Master doesn't talk, he acts. --}}
 
     <div>
-        <input type="text" hidden wire:model="searchTerm" id="scan_receiver" placeholder="Search...">
+        <input type="text" wire:render.1000 wire:model="scan_receiver" hidden id="scan_receiver" value="">
 
         <ul>
-            @foreach ($students as $student)
-                <li>{{ $student->student_osasid }}</li>
-                <li>{{ $student->student_fname }}</li>
-                <li>{{ $student->student_lname }}</li>
-            @endforeach
+            @if ($student)
+                {{-- Assuming your Student model has properties like 'student_fname', 'student_lname', etc. --}}
+                <p>Name: {{ $student->student_fname ?? '' }}</p>
+                <p>Age: {{ $student->student_lname ?? '' }}</p>
+                {{-- Add more details as needed --}}
+            @else
+                <p>No student found</p>
+            @endif
         </ul>
     </div>
 </div>

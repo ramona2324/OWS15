@@ -112,7 +112,9 @@
 
     scanner.addListener('scan', function(c) {
         if (c) {
-            document.getElementById('scan_receiver').value = c;
+            var intVal = parseInt(c).toString();
+            document.getElementById('scan_receiver').value = intVal;
+            console.log(intVal);
             showModal();
         }
     });
