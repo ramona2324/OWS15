@@ -119,7 +119,7 @@ class StudentController extends Controller
 
         // Set the size of the QR code
         QR_Code::size(200)
-        ->margin(2)
+        ->margin(5)
         ->generate($qrContent, public_path('images/student/qrcode/' . $filename));
 
         // Store the generated QR code in the storage directory
