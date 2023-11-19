@@ -23,6 +23,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome'); // I added an alias
 
+Route::get('/test/1', function () {
+    if (extension_loaded('imagick')) {
+        phpinfo();
+    } else {
+        return 'Imagick extension not installed.';
+    }   
+});
+
 // google sso route
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])
     ->name('google_redirect');
