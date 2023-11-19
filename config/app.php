@@ -185,6 +185,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Image' => Intervention\Image\Facades\Image::class, // alias for Image Intervention
+        'Livewire' => Illuminate\Support\Facades\Livewire::class,
+
     ])->toArray(),
 
 ];

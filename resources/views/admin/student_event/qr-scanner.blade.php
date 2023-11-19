@@ -54,7 +54,7 @@
         <div id="popup-modal" tabindex="-1"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full">
             <div class="relative flex items-center justify-center p-4 w-full  min-h-screen bg-opacity-50 bg-gray-900">
-                <div class="relative bg-white max-w-md rounded-lg shadow ">
+                <div class="relative bg-white w-1/2 rounded-lg shadow ">
                     <button type="button"
                         class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
                         data-modal-hide="popup-modal">
@@ -66,21 +66,32 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                     <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 ">Are you sure you want to
-                            delete this product?</h3>
-                        <button data-modal-hide="popup-modal" type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 ">No,
-                            cancel
-                        </button>
-                        <button data-modal-hide="popup-modal" type="button"
-                            class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                            Yes, I'm sure
-                        </button>
+                        <form id="scanForm" action=" {{ route('submit_scannedqr') }} " method="POST">
+                            @csrf
+                            <input type="hidden" id="scannedValue" name="scannedValue">
+                        </form>
+
+                        <h3 class="mb-5 text-lg font-bold text-gray-600 ">
+                            Confirm Attendance?
+                        </h3>
+                        @php $student = ''; @endphp
+                        @if ($student)
+                            <p>Name: {{ $student->student_fname }}</p>
+                            <p>OSAS ID: {{ $student->student_osasid }}</p>
+                            <!-- Add other student details as needed -->
+                        @else
+                            <p>Student not found</p>
+                        @endif
+                        <div class="flex gap-4 text-center">
+                            <button data-modal-hide="popup-modal" type="button"
+                                class="text-gray-500 w-1/2 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 ">
+                                DENY
+                            </button>
+                            <button data-modal-hide="popup-modal" type="button"
+                                class="text-white w-1/2 bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300  font-medium rounded-lg text-sm px-5 py-2.5 me-2">
+                                CONFIRM
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,9 +120,22 @@
 
     scanner.addListener('scan', function(c) {
         if (c) {
+            document.getElementById('scannedValue').value = c;
+            submitForm();
             showModal();
         }
     });
+
+    // Function to submit the form
+    function submitForm() {
+        // Get the form element
+        var form = document.getElementById('scanForm');
+
+        // Perform any additional actions before submitting the form if needed
+
+        // Submit the form
+        form.submit();
+    }
 </script>
 
 <!-- Add your JavaScript code to handle modal show/hide -->
