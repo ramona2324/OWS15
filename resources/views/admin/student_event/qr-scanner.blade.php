@@ -65,7 +65,7 @@
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>
-                    <div class="p-4 md:p-5 text-center">
+                    <div class="p-4 md:p-6 text-center">
                         <h3 class="mb-5 text-lg font-bold text-gray-600 ">
                             Confirm Attendance?
                         </h3>
@@ -73,7 +73,7 @@
                         {{-- result of scanning --}}
                         @livewire('scanComponent')
 
-                        <div class="flex gap-4 text-center">
+                        <div class="flex mt-6 gap-4 text-center">
                             <button data-modal-hide="popup-modal" type="button"
                                 class="text-gray-500 w-1/2 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 ">
                                 DENY
@@ -114,6 +114,7 @@
         if (c) { // if value detected
             var intVal = parseInt(c).toString(); // getting the unpadded value and convert to string
             document.getElementById('scan_receiver').value = intVal; //passing the value to the input above
+            console.log(intVal);
             showModal(); // showing the modal
         }
     });
