@@ -66,14 +66,13 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                     <div class="p-4 md:p-5 text-center">
-                        {{-- <form id="scanForm" action=" {{ route('submit_scannedqr') }} " method="POST">
-                            @csrf
-                            <input type="hidden" id="scannedValue" name="scannedValue">
-                        </form> --}}
-                        @livewire('scanComponent')
                         <h3 class="mb-5 text-lg font-bold text-gray-600 ">
                             Confirm Attendance?
                         </h3>
+
+                        {{-- result of scanning --}}
+                        @livewire('scanComponent')
+
                         <div class="flex gap-4 text-center">
                             <button data-modal-hide="popup-modal" type="button"
                                 class="text-gray-500 w-1/2 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 ">
@@ -92,12 +91,13 @@
     </div>
 </div>
 
-
+{{-- script for qr code scanner --}}
 <script type="text/javascript">
+    // for broadcasting the video
     let scanner = new Instascan.Scanner({
         video: document.getElementById('preview')
     });
-
+    // for getting the camera
     Instascan.Camera.getCameras()
         .then(function(cameras) {
             if (cameras.length > 0) {
@@ -109,49 +109,34 @@
         .catch(function(e) {
             console.error(e);
         });
-
+    // getting the value of qr code
     scanner.addListener('scan', function(c) {
-        if (c) {
-            var intVal = parseInt(c).toString();
-            document.getElementById('scan_receiver').value = intVal;
-            console.log(intVal);
-            showModal();
+        if (c) { // if value detected
+            var intVal = parseInt(c).toString(); // getting the unpadded value and convert to string
+            document.getElementById('scan_receiver').value = intVal; //passing the value to the input above
+            showModal(); // showing the modal
         }
     });
-
-    // Function to submit the form
-    function submitForm() {
-        // Get the form element
-        var form = document.getElementById('scanForm');
-
-        // Submit the form
-        form.submit();
-    }
 </script>
 
-<!-- Add your JavaScript code to handle modal show/hide -->
+{{-- for handling the modal --}}
 <script>
     window.onload = function() {
         // showModal();
     };
-
     function showModal() {
         // Get the modal element
         var modal = document.getElementById('popup-modal');
-
         // Display the modal
         modal.classList.remove('hidden');
     }
-
     // Add a function to hide the modal
     function hideModal() {
         // Get the modal element
         var modal = document.getElementById('popup-modal');
-
         // Hide the modal
         modal.classList.add('hidden');
     }
-
     // Add a click event listener to the modal close button
     var closeButton = document.querySelector('[data-modal-hide="popup-modal"]');
     if (closeButton) {

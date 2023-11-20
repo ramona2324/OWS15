@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome'); // I added an alias
 
+// testing imagick installation
 Route::get('/test/1', function () {
     if (extension_loaded('imagick')) {
         phpinfo();

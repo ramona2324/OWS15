@@ -9,9 +9,9 @@ use Livewire\Component;
 
 class ScanComponent extends Component
 {
-    public $scan_receiver;
+    public $scan_receiver; // this gets the data from the input in view
     
-    public function render()
+    public function render() // for rendering the view
     {
         $student = Student::where('student_osasid', 'like', '%' . $this->scan_receiver . '%' )->first();
         return view('livewire.scan-component', compact('student'));
