@@ -9,6 +9,7 @@ use App\Models\Admin;
 use App\Models\Office;
 use App\Models\AdminType;
 use App\Models\Student;
+use App\Models\StudentEvent;
 use Intervention\Image\Facades\Image; // see notes below
 use Illuminate\Support\Facades\Log;
 use Illuminate\Session\TokenMismatchException;
@@ -80,7 +81,8 @@ class AdminController extends Controller
     }
     public function showCreateEvents()
     {
-        return view('admin.student_event.create');
+        $stud_events = StudentEvent::all();
+        return view('admin.student_event.create', compact('stud_events'));
     }
     //-------------------------functions for functionality-------------------------
 
@@ -299,6 +301,28 @@ class AdminController extends Controller
             return redirect()->back()->with('custom-error', 'Student not found');
         }
         return view('admin.student_event.qr-result', compact('student'));
+    }
+
+    // creating new event
+    public function storeEvent(Request $request)
+    {
+        try {
+            $validated = $request->validate([
+                "event_name" => [''],
+                "event_date" => [''],
+                "event_time_in" => [''],
+                "event_time_out" => [''],
+                "event_desc" => [''],
+            ]);
+
+            StudentEvent::create($validated);
+
+            return redirect(route('admin_stud_events'))->with('message', 'New Event Created!');
+
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            back();
+        }
     }
 }
 

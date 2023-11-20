@@ -63,7 +63,7 @@
             {{-- right - create new admin form --}}
             <div
                 class="md:w-2/3 w-full px-6 py-6 lg:px-8 relative bg-white rounded-lg overflow-y-auto border border-yellow-500 ">
-                <form action="" method="POST" class=" flex flex-col m-0" enctype="multipart/form-data">
+                <form action=" {{ route('admin_store_event') }} " method="POST" class=" flex flex-col m-0" enctype="multipart/form-data">
                     @csrf
                     <h2 class="text-center text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
                         Create New Event
@@ -140,7 +140,7 @@
                     {{-- submit button --}}
                     <div class="mt-6">
                         <button type="submit"
-                            class="w-full focus:outline-none text-white bg-red-800 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 ">
+                            class="w-full focus:outline-none text-white  bg-red-800 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2.5 ">
                             Create Event
                         </button>
                     </div>

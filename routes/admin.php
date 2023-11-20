@@ -12,12 +12,6 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         // dashboard
         Route::get('/', [AdminController::class, 'showIndex'])
             ->name('admin_dashboard');
-        // student event
-        Route::get('/events', [AdminController::class, 'showStudentEvents'])
-            ->name('admin_stud_events');
-        // showCreateEvents
-        Route::get('/events/create', [AdminController::class, 'showCreateEvents'])
-            ->name('admin_create_event');
         // manage admins 
         Route::get('/manage', [AdminController::class, 'showAdminManage'])
             ->name('admin_manage');
@@ -33,6 +27,12 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         // qr scanner 
         Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
             ->name('admin_qrscanner');
+        // student event
+        Route::get('/events', [AdminController::class, 'showStudentEvents'])
+            ->name('admin_stud_events');
+        // showCreateEvents
+        Route::get('/events/create', [AdminController::class, 'showCreateEvents'])
+            ->name('admin_create_event');
 
         //-------------------------for functionality routing-------------------------
         // creating new admin
@@ -44,6 +44,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         // qr scan result
         Route::post('/qr-scanner/result', [AdminController::class, 'processQR'])
             ->name('admin_procesqr');
+        // storeEvent
+        Route::post('/event/store', [AdminController::class, 'storeEvent'])
+            ->name('admin_store_event');
     }); //end of auth:admin middleware
 
     //-------------------------for views routing-------------------------

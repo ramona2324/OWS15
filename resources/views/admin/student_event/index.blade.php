@@ -59,14 +59,15 @@
             </a>
         </div>
 
-        <div class=" flex bg-red-500 flex-col items-center mb-4 rounded ">
-
+        {{-- main content here --}}
+        <div class=" flex  flex-col items-center mb-4 rounded ">
+            
             <a href=" "
                 class="flex justify-start border-box truncate w-full mb-2 p-2 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm ">
-                <div class="bg-blue-500 w-48">
-                    <h4>days to go</h4>
+                <div class=" w-48">
+                    <h4>3 days to go</h4>
                 </div>
-                <div class="bg-yellow-500 w-full">
+                <div class=" w-full">
                     <h4>This is the Title</h4>
                 </div>
                 <button type="button"
