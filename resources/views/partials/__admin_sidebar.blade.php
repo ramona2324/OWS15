@@ -42,11 +42,11 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="@include('partials.__admin_sidenav_class_attrib')">
+                <a href=" {{ route('admin_stud_events') }} " class="@include('partials.__admin_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">
                         how_to_reg
                     </span>
-                    <span class="flex-1 ml-3  whitespace-nowrap">Student Activities</span>
+                    <span class="flex-1 ml-3  whitespace-nowrap">Student Events</span>
                 </a>
             </li>
             <li>

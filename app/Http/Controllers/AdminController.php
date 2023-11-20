@@ -74,6 +74,10 @@ class AdminController extends Controller
     {
         return view('admin.student_event.qr-scanner');
     }
+    public function showStudentEvents()
+    {
+        return view('admin.student_event.index');
+    }
     //-------------------------functions for functionality-------------------------
 
     // storing signup step 1

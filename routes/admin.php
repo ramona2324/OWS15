@@ -12,6 +12,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         // dashboard
         Route::get('/', [AdminController::class, 'showIndex'])
             ->name('admin_dashboard');
+        // student event
+        Route::get('/student-events', [AdminController::class, 'showStudentEvents'])
+            ->name('admin_stud_events');
         // manage admins 
         Route::get('/manage', [AdminController::class, 'showAdminManage'])
             ->name('admin_manage');
