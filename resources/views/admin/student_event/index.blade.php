@@ -35,7 +35,7 @@
                 Student Events
             </h2>
             {{-- for medium screens and up --}}
-            <a href="  " class="block absolute right-8 md:right-10">
+            <a href=" {{ route('admin_create_event') }} " class="block absolute right-8 md:right-10">
                 <button type="submit"
                     class="hidden md:inline-flex items-center px-1 py-1 text-sm font-medium text-center bg-gray-200 rounded-lg hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                     <div

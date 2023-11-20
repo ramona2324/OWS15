@@ -78,6 +78,10 @@ class AdminController extends Controller
     {
         return view('admin.student_event.index');
     }
+    public function showCreateEvents()
+    {
+        return view('admin.student_event.create');
+    }
     //-------------------------functions for functionality-------------------------
 
     // storing signup step 1
