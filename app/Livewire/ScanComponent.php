@@ -14,6 +14,7 @@ class ScanComponent extends Component
     public function render() // for rendering the view
     {
         $student = Student::where('student_osasid', 'like', '%' . $this->scan_receiver . '%' )->first();
+        
         return view('livewire.scan-component', compact('student'));
     }
 }
