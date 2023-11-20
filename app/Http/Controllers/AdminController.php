@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Admin;
 use App\Models\Office;
 use App\Models\AdminType;
+use App\Models\Student;
 use Intervention\Image\Facades\Image; // see notes below
 use Illuminate\Support\Facades\Log;
 use Illuminate\Session\TokenMismatchException;
@@ -73,7 +74,6 @@ class AdminController extends Controller
     {
         return view('admin.student_event.qr-scanner');
     }
-
     //-------------------------functions for functionality-------------------------
 
     // storing signup step 1
@@ -281,6 +281,16 @@ class AdminController extends Controller
         } catch (TokenMismatchException $e) {
             return redirect()->route('student_login')->withErrors(['csrf' => 'CSRF token expired. Please try again.']);
         }
+    }
+
+    // processing of qr code
+    public function processQR(Request $request)
+    {
+        $student = Student::where('student_osasid', $request['scanner'])->first();
+        if (!$student) {
+            return redirect()->back()->with('custom-error', 'Student not found');
+        }
+        return view('admin.student_event.qr-result', compact('student'));
     }
 }
 

@@ -112,10 +112,10 @@ class StudentController extends Controller
     public function generateQR($student_id)
     {
         // the content is the padded student_osasid
-        $qrContent = str_pad($student_id, 5, '0', STR_PAD_LEFT);
+        $qrContent = 'OWS-' . str_pad($student_id, 5, '0', STR_PAD_LEFT);
 
         // filename is the osasid with time and its extension.
-        $filename = 'OWS' . $qrContent . '_' . time() . '.svg';
+        $filename = 'OWS-' . $qrContent . '_' . time() . '.svg';
 
         // Set the size of the QR code ++
         QR_Code::size(200)

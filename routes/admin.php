@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_offices');
         // qr scanner 
         Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
-            ->name('qr_scanner');
+            ->name('admin_qrscanner');
 
         //-------------------------for functionality routing-------------------------
         // creating new admin
@@ -35,6 +35,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         // processign of admin logout
         Route::post('/process-logout', [AdminController::class, 'processLogout'])
             ->name('admin_processlogout');
+        // qr scan result
+        Route::post('/qr-scanner/result', [AdminController::class, 'processQR'])
+            ->name('admin_procesqr');
     }); //end of auth:admin middleware
 
     //-------------------------for views routing-------------------------
