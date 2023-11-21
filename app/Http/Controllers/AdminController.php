@@ -84,6 +84,7 @@ class AdminController extends Controller
     {
         return view('admin.student_event.create');
     }
+
     //-------------------------functions for functionality-------------------------
 
     // storing signup step 1
@@ -295,7 +296,7 @@ class AdminController extends Controller
         return view('admin.student_event.qr-result', compact('student'));
     }
 
-    // creating new event
+    // storing new event
     public function storeEvent(Request $request)
     {
         try {
@@ -315,6 +316,8 @@ class AdminController extends Controller
             back();
         }
     }
+
+    
 }
 
 
