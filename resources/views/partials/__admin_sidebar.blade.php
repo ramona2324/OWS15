@@ -12,7 +12,7 @@
 <aside id="logo-sidebar"
     class=" fixed top-0 left-0 mt-15 z-30 w-60 transition-transform -translate-x-full md:translate-x-0"
     aria-label="Sidebar" style="height: 96vh">
-    <div class="h-full rounded-lg m-3 mr-0 shadow-lg bg-red-800 px-3 py-4 overflow-y-auto bg-gray-50 ">
+    <div class="h-full rounded-lg m-3 mr-0 shadow-lg bg-red-800 px-3 py-4 overflow-y-auto  ">
         <div class="flex flex-col justify-center items-center mt-9 pb-6">
             <a href="{{ route('admin_dashboard') }}">
                 <img src="{{ asset('images/ows_logo.png') }}" class="h-10  sm:h-16" />
@@ -42,11 +42,11 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="@include('partials.__admin_sidenav_class_attrib')">
+                <a href=" {{ route('admin_stud_events') }} " class="@include('partials.__admin_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">
                         how_to_reg
                     </span>
-                    <span class="flex-1 ml-3  whitespace-nowrap">Student Activities</span>
+                    <span class="flex-1 ml-3  whitespace-nowrap">Student Events</span>
                 </a>
             </li>
             <li>

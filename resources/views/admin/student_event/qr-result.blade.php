@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="flex mt-6 gap-4 text-center">
-                    <a cl href="{{ route('admin_qrscanner') }}">
+                    <a class="block" href="{{ route('admin_qrscanner') }}">
                         <button type="button"
                             class="text-red-500 w-1/2 bg-white hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg border border-red-200 text-sm font-medium px-5 py-2.5 hover:text-red-900 focus:z-10 ">
                             DENY
