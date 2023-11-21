@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_store_event');
     }); //end of auth:admin middleware
 
+    
     //-------------------------for views routing-------------------------
     // signup first step
     Route::get('/signup', [AdminController::class, 'showSignup1'])

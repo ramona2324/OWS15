@@ -296,7 +296,7 @@ class AdminController extends Controller
         return view('admin.student_event.qr-result', compact('student'));
     }
 
-    // creating new event
+    // storing new event
     public function storeEvent(Request $request)
     {
         try {
@@ -317,6 +317,7 @@ class AdminController extends Controller
         }
     }
 
+<<<<<<< HEAD
     public function scholarships(Request $rq)
     {
         $cnter = Scholarships::query()->count();
@@ -330,6 +331,9 @@ class AdminController extends Controller
 
         return view('admin.scholarships', compact('cnter', 'id', 'name', 'email', 'contact', 'desc', 'process', 'sid'));
     }
+=======
+    
+>>>>>>> 9763e080c143e8a8a27445c0825a5cfc6dc0a00f
 }
 
 
