@@ -40,7 +40,7 @@
             </nav>
             <div class="flex">
                 <!-- Previous Button -->
-                <a href=" {{ route('admin_manage') }}"
+                <a href=" {{ route('admin_stud_events') }}"
                     class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white  rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
                     <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">

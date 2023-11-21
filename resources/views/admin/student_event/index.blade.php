@@ -18,7 +18,7 @@
                 <ol class="inline-flex items space-x-1">
                     <li class="inline-flex items-center">
                         <a href="{{ route('admin_dashboard') }}"
-                            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
+                            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-red-600 ">
                             <span class="px-1 material-symbols-rounded" style="font-size:20px">how_to_reg</span>
                             Student Events
                         </a>
@@ -37,9 +37,9 @@
             {{-- for medium screens and up --}}
             <a href=" {{ route('admin_create_event') }} " class="block absolute right-8 md:right-10">
                 <button type="submit"
-                    class="hidden md:inline-flex items-center px-1 py-1 text-sm font-medium text-center bg-gray-200 rounded-lg hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                    class="hidden md:inline-flex items-center px-1 py-1 text-sm font-medium text-center bg-gray-200 rounded-lg hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 ">
                     <div
-                        class="relative inline-flex items-center px-1 py-1 text-sm font-medium text-center text-white ouryellowbg rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                        class="relative inline-flex items-center px-1 py-1 text-sm font-medium text-center text-white ouryellowbg rounded-lg focus:ring-4 focus:outline-none focus:ring-red-300 ">
                         <span class="material-symbols-rounded">
                             add
                         </span>
@@ -48,9 +48,9 @@
                 </button>
                 {{-- for small screens --}}
                 <button type="submit"
-                    class="md:hidden  inline-flex items-center px-1 py-1 text-sm font-medium text-center bg-gray-200 rounded-lg hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    class="md:hidden  inline-flex items-center px-1 py-1 text-sm font-medium text-center bg-gray-200 rounded-lg hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300">
                     <div
-                        class="relative inline-flex items-center px-1 py-1 text-sm font-medium text-center text-white ouryellowbg rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                        class="relative inline-flex items-center px-1 py-1 text-sm font-medium text-center text-white ouryellowbg rounded-lg focus:ring-4 focus:outline-none focus:ring-red-300 ">
                         <span class="material-symbols-rounded">
                             add
                         </span>
@@ -60,21 +60,32 @@
         </div>
 
         {{-- main content here --}}
-        <div class=" flex  flex-col items-center mb-4 rounded ">
-            
-            <a href=" "
-                class="flex justify-start border-box truncate w-full mb-2 p-2 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm ">
-                <div class=" w-48">
-                    <h4>3 days to go</h4>
-                </div>
-                <div class=" w-full">
-                    <h4>This is the Title</h4>
-                </div>
-                <button type="button"
-                    class=" focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 ">
-                    View Details
-                </button>
-            </a>
+        <div class=" mb-4 rounded ">
+
+            @foreach ($student_events as $event)
+                <a href="your_link_here"
+                    class=" relative flex justify-start border-box truncate h-20 w-full mb-2 p-2 px-4 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm">
+                    <div class="mr-4 w-20 text-gray-400 h-full items-center flex flex-row  whitespace-normal">
+                        <h4 class="h-full items-center flex  text-4xl ">3</h4>
+                        <h4 class="font-wrap text-sm leading-3">days to go</h4>
+                    </div>
+
+                    <div class="w-full flex items-center ">
+                        <h4 class="text-lg font-bold text-gray-700">{{ $event->event_name }}</h4>
+                    </div>
+
+                    <div class="absolute px-2 bg-white right-0 top-1/2  transform  -translate-y-1/2">
+                        <form action="">
+                            <button type="submit"
+                                class="h-12 w-12 flex items-center justify-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm p-2">
+                                <span class="material-symbols-rounded">
+                                    qr_code_scanner
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </a>
+            @endforeach
 
 
         </div>

@@ -77,12 +77,12 @@ class AdminController extends Controller
     }
     public function showStudentEvents()
     {
-        return view('admin.student_event.index');
+        $student_events = StudentEvent::all();
+        return view('admin.student_event.index', compact('student_events'));
     }
     public function showCreateEvents()
     {
-        $stud_events = StudentEvent::all();
-        return view('admin.student_event.create', compact('stud_events'));
+        return view('admin.student_event.create');
     }
     //-------------------------functions for functionality-------------------------
 
