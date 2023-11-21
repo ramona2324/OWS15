@@ -10,6 +10,7 @@ use App\Models\Office;
 use App\Models\AdminType;
 use App\Models\Student;
 use App\Models\StudentEvent;
+use App\Models\Scholarship;
 use Intervention\Image\Facades\Image; // see notes below
 use Illuminate\Support\Facades\Log;
 use Illuminate\Session\TokenMismatchException;
@@ -317,23 +318,19 @@ class AdminController extends Controller
         }
     }
 
-<<<<<<< HEAD
-    public function scholarships(Request $rq)
+    public function scholarship(Request $rq)
     {
-        $cnter = Scholarships::query()->count();
-        $id = Scholarships::query()->pluck('id');
-        $name = Scholarships::query()->pluck('name');
-        $email = scholarships::query()->pluck('email');
-        $contact =  scholarships::query()->pluck('contact');
-        $desc = scholarships::query()->pluck('desc');
-        $process = scholarships::query()->pluck('process');
-        $sid = scholarships::query()->pluck('scholarshipid');
+        $cnter = scholarship::query()->count();
+        $id = scholarship::query()->pluck('id');
+        $name = scholarship::query()->pluck('name');
+        $email = scholarship::query()->pluck('email');
+        $contact =  scholarship::query()->pluck('contact');
+        $desc = scholarship::query()->pluck('desc');
+        $process = scholarship::query()->pluck('process');
+        $sid = scholarship::query()->pluck('scholarshipid');
 
-        return view('admin.scholarships', compact('cnter', 'id', 'name', 'email', 'contact', 'desc', 'process', 'sid'));
+        return view('admin.scholarship.index', compact('cnter', 'id', 'name', 'email', 'contact', 'desc', 'process', 'sid'));
     }
-=======
-    
->>>>>>> 9763e080c143e8a8a27445c0825a5cfc6dc0a00f
 }
 
 
