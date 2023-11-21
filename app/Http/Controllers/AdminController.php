@@ -89,32 +89,28 @@ class AdminController extends Controller
     // storing signup step 1
     public function storeSignup1(Request $request)
     {
-        try {
-            $validated = $request->validate([
-                "admin_lname" => ['required', 'min:2', 'alpha_spaces'],
-                "admin_fname" => ['required', 'min:2', 'alpha_spaces'],
-                "admin_mi" => ['required', 'regex:/^(N\/A|[A-Za-z])$/'], //require to be clearer, user must put N/A if they have no mi
-                "admin_contact" => ['nullable', 'numeric', 'digits_between:10,15'],
-                "email" => ['required', 'email', Rule::unique('admins', 'email')],
-                'password' => [
-                    'required',
-                    'confirmed',
-                    'min:8',
-                    'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])/',
-                ],
-            ]);
-            $validated['password'] = bcrypt($validated['password']); // incrypting the inputted password
-            $newAdmin = Admin::create($validated);
 
-            // Store 'admin_id' in the session
-            session()->put('admin_id', $newAdmin->admin_id);
+        $validated = $request->validate([
+            "admin_lname" => ['required', 'min:2', 'alpha_spaces'],
+            "admin_fname" => ['required', 'min:2', 'alpha_spaces'],
+            "admin_mi" => ['required', 'regex:/^(N\/A|[A-Za-z])$/'], //require to be clearer, user must put N/A if they have no mi
+            "admin_contact" => ['nullable', 'numeric', 'digits_between:10,15'],
+            "email" => ['required', 'email', Rule::unique('admins', 'email')],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:8',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])/',
+            ],
+        ]);
+        $validated['password'] = bcrypt($validated['password']); // incrypting the inputted password
+        $newAdmin = Admin::create($validated);
 
-            return redirect(route('admin_signup2'))
-                ->with('message', 'Successfully saved your info');
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-            back();
-        }
+        // Store 'admin_id' in the session
+        session()->put('admin_id', $newAdmin->admin_id);
+
+        return redirect(route('admin_signup2'))
+            ->with('message', 'Successfully saved your info');
     }
 
     // for signup step 2
@@ -318,7 +314,6 @@ class AdminController extends Controller
             StudentEvent::create($validated);
 
             return redirect(route('admin_stud_events'))->with('message', 'New Event Created!');
-
         } catch (Exception $e) {
             Log::error($e->getMessage());
             back();
