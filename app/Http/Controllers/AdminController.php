@@ -318,19 +318,6 @@ class AdminController extends Controller
         }
     }
 
-    public function scholarship(Request $rq)
-    {
-        $cnter = scholarship::query()->count();
-        $id = scholarship::query()->pluck('id');
-        $name = scholarship::query()->pluck('name');
-        $email = scholarship::query()->pluck('email');
-        $contact =  scholarship::query()->pluck('contact');
-        $desc = scholarship::query()->pluck('desc');
-        $process = scholarship::query()->pluck('process');
-        $sid = scholarship::query()->pluck('scholarshipid');
-
-        return view('admin.scholarship.index', compact('cnter', 'id', 'name', 'email', 'contact', 'desc', 'process', 'sid'));
-    }
 }
 
 
