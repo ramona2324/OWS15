@@ -116,68 +116,64 @@ class AdminController extends Controller
     // for signup step 2
     public function storeSignup2(Request $request)
     {
-        try {
-            $adminId = session('admin_id'); // Retrieve 'admin_id' from the session
 
-            $validated = $request->validate([
-                "employee_id" => ['required', 'max:6'],
+        $adminId = session('admin_id'); // Retrieve 'admin_id' from the session
+
+        $validated = $request->validate([
+            "employee_id" => ['required', 'max:6'],
+        ]);
+
+        $validated['admintype_id'] = 1; // assigning Super Admin type
+
+        $validated['office_id'] = 1; // assigning office to OSAS
+
+        $admin = Admin::find($adminId); // Find the admin by ID and update the attributes
+
+        if (!$admin) { // if admin is not found
+            return redirect()->back()->with('error', 'Admin not found');
+        }
+
+        // code for image upload
+        // checking if there is a file
+        if ($request->hasFile('admin_image')) {
+
+            $request->validate([ // validation for right format and size
+                "admin_image" => 'mimes:jpeg,png,bmp,tiff | max:4096'
             ]);
 
-            $validated['admintype_id'] = 1; // assigning Super Admin type
+            // to avoid duplication of image
+            $filenameWithExtension = $request->file("admin_image"); // gets the filename+extension
+            $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME); // extracts filename only without extension
 
-            $validated['office_id'] = 1; // assigning office to OSAS
+            $extension = $request->file("admin_image") // gets the extension of the file 
+                ->getClientOriginalExtension();
 
-            $admin = Admin::find($adminId); // Find the admin by ID and update the attributes
+            $filenameToStore = $filename . '_' . time() . '.' . $extension; // filename_timestamp.extention
 
-            if (!$admin) { // if admin is not found
-                return redirect()->back()->with('error', 'Admin not found');
-            }
+            $smallThumbnail = 'small_' . $filename . '_' . time() . '.' . $extension; // small_filename_timestamp.extention
 
-            // code for image upload
-            // checking if there is a file
-            if ($request->hasFile('admin_image')) {
+            $request->file('admin_image')->storeAs( // stores the image to ...
+                'public/admin',
+                $filenameToStore
+            );
 
-                $request->validate([ // validation for right format and size
-                    "admin_image" => 'mimes:jpeg,png,bmp,tiff | max:4096'
-                ]);
+            $request->file('admin_image')->storeAs( // stores the small image to ...
+                'public/admin/thumbnail',
+                $smallThumbnail
+            );
 
-                // to avoid duplication of image
-                $filenameWithExtension = $request->file("admin_image"); // gets the filename+extension
-                $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME); // extracts filename only without extension
+            $thumbnail = 'storage/admin/thumbnail/' . $smallThumbnail; // assigns the path to the thumbnail image to this variable
+            // example content of $thumbnail is /storage/admin/thumbnail/small_my-image_1670915990.png
 
-                $extension = $request->file("admin_image") // gets the extension of the file 
-                    ->getClientOriginalExtension();
+            // dd($thumbnail); // <- for debugging only
+            $this->createThumbnail($thumbnail, 150, 150);
 
-                $filenameToStore = $filename . '_' . time() . '.' . $extension; // filename_timestamp.extention
-
-                $smallThumbnail = 'small_' . $filename . '_' . time() . '.' . $extension; // small_filename_timestamp.extention
-
-                $request->file('admin_image')->storeAs( // stores the image to ...
-                    'public/admin',
-                    $filenameToStore
-                );
-
-                $request->file('admin_image')->storeAs( // stores the small image to ...
-                    'public/admin/thumbnail',
-                    $smallThumbnail
-                );
-
-                $thumbnail = 'storage/admin/thumbnail/' . $smallThumbnail; // assigns the path to the thumbnail image to this variable
-                // example content of $thumbnail is /storage/admin/thumbnail/small_my-image_1670915990.png
-
-                // dd($thumbnail); // <- for debugging only
-                $this->createThumbnail($thumbnail, 150, 150);
-
-                $validated['admin_image'] = $filenameToStore; // stores the new filename to db
-            }
-
-            $admin->update($validated); // updating the data of that admin
-
-            return redirect(route('admin_login'))->with('message', 'Successfully created Super Admin account');
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-            back();
+            $validated['admin_image'] = $filenameToStore; // stores the new filename to db
         }
+
+        $admin->update($validated); // updating the data of that admin
+
+        return redirect(route('admin_login'))->with('message', 'Successfully created Super Admin account');
     }
 
     // for creating new admin
