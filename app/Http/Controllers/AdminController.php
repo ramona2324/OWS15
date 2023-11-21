@@ -84,6 +84,7 @@ class AdminController extends Controller
     {
         return view('admin.student_event.create');
     }
+
     //-------------------------functions for functionality-------------------------
 
     // storing signup step 1
@@ -314,6 +315,20 @@ class AdminController extends Controller
             Log::error($e->getMessage());
             back();
         }
+    }
+
+    public function scholarships(Request $rq)
+    {
+        $cnter = Scholarships::query()->count();
+        $id = Scholarships::query()->pluck('id');
+        $name = Scholarships::query()->pluck('name');
+        $email = scholarships::query()->pluck('email');
+        $contact =  scholarships::query()->pluck('contact');
+        $desc = scholarships::query()->pluck('desc');
+        $process = scholarships::query()->pluck('process');
+        $sid = scholarships::query()->pluck('scholarshipid');
+
+        return view('admin.scholarships', compact('cnter', 'id', 'name', 'email', 'contact', 'desc', 'process', 'sid'));
     }
 }
 
