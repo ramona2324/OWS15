@@ -1,7 +1,11 @@
 @include('partials.__header')
 
-{{-- external script for reading the qr code --}}
-<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+{{-- external script for reading the qr code
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> --}}
+{{-- <script type="text/javascript" src="{{ asset('js/my-script.js') }}"></script> --}}
+
+<script type="text/javascript" src="/js/instascan.min.js"></script>
+
 
 @include('partials.__admin_sidebar')
 
