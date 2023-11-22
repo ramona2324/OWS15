@@ -23,9 +23,9 @@ class AdminController extends Controller
         return view('test');
     }
 
-    //-------------------------functions for views-------------------------
+    //-------------------------------------functions for views-------------------------------------
 
-    // returns view
+    //---------------outside views---------------
     public function showSignup1()
     {
         return view('admin.signup-step1');
@@ -38,13 +38,11 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
+
+    //---------------dashboard views---------------
     public function showIndex()
     {
         return view('admin.index');
-    }
-    public function showOfficeIndex()
-    {
-        return view('admin.office.index');
     }
     public function showAdminManage()
     {
@@ -72,11 +70,21 @@ class AdminController extends Controller
         $admin_types = AdminType::all();
         return view('admin.create', compact('offices', 'admin_types'));
     }
-    public function showQRscanner()
+
+    //---------------office views---------------
+    public function showOfficeIndex()
     {
-        return view('admin.student_event.qr-scanner');
+        return view('admin.office.index');
     }
-    public function showStudentEvents()
+
+    //---------------clearance views---------------
+    public function showClearanceIndex()
+    {
+        return view('admin.clearance.index');
+    }
+
+    //---------------events views---------------
+    public function showEventsIndex()
     {
         $student_events = StudentEvent::all();
         return view('admin.student_event.index', compact('student_events'));
@@ -84,6 +92,16 @@ class AdminController extends Controller
     public function showCreateEvents()
     {
         return view('admin.student_event.create');
+    }
+    public function showQRscanner()
+    {
+        return view('admin.student_event.qr-scanner');
+    }
+
+    //---------------scholarship views---------------
+    public function showScholarshipIndex()
+    {
+        return view('admin.scholarship.index');
     }
 
     //-------------------------functions for functionality-------------------------
@@ -317,7 +335,6 @@ class AdminController extends Controller
             back();
         }
     }
-
 }
 
 

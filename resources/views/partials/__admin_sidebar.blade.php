@@ -26,37 +26,35 @@
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
-            <li class="rounded-lg {{ Route::currentRouteName() == 'admin_offices' ? 'ouryellowbg' : '' }}">
+            <li
+                class="rounded-lg {{ request()->routeIs('admin_offices') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
                 <a href="{{ route('admin_offices') }}" class="@include('partials.__admin_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">meeting_room</span>
                     <span class="flex-1 ml-3 whitespace-nowrap">Offices</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="@include('partials.__admin_sidenav_class_attrib')">
-                    <span class="material-symbols-rounded">
-                        clear_all
-                    </span>
+            <li
+                class="rounded-lg {{ request()->routeIs('admin_clearance') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
+                <a href="{{ route('admin_clearance') }}" class="@include('partials.__admin_sidenav_class_attrib')">
+                    <span class="material-symbols-rounded">clear_all</span>
                     <span class="flex-1 ml-3 whitespace-nowrap">Clearance</span>
-
                 </a>
             </li>
-            <li>
-                <a href=" {{ route('admin_stud_events') }} " class="@include('partials.__admin_sidenav_class_attrib')">
-                    <span class="material-symbols-rounded">
-                        how_to_reg
-                    </span>
-                    <span class="flex-1 ml-3  whitespace-nowrap">Student Events</span>
+            <li
+                class="rounded-lg {{ request()->routeIs('admin_stud_events') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
+                <a href="{{ route('admin_stud_events') }}" class="@include('partials.__admin_sidenav_class_attrib')">
+                    <span class="material-symbols-rounded">how_to_reg</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Student Events</span>
                 </a>
             </li>
-            <li>
-                <a href="" class="@include('partials.__admin_sidenav_class_attrib')">
-                    <span class="material-symbols-rounded">
-                        school
-                    </span>
-                    <span class="flex-1 ml-3  whitespace-nowrap">Scholarship</span>
+            <li
+                class="rounded-lg {{ request()->routeIs('admin_scholarship') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
+                <a href="{{ route('admin_scholarship') }}" class="@include('partials.__admin_sidenav_class_attrib')">
+                    <span class="material-symbols-rounded">school</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Scholarship</span>
                 </a>
             </li>
+            
         </ul>
     </div>
 </aside>

@@ -8,31 +8,40 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
 
     // only accessible after login
     Route::group(['middleware' => 'admin_auth'], function () {
+
         //-------------------------for views routing-------------------------
-        // dashboard
+
+        //---------------dashboard---------------
         Route::get('/', [AdminController::class, 'showIndex'])
             ->name('admin_dashboard');
-        // manage admins 
         Route::get('/manage', [AdminController::class, 'showAdminManage'])
             ->name('admin_manage');
-        // admin profile
         Route::get('/profile/{admin}', [AdminController::class, 'showProfile'])
             ->name('admin_profile');
-        // create admin
         Route::get('/create', [AdminController::class, 'showCreateAdmin'])
             ->name('admin_create');
-        // office 
+
+        //---------------offices---------------
         Route::get('/offices', [AdminController::class, 'showOfficeIndex'])
             ->name('admin_offices');
-        // qr scanner 
-        Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
-            ->name('admin_qrscanner');
-        // student event
-        Route::get('/events', [AdminController::class, 'showStudentEvents'])
+
+        //---------------clearance---------------
+        Route::get('/clearance', [AdminController::class, 'showClearanceIndex'])
+            ->name('admin_clearance');
+
+        //---------------events---------------
+        Route::get('/events', [AdminController::class, 'showEventsIndex'])
             ->name('admin_stud_events');
-        // showCreateEvents
+
         Route::get('/events/create', [AdminController::class, 'showCreateEvents'])
             ->name('admin_create_event');
+
+        Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
+            ->name('admin_qrscanner');
+        //---------------scholarship---------------
+
+        Route::get('/scholarship', [AdminController::class, 'showScholarshipIndex'])
+            ->name('admin_scholarship');
 
         //-------------------------for functionality routing-------------------------
         // creating new admin
