@@ -9,10 +9,11 @@
 {{-- container for scanner preview --}}
 <div class="relative flex items-center justify-center w-full bg-black min-h-screen min-w-screen">
     <div class="z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <h1>Event id: {{ $event_id }}</h1>
+        {{-- <h1>Event id: {{ $event_id }}</h1> --}}
     </div>
-    <div class=" border-2 border-white w-7/12 h-2/6 md:w-5/12 lg:h-3/6 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-       
+    <div
+        class=" border-2 border-white w-7/12 h-2/6 md:w-5/12 lg:h-3/6 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+
     </div>
     <video class="min-h-screen min-w-screen" id="preview"></video>
 </div>
