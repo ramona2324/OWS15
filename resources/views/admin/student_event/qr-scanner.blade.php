@@ -6,59 +6,24 @@
 
 <script type="text/javascript" src="/js/instascan.min.js"></script>
 
-
-@include('partials.__admin_sidebar')
-
-{{-- right side of sidebar --}}
-<div class="md:ml-60 pb-4">
-
-    {{-- reusable page header --}}
-    @include('partials.__admin_pageheader')
-
-    {{-- main white containter --}}
-    <div class="p-4 m-4 shadow-lg bg-white border-gray-200 rounded-lg" style="min-height: 90vh">
-
-        {{-- navigation container --}}
-        <div class="flex items-center  mb-4 rounded ">
-            {{-- breadcrumb nav container --}}
-            <nav class="flex" aria-label="Breadcrumb">
-                <ol class="inline-flex items space-x-1 md:space-x-3">
-                    <li aria-current="page" class="inline-flex items-center">
-                        <a href="#"
-                            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
-                            <span class="px-1 material-symbols-rounded" style="font-size:20px">qr_code_scanner</span>
-                            QR Code Scanner
-                        </a>
-                    </li>
-                </ol>
-            </nav>
-        </div>
-
-        {{-- title + button container --}}
-        <div class="flex items-center justify-center py-2 mb-4 rounded text-slate-800 ">
-            <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
-                Attendance Scanner
-            </h2>
-        </div>
-
-        {{-- main content --}}
-        <div class="flex items-center justify-center mt-2 mb-4 gap-4">
-            {{-- left --}}
-            <div class="min-h-full md:flex justify-center rounded-lg ">
-                {{-- container for scanner preview --}}
-                <div class="w-full border">
-                    <video class="w-full max-h-96" id="preview"></video>
-                </div>
-            </div>
-            {{-- for passing data --}}
-            <form action="{{ route('admin_procesqr') }}" method="POST" id="scanner_form">
-                @csrf
-                <input type="text" id="scanner" name="scanner" hidden>
-            </form>
-        </div>
-
+{{-- container for scanner preview --}}
+<div class="relative flex items-center justify-center w-full bg-black min-h-screen min-w-screen">
+    <div class="z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <h1>Event id: {{ $event_id }}</h1>
     </div>
+    <div class=" border-2 border-white w-7/12 h-2/6 md:w-5/12 lg:h-3/6 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+       
+    </div>
+    <video class="min-h-screen min-w-screen" id="preview"></video>
 </div>
+
+
+{{-- for passing data --}}
+<form action="{{ route('admin_procesqr') }}" method="POST" id="scanner_form">
+    @csrf
+    <input type="text" id="scanner" name="scanner" hidden>
+</form>
+
 
 {{-- script for qr code scanner --}}
 <script type="text/javascript">

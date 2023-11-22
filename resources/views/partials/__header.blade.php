@@ -19,5 +19,5 @@
 
 </head>
 
-<body class="min-h-screen min-w-screen bg-gray-50">
+<body class="min-h-screen min-w-screen p-0 m-0 bg-gray-50">
     <x-messages /> {{-- for our custom alert messages --}}

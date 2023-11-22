@@ -74,8 +74,10 @@
                         <h4 class="text-lg font-bold text-gray-700">{{ $event->event_name }}</h4>
                     </div>
 
-                    <div class="absolute px-2 bg-white right-0 top-1/2  transform  -translate-y-1/2">
-                        <form action="">
+                    <div class="absolute px-4 bg-gray-200 h-full right-0 top-1/2  transform  -translate-y-1/2">
+                        <form action=" {{ route('admin_event_scanner') }}" method="POST" class="w-full h-full flex items-center justify-center">
+                            @csrf
+                            <input type="text" hidden name="event_id" value="{{ $event->event_id }}">
                             <button type="submit"
                                 class="h-12 w-12 flex items-center justify-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm p-2">
                                 <span class="material-symbols-rounded">

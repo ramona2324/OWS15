@@ -36,26 +36,28 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         Route::get('/events/create', [AdminController::class, 'showCreateEvents'])
             ->name('admin_create_event');
 
-        Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
-            ->name('admin_qrscanner');
+
         //---------------scholarship---------------
 
         Route::get('/scholarship', [AdminController::class, 'showScholarshipIndex'])
             ->name('admin_scholarship');
 
         //-------------------------for functionality routing-------------------------
-        // creating new admin
+
         Route::post('/create-store', [AdminController::class, 'storeCreate'])
             ->name('admin_store_create');
-        // processign of admin logout
+
         Route::post('/process-logout', [AdminController::class, 'processLogout'])
             ->name('admin_processlogout');
-        // qr scan result
+
         Route::post('/qr-scanner/result', [AdminController::class, 'processQR'])
             ->name('admin_procesqr');
-        // storeEvent
+
         Route::post('/event/store', [AdminController::class, 'storeEvent'])
             ->name('admin_store_event');
+
+        Route::match(['get', 'post'], '/events/scanner', [AdminController::class, 'showEventScanner'])
+            ->name('admin_event_scanner');
     }); //end of auth:admin middleware
 
 

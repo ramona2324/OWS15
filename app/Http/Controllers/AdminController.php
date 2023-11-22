@@ -89,13 +89,17 @@ class AdminController extends Controller
         $student_events = StudentEvent::all();
         return view('admin.student_event.index', compact('student_events'));
     }
-    public function showCreateEvents()
+
+
+    public function showEventScanner(Request $request)
     {
-        return view('admin.student_event.create');
-    }
-    public function showQRscanner()
-    {
-        return view('admin.student_event.qr-scanner');
+        $eventId = request('event_id');
+        if ($eventId) {
+            return view('admin.student_event.qr-scanner', ['event_id' => $eventId]);
+        } else {
+            return redirect(route('admin_stud_events'))
+            ->with('custom-error', 'Select event to use scanner');
+        }
     }
 
     //---------------scholarship views---------------
