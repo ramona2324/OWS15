@@ -8,14 +8,20 @@
 
 {{-- container for scanner preview --}}
 <div class="relative flex items-center justify-center w-full bg-black min-h-screen min-w-screen">
-    <div class=" z-50 absolute top-12 left-1/2 transform -translate-x-1/2 ">
-        <h3 class="text-white">Event: {{ $event->event_name }}</h3>
+    <div class=" w-10/12 z-50 absolute top-5 left-1/2 transform -translate-x-1/2 ">
+        <div class="mt-6 flex items-center w-full justify-center">
+            <p class="text-white  text-xs pr-1">Event:</p>
+            <h3 class="text-white ">{{ $event->event_name }}</h3>
+        </div>
     </div>
     <div
         class=" border-2 border-white w-7/12 h-2/6 md:w-5/12 lg:h-3/6 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
 
     </div>
     <video class="min-h-screen min-w-screen" id="preview"></video>
+    <div class="border h-14 w-8/12 z-50 absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded-lg">
+
+    </div>
 </div>
 
 
