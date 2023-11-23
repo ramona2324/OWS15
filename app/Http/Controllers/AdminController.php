@@ -94,8 +94,9 @@ class AdminController extends Controller
     public function showEventScanner(Request $request)
     {
         $eventId = request('event_id');
-        if ($eventId) {
-            return view('admin.student_event.qr-scanner', ['event_id' => $eventId]);
+        $event = StudentEvent::where('event_id', $eventId)->first();
+        if ($event) {
+            return view('admin.student_event.qr-scanner', ['event' => $event]);
         } else {
             return redirect(route('admin_stud_events'))
             ->with('custom-error', 'Select event to use scanner');
