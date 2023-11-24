@@ -99,7 +99,7 @@ class AdminController extends Controller
             return view('admin.student_event.qr-scanner', ['event' => $event]);
         } else {
             return redirect(route('admin_stud_events'))
-            ->with('custom-error', 'Select event to use scanner');
+                ->with('custom-error', 'Select event to use scanner');
         }
     }
 
@@ -317,7 +317,8 @@ class AdminController extends Controller
         if (!$student) {
             return redirect()->back()->with('custom-error', 'Student not found');
         }
-        return view('admin.student_event.qr-result', compact('student'));
+        $event_id = $request['event_id'];
+        return view('admin.student_event.qr-result', compact('student', 'event_id'));
     }
 
     // storing new event
@@ -339,6 +340,12 @@ class AdminController extends Controller
             Log::error($e->getMessage());
             back();
         }
+    }
+
+    // storing attendance
+    public function storeAttendance(Request $request)
+    {
+        
     }
 }
 

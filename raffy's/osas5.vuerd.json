@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -458,
-    "scrollLeft": -1374,
-    "zoomLevel": 0.9,
+    "scrollTop": -965,
+    "scrollLeft": -1632,
+    "zoomLevel": 1,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -612,7 +612,7 @@
           "active": false,
           "left": 2236.2218,
           "top": 1181.4447,
-          "zIndex": 8,
+          "zIndex": 5,
           "widthName": 60,
           "widthComment": 60
         },
@@ -821,7 +821,7 @@
           "active": false,
           "left": 1717.4438,
           "top": 1495.3329,
-          "zIndex": 9,
+          "zIndex": 6,
           "widthName": 60,
           "widthComment": 60
         },
@@ -906,7 +906,7 @@
           "active": false,
           "left": 2532.8885,
           "top": 960.1108,
-          "zIndex": 12,
+          "zIndex": 7,
           "widthName": 62.6708984375,
           "widthComment": 60
         },
@@ -1060,12 +1060,51 @@
           "active": false,
           "left": 1535,
           "top": 557.5,
-          "zIndex": 49,
+          "zIndex": 8,
           "widthName": 80.05712890625,
           "widthComment": 60
         },
         "visible": true,
         "id": "b1edbe22-150e-4064-b851-9c2664af3c6d"
+      },
+      {
+        "name": "attendance",
+        "comment": "",
+        "columns": [
+          {
+            "name": "attendance_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 83.681640625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "42a7861a-ba4b-43bc-a573-9b2d83d3301a"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1694.8095,
+          "top": 975.809,
+          "zIndex": 26,
+          "widthName": 66.33349609375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "ae1c5ffc-0916-49be-b974-e7de429941c7"
       }
     ],
     "indexes": []

@@ -29,6 +29,7 @@
 <form action="{{ route('admin_procesqr') }}" method="POST" id="scanner_form">
     @csrf
     <input type="text" id="scanner" name="scanner" hidden>
+    <input type="text" name="event_id" hidden value="{{ $event->event_id }}">
 </form>
 
 
