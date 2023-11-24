@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('attendance_records', function (Blueprint $table) {
             $table->id('attendance_id');
-            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('student_osasid');
             $table->unsignedBigInteger('event_id');
             $table->date('attendance_date')->nullable();
             $table->time('attendance_time')->nullable();
             $table->timestamps();
     
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('student_osasid')->references('student_osasid')->on('students');
+            $table->foreign('event_id')->references('event_id')->on('student_events');
         });
     }
 
