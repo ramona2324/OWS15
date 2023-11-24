@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -836,
-    "scrollLeft": -1606,
-    "zoomLevel": 1,
+    "scrollTop": -986,
+    "scrollLeft": -1595,
+    "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -19,7 +19,7 @@
     },
     "database": "MySQL",
     "databaseName": "osas5",
-    "canvasType": "@vuerd/builtin-sql-ddl",
+    "canvasType": "ERD",
     "language": "GraphQL",
     "tableCase": "pascalCase",
     "columnCase": "camelCase",
@@ -612,7 +612,7 @@
           "active": false,
           "left": 2236.2218,
           "top": 1181.4447,
-          "zIndex": 27,
+          "zIndex": 7,
           "widthName": 60,
           "widthComment": 60
         },
@@ -819,9 +819,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 1717.4438,
-          "top": 1495.3329,
-          "zIndex": 6,
+          "left": 1539.9438,
+          "top": 1460.3329,
+          "zIndex": 10,
           "widthName": 60,
           "widthComment": 60
         },
@@ -906,7 +906,7 @@
           "active": false,
           "left": 2532.8885,
           "top": 960.1108,
-          "zIndex": 7,
+          "zIndex": 6,
           "widthName": 62.6708984375,
           "widthComment": 60
         },
@@ -1060,7 +1060,7 @@
           "active": false,
           "left": 1535,
           "top": 558.9286,
-          "zIndex": 50,
+          "zIndex": 8,
           "widthName": 80.05712890625,
           "widthComment": 60
         },
@@ -1068,7 +1068,7 @@
         "id": "b1edbe22-150e-4064-b851-9c2664af3c6d"
       },
       {
-        "name": "attendance",
+        "name": "attendance_record",
         "comment": "",
         "columns": [
           {
@@ -1188,11 +1188,11 @@
           }
         ],
         "ui": {
-          "active": true,
+          "active": false,
           "left": 1694.8095,
           "top": 975.809,
-          "zIndex": 61,
-          "widthName": 66.33349609375,
+          "zIndex": 12,
+          "widthName": 110.41162109375,
           "widthComment": 60
         },
         "visible": true,
@@ -1293,8 +1293,8 @@
           "columnIds": [
             "660386d7-38ab-48e0-bece-bf8d1abaeb83"
           ],
-          "x": 2132.21186640625,
-          "y": 1550.3329,
+          "x": 1954.71186640625,
+          "y": 1515.3329,
           "direction": "right"
         },
         "end": {
@@ -1303,7 +1303,7 @@
             "95154030-d83f-4bd9-8251-a61747e2f261"
           ],
           "x": 2236.2218,
-          "y": 1244.8197,
+          "y": 1371.5697,
           "direction": "left"
         },
         "constraintName": "fk_course_to_student",
@@ -1346,7 +1346,7 @@
             "7e206533-b142-495f-a087-7bf10c8bcd0f"
           ],
           "x": 2236.2218,
-          "y": 1371.5697,
+          "y": 1244.8197,
           "direction": "left"
         },
         "end": {
