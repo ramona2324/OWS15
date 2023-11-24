@@ -28,6 +28,9 @@ return new class extends Migration
             $table->string('password', 255)->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('admintype_id')->references('id')->on('admin_types');
+            $table->foreign('office_id')->references('id')->on('offices');
         });
     }
 

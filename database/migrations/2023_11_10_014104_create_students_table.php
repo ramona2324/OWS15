@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('password')->nullable(); // You should hash the password before storing it
             $table->Decimal('google_id', 21, 0)->nullable();
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

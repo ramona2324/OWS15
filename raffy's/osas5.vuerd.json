@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -742,
-    "scrollLeft": -1509,
+    "scrollTop": -836,
+    "scrollLeft": -1606,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -19,7 +19,7 @@
     },
     "database": "MySQL",
     "databaseName": "osas5",
-    "canvasType": "ERD",
+    "canvasType": "@vuerd/builtin-sql-ddl",
     "language": "GraphQL",
     "tableCase": "pascalCase",
     "columnCase": "camelCase",
@@ -1191,7 +1191,7 @@
           "active": true,
           "left": 1694.8095,
           "top": 975.809,
-          "zIndex": 57,
+          "zIndex": 61,
           "widthName": 66.33349609375,
           "widthComment": 60
         },

@@ -17,14 +17,10 @@ return new class extends Migration
             $table->string('qrcode_filename', 100);
             $table->string('student_osasid');
             $table->timestamps();
+            
+            $table->foreign('student_osasid')->references('osasid')->on('students');
         });
 
-        // Offices initial data
-        DB::table('qr_codes')->insert([
-            'qrcode_id' => 1,
-            'qrcode_filename' => 'sample',
-            'student_osasid' => '2',
-        ]);
     }
 
     /**
