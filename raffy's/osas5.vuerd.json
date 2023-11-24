@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -965,
-    "scrollLeft": -1632,
+    "scrollTop": -742,
+    "scrollLeft": -1509,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -612,7 +612,7 @@
           "active": false,
           "left": 2236.2218,
           "top": 1181.4447,
-          "zIndex": 5,
+          "zIndex": 27,
           "widthName": 60,
           "widthComment": 60
         },
@@ -924,13 +924,13 @@
             "default": "",
             "option": {
               "autoIncrement": false,
-              "primaryKey": false,
+              "primaryKey": true,
               "unique": false,
-              "notNull": false
+              "notNull": true
             },
             "ui": {
               "active": false,
-              "pk": false,
+              "pk": true,
               "fk": false,
               "pfk": false,
               "widthName": 60,
@@ -1059,8 +1059,8 @@
         "ui": {
           "active": false,
           "left": 1535,
-          "top": 557.5,
-          "zIndex": 8,
+          "top": 558.9286,
+          "zIndex": 50,
           "widthName": 80.05712890625,
           "widthComment": 60
         },
@@ -1078,6 +1078,75 @@
             "default": "",
             "option": {
               "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 83.681640625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "42a7861a-ba4b-43bc-a573-9b2d83d3301a"
+          },
+          {
+            "name": "student_id",
+            "comment": "",
+            "dataType": "INT(8)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 61.99169921875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "6e3b896a-d38d-437b-8a3f-3c208b1b90c1"
+          },
+          {
+            "name": "event_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "4762f00d-1a0b-459b-be19-6fa7ef58003b"
+          },
+          {
+            "name": "attendance_date",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
               "primaryKey": false,
               "unique": false,
               "notNull": false
@@ -1087,19 +1156,42 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 83.681640625,
+              "widthName": 98.865234375,
               "widthComment": 60,
               "widthDataType": 60,
               "widthDefault": 60
             },
-            "id": "42a7861a-ba4b-43bc-a573-9b2d83d3301a"
+            "id": "254b9c34-0623-41b8-806b-2332780e532e"
+          },
+          {
+            "name": "attendance_time",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 98.12255859375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "2ab5a47a-48bd-4965-be42-bc1587c416a3"
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 1694.8095,
           "top": 975.809,
-          "zIndex": 26,
+          "zIndex": 57,
           "widthName": 66.33349609375,
           "widthComment": 60
         },
@@ -1211,7 +1303,7 @@
             "95154030-d83f-4bd9-8251-a61747e2f261"
           ],
           "x": 2236.2218,
-          "y": 1308.1947,
+          "y": 1244.8197,
           "direction": "left"
         },
         "constraintName": "fk_course_to_student",
@@ -1243,6 +1335,58 @@
         "constraintName": "fk_student_to_qr code",
         "visible": true,
         "id": "8e8aad11-3881-47ca-a45d-73f36b6e354f"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneOnly",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "9905bae7-2e08-4310-9488-728ad19378a8",
+          "columnIds": [
+            "7e206533-b142-495f-a087-7bf10c8bcd0f"
+          ],
+          "x": 2236.2218,
+          "y": 1371.5697,
+          "direction": "left"
+        },
+        "end": {
+          "tableId": "ae1c5ffc-0916-49be-b974-e7de429941c7",
+          "columnIds": [
+            "6e3b896a-d38d-437b-8a3f-3c208b1b90c1"
+          ],
+          "x": 2127.6747343750003,
+          "y": 1061.559,
+          "direction": "right"
+        },
+        "constraintName": "fk_student_to_attendance",
+        "visible": true,
+        "id": "6cf62d95-266d-4486-b219-71f793c029ca"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "b1edbe22-150e-4064-b851-9c2664af3c6d",
+          "columnIds": [
+            "f2f0ae9f-1564-48ba-898f-159d06a70143"
+          ],
+          "x": 1747.4462890625,
+          "y": 750.9286,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "ae1c5ffc-0916-49be-b974-e7de429941c7",
+          "columnIds": [
+            "4762f00d-1a0b-459b-be19-6fa7ef58003b"
+          ],
+          "x": 1911.2421171875,
+          "y": 975.809,
+          "direction": "top"
+        },
+        "constraintName": "fk_student event_to_attendance",
+        "visible": true,
+        "id": "eeb39228-b910-4ef0-8b28-a684c4a20a86"
       }
     ]
   }
