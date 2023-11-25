@@ -89,8 +89,10 @@ class AdminController extends Controller
         $student_events = StudentEvent::all();
         return view('admin.student_event.index', compact('student_events'));
     }
-
-
+    public function showCreateEvents()
+    {
+        return view('admin.student_event.create');
+    }
     public function showEventScanner(Request $request)
     {
         $eventId = request('event_id');
