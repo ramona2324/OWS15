@@ -110,7 +110,7 @@
                                 </p>
                             </button>
                         </form>
-                        <form action=" " method="POST"
+                        <form action=" {{route('admin_event_attdc')}} " method="POST"
                             class="w-full h-full bg-blue-300 flex items-center justify-center rounded-md">
                             @csrf
                             <input type="text" hidden name="event_id" value="{{ $event->event_id }}">

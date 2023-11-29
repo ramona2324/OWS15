@@ -104,6 +104,18 @@ class AdminController extends Controller
                 ->with('custom-error', 'Select event to use scanner');
         }
     }
+    public function showEventAttendace(Request $request)
+    {
+        $eventId = request('event_id');
+        $event = StudentEvent::where('event_id', $eventId)->first();
+        if ($event) {
+            return view('admin.student_event.event_attdc', ['event' => $event]);
+        } else {
+            return redirect(route('admin_stud_events'))
+                ->with('custom-error', 'Select event to use scanner');
+        }
+        
+    }
 
     //---------------events attendance views---------------
     public function showAttendanceIndex()
@@ -353,7 +365,6 @@ class AdminController extends Controller
     // storing attendance
     public function storeAttendance(Request $request)
     {
-        
     }
 }
 

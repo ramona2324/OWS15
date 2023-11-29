@@ -32,13 +32,12 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
         //---------------events---------------
         Route::get('/events', [AdminController::class, 'showEventsIndex'])
             ->name('admin_stud_events');
-
         Route::get('/events/create', [AdminController::class, 'showCreateEvents'])
             ->name('admin_create_event');
 
         //---------------events---------------
         Route::get('/attendance', [AdminController::class, 'showAttendanceIndex'])
-        ->name('admin_attendance');
+            ->name('admin_attendance');
 
         //---------------scholarship---------------
 
@@ -49,18 +48,16 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
 
         Route::post('/create-store', [AdminController::class, 'storeCreate'])
             ->name('admin_store_create');
-
         Route::post('/process-logout', [AdminController::class, 'processLogout'])
             ->name('admin_processlogout');
-
         Route::post('/qr-scanner/result', [AdminController::class, 'processQR'])
             ->name('admin_procesqr');
-
         Route::post('/event/store', [AdminController::class, 'storeEvent'])
             ->name('admin_store_event');
-
         Route::match(['get', 'post'], '/events/scanner', [AdminController::class, 'showEventScanner'])
             ->name('admin_event_scanner');
+        Route::match(['get', 'post'], [AdminController::class, 'showEventAttendace'])
+            ->name('admin_event_attdc');
     }); //end of auth:admin middleware
 
 
