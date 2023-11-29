@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('student_picture', 255);
 
             $table->string('student_address', 255)->nullable(); // Limit to 255 characters
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->string('student_section', 10)->nullable(); // Limit to 10 characters
 
             $table->string('password')->nullable(); // You should hash the password before storing it

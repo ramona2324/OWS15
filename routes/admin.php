@@ -58,6 +58,8 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_event_scanner');
         Route::match(['get', 'post'], [AdminController::class, 'showEventAttendace'])
             ->name('admin_event_attdc');
+        Route::post('/qr-scanner/result/confirm', [AdminController::class, 'storeAttendance'])
+            ->name('admin_confirm_attdc');
     }); //end of auth:admin middleware
 
 

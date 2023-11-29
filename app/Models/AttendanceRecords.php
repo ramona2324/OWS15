@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class AttendanceRecords extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'attendance_id';
+
+    protected $fillable = [
+        'student_osasid',
+        'event_id',
+        'attendance_date',
+        'attendance_time',
+    ];
 }

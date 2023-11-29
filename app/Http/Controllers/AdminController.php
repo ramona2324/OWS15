@@ -365,6 +365,8 @@ class AdminController extends Controller
     // storing attendance
     public function storeAttendance(Request $request)
     {
+        $ows_id = request('ows_id');
+        $eventId = request('event_id');
     }
 }
 
