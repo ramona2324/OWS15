@@ -43,13 +43,13 @@
             <li
                 class="rounded-lg {{ request()->routeIs('admin_stud_events') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
                 <a href="{{ route('admin_stud_events') }}" class="@include('partials.__admin_sidenav_class_attrib')">
-                    <span class="material-symbols-rounded">how_to_reg</span>
+                    <span class="material-symbols-rounded">local_activity</span>
                     <span class="flex-1 ml-3 whitespace-nowrap">Student Events</span>
                 </a>
             </li>
             <li
-                class="rounded-lg {{ request()->routeIs('admin_stud_events') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
-                <a href="{{ route('admin_stud_events') }}" class="@include('partials.__admin_sidenav_class_attrib')">
+                class="rounded-lg {{ request()->routeIs('admin_attendance') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
+                <a href="{{ route('admin_attendance') }}" class="@include('partials.__admin_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">how_to_reg</span>
                     <span class="flex-1 ml-3 whitespace-nowrap">Events Attendance</span>
                 </a>

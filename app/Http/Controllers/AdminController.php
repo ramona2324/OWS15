@@ -105,6 +105,12 @@ class AdminController extends Controller
         }
     }
 
+    //---------------events attendance views---------------
+    public function showAttendanceIndex()
+    {
+        return view('admin.events_attendance.index');
+    }
+
     //---------------scholarship views---------------
     public function showScholarshipIndex()
     {
