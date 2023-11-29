@@ -14,7 +14,5 @@ class AttendanceRecords extends Model
     protected $fillable = [
         'student_osasid',
         'event_id',
-        'attendance_date',
-        'attendance_time',
     ];
 }

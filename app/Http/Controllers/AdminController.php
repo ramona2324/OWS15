@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Admin;
 use App\Models\Office;
 use App\Models\AdminType;
+use App\Models\AttendanceRecords;
 use App\Models\Student;
 use App\Models\StudentEvent;
 use App\Models\Scholarship;
@@ -366,7 +367,16 @@ class AdminController extends Controller
     public function storeAttendance(Request $request)
     {
         $ows_id = request('ows_id');
-        $eventId = request('event_id');
+        $event_id = request('event_id');
+
+        $data = [
+            'student_osasid' => $ows_id,
+            'event_id' => $event_id,
+            'attendance_date' => 'your_attendance_date_value',
+            'attendance_time' => 'your_attendance_time_value',
+        ];
+        
+        AttendanceRecords::create($data);
     }
 }
 

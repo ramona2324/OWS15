@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id('attendance_id');
             $table->unsignedBigInteger('student_osasid');
             $table->unsignedBigInteger('event_id');
-            $table->date('attendance_date')->nullable();
-            $table->time('attendance_time')->nullable();
             $table->timestamps();
     
             $table->foreign('student_osasid')->references('student_osasid')->on('students');
