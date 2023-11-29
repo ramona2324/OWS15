@@ -63,46 +63,69 @@
         <div class=" mb-4 rounded ">
 
             @foreach ($student_events as $event)
-                <a href="your_link_here"
-                    class=" relative flex flex-wrap bg-red-400 justify-start border-box truncate h-20 w-full mb-2 pr-20 px-4 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm">
-                    <div class="hidden md:flex mr-4 w-20 text-gray-400 h-full items-center    whitespace-normal">
-                        <h4 class="h-full items-center flex  text-4xl ">3</h4>
+                <div
+                    class="bg--100 relative flex justify-start border-box truncate w-full mb-2 p-2 bg-white border border-gray-300 rounded-lg hover:shadow-lg shadow-sm">
+                    {{-- first column --}}
+                    <div class="hidden md:flex bg--100 w-20 text-gray-400 min-h-full items-center    whitespace-normal">
+                        <h4 class="h-full items-center flex text-5xl text-yellow-400 ">
+                            {{ $event->days_left }} </h4>
                         <h4 class="font-wrap text-sm leading-3">days to go</h4>
                     </div>
-
-                    <div class="w-full flex items-center ">
-                        <h4 class="text-lg font-bold text-gray-700">{{ $event->event_name }}</h4>
-                        <button type="button"
-                            class="relative inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 20 16">
-                                <path
-                                    d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                                <path
-                                    d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-                            </svg>
-                            <span class="sr-only">Notifications</span>
-                            Attendance
-                            <div
-                                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                                8</div>
-                        </button>
+                    {{-- second column --}}
+                    <div class="w-full bg--100 md:items-center flex flex-col mr-2 truncate">
+                        <div class=" h-full items-center flex">
+                            <h4 class="text-md text-gray-700 truncate">{{ $event->event_name }}</h4>
+                        </div>
+                        <div class="flex gap-1">
+                            <p
+                                class="text-xs text-gray-700 bg-yellow-300 w-fit rounded-full px-2 py-1 flex items-center gap-1">
+                                <span class="material-symbols-rounded" style="font-size: 15px">
+                                    event
+                                </span>
+                                {{ $event->event_date }}
+                            </p>
+                            <p
+                                class="text-xs text-gray-700 bg-gray-100 w-fit rounded-full px-2 py-1 flex items-center gap-1">
+                                <span class="material-symbols-rounded" style="font-size: 15px">
+                                    schedule
+                                </span>
+                                {{ \Carbon\Carbon::parse($event->event_time_in)->format('g:iA') }},
+                                {{ \Carbon\Carbon::parse($event->event_time_out)->format('g:iA') }}
+                            </p>
+                        </div>
                     </div>
-
-                    <div class="absolute px-4 bg-gray-200 h-full right-0 top-1/2  transform  -translate-y-1/2">
+                    {{-- third column --}}
+                    <div class="flex flex-col bg--100 gap-2 items-center">
                         <form action=" {{ route('admin_event_scanner') }}" method="POST"
-                            class="w-full h-full flex items-center justify-center">
+                            class="w-full h-full bg-green-300 flex items-center justify-center rounded-md">
                             @csrf
                             <input type="text" hidden name="event_id" value="{{ $event->event_id }}">
                             <button type="submit"
-                                class="h-12 w-12 flex items-center justify-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm p-2">
-                                <span class="material-symbols-rounded">
+                                class="h-6 w-14 md:w-32 flex gap-1 text-xs items-center justify-center font-medium rounded-full p-2 ">
+                                <span class="material-symbols-rounded" style="font-size: 16px">
                                     qr_code_scanner
                                 </span>
+                                <p class="text-xs text-gray-700 hidden md:block">
+                                    Scan
+                                </p>
+                            </button>
+                        </form>
+                        <form action=" " method="POST"
+                            class="w-full h-full bg-blue-300 flex items-center justify-center rounded-md">
+                            @csrf
+                            <input type="text" hidden name="event_id" value="{{ $event->event_id }}">
+                            <button type="submit"
+                                class="h-6 w-14 md:w-32 flex gap-1 text-xs items-center justify-center font-medium rounded-full p-2">
+                                <span class="material-symbols-rounded" style="font-size: 16px">
+                                    how_to_reg
+                                </span>
+                                <p class="text-xs text-gray-700 hidden md:block">
+                                    Attendance
+                                </p>
                             </button>
                         </form>
                     </div>
-                </a>
+                </div>
             @endforeach
         </div>
     </div>
