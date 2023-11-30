@@ -54,9 +54,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_procesqr');
         Route::post('/event/store', [AdminController::class, 'storeEvent'])
             ->name('admin_store_event');
-        Route::match(['get', 'post'], '/events/scanner', [AdminController::class, 'showEventScanner'])
+        Route::post('/events/scanner', [AdminController::class, 'showEventScanner'])
             ->name('admin_event_scanner');
-        Route::match(['get', 'post'], [AdminController::class, 'showEventAttendace'])
+        Route::post('/events/attendance', [AdminController::class, 'showEventAttendace'])
             ->name('admin_event_attdc');
         Route::post('/qr-scanner/result/confirm', [AdminController::class, 'storeAttendance'])
             ->name('admin_confirm_attdc');

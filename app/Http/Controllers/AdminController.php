@@ -115,7 +115,6 @@ class AdminController extends Controller
             return redirect(route('admin_stud_events'))
                 ->with('custom-error', 'Select event to use scanner');
         }
-        
     }
 
     //---------------events attendance views---------------
@@ -372,11 +371,14 @@ class AdminController extends Controller
         $data = [
             'student_osasid' => $ows_id,
             'event_id' => $event_id,
-            'attendance_date' => 'your_attendance_date_value',
-            'attendance_time' => 'your_attendance_time_value',
         ];
-        
+
         AttendanceRecords::create($data);
+
+        $event = StudentEvent::where('event_id', $event_id)->first();
+
+        return redirect(route('admin_event_scanner'))->with('event', $event)
+            ->with('message', 'Attendance confirmed!');
     }
 }
 
