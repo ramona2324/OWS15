@@ -31,7 +31,11 @@
                                     stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <p class=" text-sm font-medium text-gray-700 hover:text-blue-600 ">
-                                Attendance
+
+                                @foreach ($records as $record)
+                                    {{ $record->event->event_name }}
+                                    @break
+                                @endforeach
                             </p>
                         </div>
                     </li>
@@ -58,7 +62,28 @@
 
         {{-- main content --}}
         <div class="flex flex-row mt-2 mb-4 gap-4">
-
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Student</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($records as $record)
+                        <tr>
+                            <td>{{ $record->event->event_name }}</td>
+                            <td>{{ $record->student->student_fname }}</td>
+                            <td>{{ $record->last_created_date }}</td>
+                            <td>{{ $record->last_created_time }}</td>
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
 
     </div>

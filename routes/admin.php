@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_store_event');
         Route::get('/events/scanner/{event_id}', [AdminController::class, 'showEventScanner'])
             ->name('admin_event_scanner');
-        Route::post('/events/attendance', [AdminController::class, 'showEventAttendace'])
+        Route::get('/events/attendance/{event_id}', [AdminController::class, 'showEventAttendace'])
             ->name('admin_event_attdc');
         Route::post('/qr-scanner/result/confirm', [AdminController::class, 'storeAttendance'])
             ->name('admin_confirm_attdc');

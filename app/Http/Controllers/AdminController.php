@@ -104,16 +104,10 @@ class AdminController extends Controller
                 ->with('custom-error', 'Select event to use scanner');
         }
     }
-    public function showEventAttendace(Request $request)
+    public function showEventAttendace($event_id)
     {
-        $eventId = request('event_id');
-        $event = StudentEvent::where('event_id', $eventId)->first();
-        if ($event) {
-            return view('admin.student_event.event_attdc', ['event' => $event]);
-        } else {
-            return redirect(route('admin_stud_events'))
-                ->with('custom-error', 'Select event to use scanner');
-        }
+        $records = AttendanceRecords::where('event_id', $event_id)->get();
+        return view('admin.student_event.event_attdc', ['records' => $records]);
     }
 
     //---------------events attendance views---------------
@@ -376,7 +370,7 @@ class AdminController extends Controller
 
         $event = StudentEvent::where('event_id', $event_id)->first();
 
-        return redirect( route('admin_event_scanner', ['event_id'=>$event_id])  )->with('event', $event)
+        return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
             ->with('message', 'Attendance confirmed!');
     }
 }
