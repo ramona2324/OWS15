@@ -94,10 +94,9 @@ class AdminController extends Controller
     {
         return view('admin.student_event.create');
     }
-    public function showEventScanner(Request $request)
+    public function showEventScanner($event_id)
     {
-        $eventId = request('event_id');
-        $event = StudentEvent::where('event_id', $eventId)->first();
+        $event = StudentEvent::where('event_id', $event_id)->first();
         if ($event) {
             return view('admin.student_event.qr-scanner', ['event' => $event]);
         } else {

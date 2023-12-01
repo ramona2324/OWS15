@@ -96,10 +96,10 @@
                     </div>
                     {{-- third column --}}
                     <div class="flex flex-col bg--100 gap-2 items-center">
-                        <form action=" {{ route('admin_event_scanner') }}" method="POST"
+                        {{-- qr button --}}
+                        {{-- route('user.show', ['id' => 123]); --}}
+                        <a href=" {{ route('admin_event_scanner', ['event_id'=>$event->event_id]) }}" 
                             class="w-full h-full bg-green-300 flex items-center justify-center rounded-md">
-                            @csrf
-                            <input type="text" hidden name="event_id" value="{{ $event->event_id }}">
                             <button type="submit"
                                 class="h-6 w-14 md:w-32 flex gap-1 text-xs items-center justify-center font-medium rounded-full p-2 ">
                                 <span class="material-symbols-rounded" style="font-size: 16px">
@@ -109,7 +109,8 @@
                                     Scan
                                 </p>
                             </button>
-                        </form>
+                        </a>
+                        {{-- attendance button --}}
                         <form action=" {{route('admin_event_attdc')}} " method="POST"
                             class="w-full h-full bg-blue-300 flex items-center justify-center rounded-md">
                             @csrf
