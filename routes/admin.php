@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_store_create');
         Route::post('/process-logout', [AdminController::class, 'processLogout'])
             ->name('admin_processlogout');
-        Route::post('/qr-scanner/result', [AdminController::class, 'processQR'])
+        Route::get('/qr-scanner/result', [AdminController::class, 'processQR'])
             ->name('admin_procesqr');
         Route::post('/event/store', [AdminController::class, 'storeEvent'])
             ->name('admin_store_event');

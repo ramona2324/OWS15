@@ -376,7 +376,7 @@ class AdminController extends Controller
 
         $event = StudentEvent::where('event_id', $event_id)->first();
 
-        return redirect(route('admin_event_scanner'))->with('event', $event)
+        return redirect( route('admin_event_scanner', ['event_id'=>$event_id])  )->with('event', $event)
             ->with('message', 'Attendance confirmed!');
     }
 }

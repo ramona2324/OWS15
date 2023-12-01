@@ -37,23 +37,22 @@
                 </div>
 
                 <div class="flex mt-6 gap-4 text-center">
-                    <form action="{{ route('admin_event_scanner') }}"
-                        class="text-red-500 w-1/2 bg-white hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg border border-red-200 text-sm font-medium px-5 py-2.5 hover:text-red-900 focus:z-10 ">
-                        <input type="text" name="event_id" value="{{ $event_id }}" hidden>
-                        <button type="submit" class="w-full h-full">
-                            DENY
-                        </button>
-                    </form>
-
-                    <form action=" {{route('admin_confirm_attdc')}}" method="POST" @csrf
+                    <a href="{{ route('admin_event_scanner', ['event_id'=>$event_id]) }}"
+                        class="text-red-500 w-1/2 bg-white hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg border border-red-200 text-sm font-medium px-5 py-2.5 hover:text-red-900 focus:z-10">
+                        DENY
+                    </a>
+                
+                    <form action="{{ route('admin_confirm_attdc') }}" method="POST"
                         class="text-white w-1/2 bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300  font-medium rounded-lg text-sm px-5 py-2.5 me-2">
-                        <input type="text" name="ows_id" hidden>
-                        <input type="text" name="event_id" hidden>
+                        @csrf
+                        <input type="text" name="ows_id" hidden value="{{ $student->student_osasid }} ">
+                        <input type="text" name="event_id" hidden value="{{ $event_id }}">
                         <button type="submit" class="w-full h-full">
                             CONFIRM
                         </button>
                     </form>
                 </div>
+                
             </div>
         </div>
     </div>

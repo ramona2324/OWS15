@@ -97,7 +97,6 @@
                     {{-- third column --}}
                     <div class="flex flex-col bg--100 gap-2 items-center">
                         {{-- qr button --}}
-                        {{-- route('user.show', ['id' => 123]); --}}
                         <a href=" {{ route('admin_event_scanner', ['event_id'=>$event->event_id]) }}" 
                             class="w-full h-full bg-green-300 flex items-center justify-center rounded-md">
                             <button type="submit"

@@ -8,6 +8,17 @@
 
 {{-- container for scanner preview --}}
 <div class="relative flex items-center justify-center w-full bg-black min-h-screen min-w-screen">
+    <a href=" {{ route('admin_stud_events') }} ">
+        <button type="button"
+            class="absolute top-6 end-6 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+        </button>
+    </a>
     <div class=" w-10/12 z-50 absolute top-5 left-1/2 transform -translate-x-1/2 ">
         <div class="mt-6 flex items-center w-full justify-center">
             <p class="text-white  text-xs pr-1">Event:</p>
@@ -16,7 +27,6 @@
     </div>
     <div
         class=" border-2 border-white w-7/12 h-2/6 md:w-5/12 lg:h-3/6 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-
     </div>
     <video class="min-h-screen min-w-screen" id="preview"></video>
     <div class="border h-14 w-8/12 z-50 absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded-lg">
@@ -26,7 +36,7 @@
 
 
 {{-- for passing data --}}
-<form action="{{ route('admin_procesqr') }}" method="POST" id="scanner_form">
+<form action="{{ route('admin_procesqr') }}" id="scanner_form">
     @csrf
     <input type="text" id="scanner" name="scanner" hidden>
     <input type="text" name="event_id" hidden value="{{ $event->event_id }}">
