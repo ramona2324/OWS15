@@ -1,13 +1,6 @@
 {{-- right side header --}}
 <div class="flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 flex justify-end ">
-    <a href=" {{ route('qr_scanner') }} ">
-        <button type="button"
-            class="text-gray-900 flex items-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm p-2">
-            <span class="material-symbols-rounded">
-                qr_code_scanner
-            </span>
-        </button>
-    </a>
+    
 
     {{-- profile button --}}
     <button type="button"

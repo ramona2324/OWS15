@@ -3,43 +3,65 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
-// test route only
-Route::get('/test', [AdminController::class, 'showTest'])
-    ->name('test');
-
 // all admin routes here
 Route::group(['prefix' => 'admin'], function () { // all routes here have /admin/ prefix
 
     // only accessible after login
     Route::group(['middleware' => 'admin_auth'], function () {
+
         //-------------------------for views routing-------------------------
-        // dashboard
+
+        //---------------dashboard---------------
         Route::get('/', [AdminController::class, 'showIndex'])
             ->name('admin_dashboard');
-        // manage admins 
         Route::get('/manage', [AdminController::class, 'showAdminManage'])
             ->name('admin_manage');
-        // admin profile
         Route::get('/profile/{admin}', [AdminController::class, 'showProfile'])
             ->name('admin_profile');
-        // create admin
         Route::get('/create', [AdminController::class, 'showCreateAdmin'])
             ->name('admin_create');
-        // office 
+
+        //---------------offices---------------
         Route::get('/offices', [AdminController::class, 'showOfficeIndex'])
             ->name('admin_offices');
-        // qr scanner 
-        Route::get('/qr-scanner', [AdminController::class, 'showQRscanner'])
-            ->name('qr_scanner');
+
+        //---------------clearance---------------
+        Route::get('/clearance', [AdminController::class, 'showClearanceIndex'])
+            ->name('admin_clearance');
+
+        //---------------events---------------
+        Route::get('/events', [AdminController::class, 'showEventsIndex'])
+            ->name('admin_stud_events');
+        Route::get('/events/create', [AdminController::class, 'showCreateEvents'])
+            ->name('admin_create_event');
+
+        //---------------events---------------
+        Route::get('/attendance', [AdminController::class, 'showAttendanceIndex'])
+            ->name('admin_attendance');
+
+        //---------------scholarship---------------
+
+        Route::get('/scholarship', [AdminController::class, 'showScholarshipIndex'])
+            ->name('admin_scholarship');
 
         //-------------------------for functionality routing-------------------------
-        // creating new admin
+
         Route::post('/create-store', [AdminController::class, 'storeCreate'])
             ->name('admin_store_create');
-        // processign of admin logout
         Route::post('/process-logout', [AdminController::class, 'processLogout'])
             ->name('admin_processlogout');
+        Route::get('/qr-scanner/result', [AdminController::class, 'processQR'])
+            ->name('admin_procesqr');
+        Route::post('/event/store', [AdminController::class, 'storeEvent'])
+            ->name('admin_store_event');
+        Route::get('/events/scanner/{event_id}', [AdminController::class, 'showEventScanner'])
+            ->name('admin_event_scanner');
+        Route::get('/events/attendance/{event_id}', [AdminController::class, 'showEventAttendace'])
+            ->name('admin_event_attdc');
+        Route::post('/qr-scanner/result/confirm', [AdminController::class, 'storeAttendance'])
+            ->name('admin_confirm_attdc');
     }); //end of auth:admin middleware
+
 
     //-------------------------for views routing-------------------------
     // signup first step

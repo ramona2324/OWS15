@@ -51,7 +51,7 @@ class GoogleAuthController extends Controller
                 // Store 'google_id' in the session
                 session()->put('google_id', $google_user_id->user['id']);
 
-                return redirect( route('student_signup1') );
+                return redirect( route('student_signup1') )->with('message', 'USeP account verified!');
 
             }
         } catch (Exception $e) {

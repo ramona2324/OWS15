@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -996,
-    "scrollLeft": -1682,
+    "scrollTop": -986,
+    "scrollLeft": -1595,
     "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
@@ -610,9 +610,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 1881.7774,
-          "top": 997,
-          "zIndex": 24,
+          "left": 2236.2218,
+          "top": 1181.4447,
+          "zIndex": 7,
           "widthName": 60,
           "widthComment": 60
         },
@@ -819,9 +819,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 1898.5549,
-          "top": 1402,
-          "zIndex": 6,
+          "left": 1539.9438,
+          "top": 1460.3329,
+          "zIndex": 10,
           "widthName": 60,
           "widthComment": 60
         },
@@ -903,15 +903,300 @@
           }
         ],
         "ui": {
-          "active": true,
-          "left": 2517.3331,
-          "top": 1095.6662,
-          "zIndex": 25,
+          "active": false,
+          "left": 2532.8885,
+          "top": 960.1108,
+          "zIndex": 6,
           "widthName": 62.6708984375,
           "widthComment": 60
         },
         "visible": true,
         "id": "2817b35c-402d-4c68-b055-29b5b0c206fd"
+      },
+      {
+        "name": "student event",
+        "comment": "",
+        "columns": [
+          {
+            "name": "event_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "f2f0ae9f-1564-48ba-898f-159d06a70143"
+          },
+          {
+            "name": "event_name",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 73.55078125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "b1f909cc-2a64-422f-ab17-4aa9507f2875"
+          },
+          {
+            "name": "event_desc",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 68.49169921875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "09c7a01d-73b1-42be-aece-835cdb61fe4c"
+          },
+          {
+            "name": "event_date",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 66.33349609375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "00d552b6-6300-425f-a3d5-863111f89913"
+          },
+          {
+            "name": "event_time_in",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 82.93896484375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "c3d0fcd5-d340-46cb-85c4-01d0c2116026"
+          },
+          {
+            "name": "event_time_out",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 90.892578125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "07eb762e-2994-47b6-87a9-f40d134262c6"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1535,
+          "top": 558.9286,
+          "zIndex": 8,
+          "widthName": 80.05712890625,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "b1edbe22-150e-4064-b851-9c2664af3c6d"
+      },
+      {
+        "name": "attendance_record",
+        "comment": "",
+        "columns": [
+          {
+            "name": "attendance_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 83.681640625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "42a7861a-ba4b-43bc-a573-9b2d83d3301a"
+          },
+          {
+            "name": "student_id",
+            "comment": "",
+            "dataType": "INT(8)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 61.99169921875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "6e3b896a-d38d-437b-8a3f-3c208b1b90c1"
+          },
+          {
+            "name": "event_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "4762f00d-1a0b-459b-be19-6fa7ef58003b"
+          },
+          {
+            "name": "attendance_date",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 98.865234375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "254b9c34-0623-41b8-806b-2332780e532e"
+          },
+          {
+            "name": "attendance_time",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 98.12255859375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "2ab5a47a-48bd-4965-be42-bc1587c416a3"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1694.8095,
+          "top": 975.809,
+          "zIndex": 12,
+          "widthName": 110.41162109375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "ae1c5ffc-0916-49be-b974-e7de429941c7"
       }
     ],
     "indexes": []
@@ -1008,18 +1293,18 @@
           "columnIds": [
             "660386d7-38ab-48e0-bece-bf8d1abaeb83"
           ],
-          "x": 2105.938933203125,
-          "y": 1402,
-          "direction": "top"
+          "x": 1954.71186640625,
+          "y": 1515.3329,
+          "direction": "right"
         },
         "end": {
           "tableId": "9905bae7-2e08-4310-9488-728ad19378a8",
           "columnIds": [
             "95154030-d83f-4bd9-8251-a61747e2f261"
           ],
-          "x": 2120.007136328125,
-          "y": 1250.5,
-          "direction": "bottom"
+          "x": 2236.2218,
+          "y": 1371.5697,
+          "direction": "left"
         },
         "constraintName": "fk_course_to_student",
         "visible": true,
@@ -1034,22 +1319,74 @@
           "columnIds": [
             "7e206533-b142-495f-a087-7bf10c8bcd0f"
           ],
-          "x": 2358.23687265625,
-          "y": 1123.75,
-          "direction": "right"
+          "x": 2474.451536328125,
+          "y": 1181.4447,
+          "direction": "top"
         },
         "end": {
           "tableId": "2817b35c-402d-4c68-b055-29b5b0c206fd",
           "columnIds": [
             "247c034a-e713-4d3d-ba20-63f66e57be7c"
           ],
-          "x": 2517.3331,
-          "y": 1160.9162,
+          "x": 2532.8885,
+          "y": 1025.3608,
           "direction": "left"
         },
         "constraintName": "fk_student_to_qr code",
         "visible": true,
         "id": "8e8aad11-3881-47ca-a45d-73f36b6e354f"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneOnly",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "9905bae7-2e08-4310-9488-728ad19378a8",
+          "columnIds": [
+            "7e206533-b142-495f-a087-7bf10c8bcd0f"
+          ],
+          "x": 2236.2218,
+          "y": 1244.8197,
+          "direction": "left"
+        },
+        "end": {
+          "tableId": "ae1c5ffc-0916-49be-b974-e7de429941c7",
+          "columnIds": [
+            "6e3b896a-d38d-437b-8a3f-3c208b1b90c1"
+          ],
+          "x": 2127.6747343750003,
+          "y": 1061.559,
+          "direction": "right"
+        },
+        "constraintName": "fk_student_to_attendance",
+        "visible": true,
+        "id": "6cf62d95-266d-4486-b219-71f793c029ca"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "b1edbe22-150e-4064-b851-9c2664af3c6d",
+          "columnIds": [
+            "f2f0ae9f-1564-48ba-898f-159d06a70143"
+          ],
+          "x": 1747.4462890625,
+          "y": 750.9286,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "ae1c5ffc-0916-49be-b974-e7de429941c7",
+          "columnIds": [
+            "4762f00d-1a0b-459b-be19-6fa7ef58003b"
+          ],
+          "x": 1911.2421171875,
+          "y": 975.809,
+          "direction": "top"
+        },
+        "constraintName": "fk_student event_to_attendance",
+        "visible": true,
+        "id": "eeb39228-b910-4ef0-8b28-a684c4a20a86"
       }
     ]
   }

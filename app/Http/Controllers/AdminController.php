@@ -8,6 +8,10 @@ use Illuminate\Validation\Rule;
 use App\Models\Admin;
 use App\Models\Office;
 use App\Models\AdminType;
+use App\Models\AttendanceRecords;
+use App\Models\Student;
+use App\Models\StudentEvent;
+use App\Models\Scholarship;
 use Intervention\Image\Facades\Image; // see notes below
 use Illuminate\Support\Facades\Log;
 use Illuminate\Session\TokenMismatchException;
@@ -20,9 +24,9 @@ class AdminController extends Controller
         return view('test');
     }
 
-    //-------------------------functions for views-------------------------
+    //-------------------------------------functions for views-------------------------------------
 
-    // returns view
+    //---------------outside views---------------
     public function showSignup1()
     {
         return view('admin.signup-step1');
@@ -35,13 +39,11 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
+
+    //---------------dashboard views---------------
     public function showIndex()
     {
         return view('admin.index');
-    }
-    public function showOfficeIndex()
-    {
-        return view('admin.office.index');
     }
     public function showAdminManage()
     {
@@ -69,9 +71,55 @@ class AdminController extends Controller
         $admin_types = AdminType::all();
         return view('admin.create', compact('offices', 'admin_types'));
     }
-    public function showQRscanner()
+
+    //---------------office views---------------
+    public function showOfficeIndex()
     {
-        return view('admin.student_event.qr-scanner');
+        return view('admin.office.index');
+    }
+
+    //---------------clearance views---------------
+    public function showClearanceIndex()
+    {
+        return view('admin.clearance.index');
+    }
+
+    //---------------events views---------------
+    public function showEventsIndex()
+    {
+        $student_events = StudentEvent::all();
+        return view('admin.student_event.index', compact('student_events'));
+    }
+    public function showCreateEvents()
+    {
+        return view('admin.student_event.create');
+    }
+    public function showEventScanner($event_id)
+    {
+        $event = StudentEvent::where('event_id', $event_id)->first();
+        if ($event) {
+            return view('admin.student_event.qr-scanner', ['event' => $event]);
+        } else {
+            return redirect(route('admin_stud_events'))
+                ->with('custom-error', 'Select event to use scanner');
+        }
+    }
+    public function showEventAttendace($event_id)
+    {
+        $records = AttendanceRecords::where('event_id', $event_id)->get();
+        return view('admin.student_event.event_attdc', ['records' => $records]);
+    }
+
+    //---------------events attendance views---------------
+    public function showAttendanceIndex()
+    {
+        return view('admin.events_attendance.index');
+    }
+
+    //---------------scholarship views---------------
+    public function showScholarshipIndex()
+    {
+        return view('admin.scholarship.index');
     }
 
     //-------------------------functions for functionality-------------------------
@@ -79,99 +127,91 @@ class AdminController extends Controller
     // storing signup step 1
     public function storeSignup1(Request $request)
     {
-        try {
-            $validated = $request->validate([
-                "admin_lname" => ['required', 'min:2', 'alpha_spaces'],
-                "admin_fname" => ['required', 'min:2', 'alpha_spaces'],
-                "admin_mi" => ['required', 'regex:/^(N\/A|[A-Za-z])$/'], //require to be clearer, user must put N/A if they have no mi
-                "admin_contact" => ['nullable', 'numeric', 'digits_between:10,15'],
-                "email" => ['required', 'email', Rule::unique('admins', 'email')],
-                'password' => [
-                    'required',
-                    'confirmed',
-                    'min:8',
-                    'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])/',
-                ],
-            ]);
-            $validated['password'] = bcrypt($validated['password']); // incrypting the inputted password
-            $newAdmin = Admin::create($validated);
 
-            // Store 'admin_id' in the session
-            session()->put('admin_id', $newAdmin->admin_id);
+        $validated = $request->validate([
+            "admin_lname" => ['required', 'min:2', 'alpha_spaces'],
+            "admin_fname" => ['required', 'min:2', 'alpha_spaces'],
+            "admin_mi" => ['required', 'regex:/^(N\/A|[A-Za-z])$/'], //require to be clearer, user must put N/A if they have no mi
+            "admin_contact" => ['nullable', 'numeric', 'digits_between:10,15'],
+            "email" => ['required', 'email', Rule::unique('admins', 'email')],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:8',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])/',
+            ],
+        ]);
+        $validated['password'] = bcrypt($validated['password']); // incrypting the inputted password
+        $newAdmin = Admin::create($validated);
 
-            return redirect(route('admin_signup2'))
-                ->with('message', 'Successfully saved your info');
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-            back();
-        }
+        // Store 'admin_id' in the session
+        session()->put('admin_id', $newAdmin->admin_id);
+
+        return redirect(route('admin_signup2'))
+            ->with('message', 'Successfully saved your info');
     }
 
     // for signup step 2
     public function storeSignup2(Request $request)
     {
-        try {
-            $adminId = session('admin_id'); // Retrieve 'admin_id' from the session
 
-            $validated = $request->validate([
-                "employee_id" => ['required', 'max:6'],
+        $adminId = session('admin_id'); // Retrieve 'admin_id' from the session
+
+        $validated = $request->validate([
+            "employee_id" => ['required', 'max:6'],
+        ]);
+
+        $validated['admintype_id'] = 1; // assigning Super Admin type
+
+        $validated['office_id'] = 1; // assigning office to OSAS
+
+        $admin = Admin::find($adminId); // Find the admin by ID and update the attributes
+
+        if (!$admin) { // if admin is not found
+            return redirect()->back()->with('error', 'Admin not found');
+        }
+
+        // code for image upload
+        // checking if there is a file
+        if ($request->hasFile('admin_image')) {
+
+            $request->validate([ // validation for right format and size
+                "admin_image" => 'mimes:jpeg,png,bmp,tiff | max:4096'
             ]);
 
-            $validated['admintype_id'] = 1; // assigning Super Admin type
+            // to avoid duplication of image
+            $filenameWithExtension = $request->file("admin_image"); // gets the filename+extension
+            $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME); // extracts filename only without extension
 
-            $validated['office_id'] = 1; // assigning office to OSAS
+            $extension = $request->file("admin_image") // gets the extension of the file 
+                ->getClientOriginalExtension();
 
-            $admin = Admin::find($adminId); // Find the admin by ID and update the attributes
+            $filenameToStore = $filename . '_' . time() . '.' . $extension; // filename_timestamp.extention
 
-            if (!$admin) { // if admin is not found
-                return redirect()->back()->with('error', 'Admin not found');
-            }
+            $smallThumbnail = 'small_' . $filename . '_' . time() . '.' . $extension; // small_filename_timestamp.extention
 
-            // code for image upload
-            // checking if there is a file
-            if ($request->hasFile('admin_image')) {
+            $request->file('admin_image')->storeAs( // stores the image to ...
+                'public/admin',
+                $filenameToStore
+            );
 
-                $request->validate([ // validation for right format and size
-                    "admin_image" => 'mimes:jpeg,png,bmp,tiff | max:4096'
-                ]);
+            $request->file('admin_image')->storeAs( // stores the small image to ...
+                'public/admin/thumbnail',
+                $smallThumbnail
+            );
 
-                // to avoid duplication of image
-                $filenameWithExtension = $request->file("admin_image"); // gets the filename+extension
-                $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME); // extracts filename only without extension
+            $thumbnail = 'storage/admin/thumbnail/' . $smallThumbnail; // assigns the path to the thumbnail image to this variable
+            // example content of $thumbnail is /storage/admin/thumbnail/small_my-image_1670915990.png
 
-                $extension = $request->file("admin_image") // gets the extension of the file 
-                    ->getClientOriginalExtension();
+            // dd($thumbnail); // <- for debugging only
+            $this->createThumbnail($thumbnail, 150, 150);
 
-                $filenameToStore = $filename . '_' . time() . '.' . $extension; // filename_timestamp.extention
-
-                $smallThumbnail = 'small_' . $filename . '_' . time() . '.' . $extension; // small_filename_timestamp.extention
-
-                $request->file('admin_image')->storeAs( // stores the image to ...
-                    'public/admin',
-                    $filenameToStore
-                );
-
-                $request->file('admin_image')->storeAs( // stores the small image to ...
-                    'public/admin/thumbnail',
-                    $smallThumbnail
-                );
-
-                $thumbnail = 'storage/admin/thumbnail/' . $smallThumbnail; // assigns the path to the thumbnail image to this variable
-                // example content of $thumbnail is /storage/admin/thumbnail/small_my-image_1670915990.png
-
-                // dd($thumbnail); // <- for debugging only
-                $this->createThumbnail($thumbnail, 150, 150);
-
-                $validated['admin_image'] = $filenameToStore; // stores the new filename to db
-            }
-
-            $admin->update($validated); // updating the data of that admin
-
-            return redirect(route('admin_login'))->with('message', 'Successfully created Super Admin account');
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-            back();
+            $validated['admin_image'] = $filenameToStore; // stores the new filename to db
         }
+
+        $admin->update($validated); // updating the data of that admin
+
+        return redirect(route('admin_login'))->with('message', 'Successfully created Super Admin account');
     }
 
     // for creating new admin
@@ -281,6 +321,57 @@ class AdminController extends Controller
         } catch (TokenMismatchException $e) {
             return redirect()->route('student_login')->withErrors(['csrf' => 'CSRF token expired. Please try again.']);
         }
+    }
+
+    // processing of qr code
+    public function processQR(Request $request)
+    {
+        $student = Student::where('student_osasid', $request['scanner'])->first();
+        if (!$student) {
+            return redirect()->back()->with('custom-error', 'Student not found');
+        }
+        $event_id = $request['event_id'];
+        return view('admin.student_event.qr-result', compact('student', 'event_id'));
+    }
+
+    // storing new event
+    public function storeEvent(Request $request)
+    {
+        try {
+            $validated = $request->validate([
+                "event_name" => [''],
+                "event_date" => [''],
+                "event_time_in" => [''],
+                "event_time_out" => [''],
+                "event_desc" => [''],
+            ]);
+
+            StudentEvent::create($validated);
+
+            return redirect(route('admin_stud_events'))->with('message', 'New Event Created!');
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            back();
+        }
+    }
+
+    // storing attendance
+    public function storeAttendance(Request $request)
+    {
+        $ows_id = request('ows_id');
+        $event_id = request('event_id');
+
+        $data = [
+            'student_osasid' => $ows_id,
+            'event_id' => $event_id,
+        ];
+
+        AttendanceRecords::create($data);
+
+        $event = StudentEvent::where('event_id', $event_id)->first();
+
+        return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
+            ->with('message', 'Attendance confirmed!');
     }
 }
 

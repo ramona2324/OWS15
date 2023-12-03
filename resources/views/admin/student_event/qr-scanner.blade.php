@@ -1,72 +1,55 @@
 @include('partials.__header')
 
-{{-- external script for reading the qr code --}}
-<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+{{-- external script for reading the qr code
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> --}}
+{{-- <script type="text/javascript" src="{{ asset('js/my-script.js') }}"></script> --}}
 
-@include('partials.__admin_sidebar')
+<script type="text/javascript" src="/js/instascan.min.js"></script>
 
-{{-- right side of sidebar --}}
-<div class="md:ml-60 pb-4">
-
-    {{-- reusable page header --}}
-    @include('partials.__admin_pageheader')
-
-    {{-- main white containter --}}
-    <div class="p-4 m-4 shadow-lg bg-white border-gray-200 rounded-lg dark:border-gray-700" style="min-height: 90vh">
-
-        {{-- navigation container --}}
-        <div class="flex items-center  mb-4 rounded ">
-            {{-- breadcrumb nav container --}}
-            <nav class="flex" aria-label="Breadcrumb">
-                <ol class="inline-flex items space-x-1 md:space-x-3">
-                    <li aria-current="page" class="inline-flex items-center">
-                        <a href="#"
-                            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
-                            <span class="px-1 material-symbols-rounded" style="font-size:20px">qr_code_scanner</span>
-                            QR Code Scanner
-                        </a>
-                    </li>
-                </ol>
-            </nav>
+{{-- container for scanner preview --}}
+<div class="relative flex items-center justify-center w-full bg-black min-h-screen min-w-screen">
+    <a href=" {{ route('admin_stud_events') }} ">
+        <button type="button"
+            class="absolute top-6 end-6 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+        </button>
+    </a>
+    <div class=" w-10/12 z-50 absolute top-5 left-1/2 transform -translate-x-1/2 ">
+        <div class="mt-6 flex items-center w-full justify-center">
+            <p class="text-white  text-xs pr-1">Event:</p>
+            <h3 class="text-white ">{{ $event->event_name }}</h3>
         </div>
-
-        {{-- title + button container --}}
-        <div class="flex items-center justify-center py-2 mb-4 rounded text-slate-800 ">
-            <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
-                Attendance Scanner
-            </h2>
-        </div>
-
-        {{-- main content --}}
-        <div class="flex flex-row mt-2 mb-4 gap-4">
-            {{-- left --}}
-            <div class="w-1/2 hidden min-h-full md:flex justify-center rounded-lg ">
-                {{-- container for scanner preview --}}
-                <div class="w-full border">
-                    <video class="w-full max-h-96" id="preview"></video>
-                </div>
-            </div>
-
-            {{-- right - create new admin form --}}
-            <div
-                class="md:w-1/2 w-full min-h-screen px-6 py-6 lg:px-8 relative bg-white rounded-lg overflow-y-auto border border-yellow-500 ">
-                <div>
-                    <input type="text" name="text" readonly id="text" placeholder="qr value">
-                </div>
-            </div>
-        </div>
-
+    </div>
+    <div
+        class=" border-2 border-white w-7/12 h-2/6 md:w-5/12 lg:h-3/6 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    </div>
+    <video class="min-h-screen min-w-screen" id="preview"></video>
+    <div class="border h-14 w-8/12 z-50 absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded-lg">
 
     </div>
-
 </div>
 
 
+{{-- for passing data --}}
+<form action="{{ route('admin_procesqr') }}" id="scanner_form">
+    @csrf
+    <input type="text" id="scanner" name="scanner" hidden>
+    <input type="text" name="event_id" hidden value="{{ $event->event_id }}">
+</form>
+
+
+{{-- script for qr code scanner --}}
 <script type="text/javascript">
+    // for broadcasting the video
     let scanner = new Instascan.Scanner({
         video: document.getElementById('preview')
     });
-
+    // for getting the camera
     Instascan.Camera.getCameras()
         .then(function(cameras) {
             if (cameras.length > 0) {
@@ -78,10 +61,46 @@
         .catch(function(e) {
             console.error(e);
         });
-
+    // getting the value of qr code
     scanner.addListener('scan', function(c) {
-        document.getElementById('text').value = c;
+        if (c) { // if value detected
+
+            var regex = /^OWS-/;
+            if (regex.test(c)) {
+                var numericPart = parseInt(c.replace(/^OWS-/, ''), 10);
+                document.getElementById('scanner').value = numericPart;
+                document.getElementById('scanner_form').submit();
+            } else {
+                alert("Invalid OWS QR Code!");
+            }
+        }
     });
+</script>
+
+{{-- for handling the modal --}}
+<script>
+    window.onload = function() {
+        // showModal();
+    };
+
+    function showModal() {
+        // Get the modal element
+        var modal = document.getElementById('popup-modal');
+        // Display the modal
+        modal.classList.remove('hidden');
+    }
+    // Add a function to hide the modal
+    function hideModal() {
+        // Get the modal element
+        var modal = document.getElementById('popup-modal');
+        // Hide the modal
+        modal.classList.add('hidden');
+    }
+    // Add a click event listener to the modal close button
+    var closeButton = document.querySelector('[data-modal-hide="popup-modal"]');
+    if (closeButton) {
+        closeButton.addEventListener('click', hideModal);
+    }
 </script>
 
 @include('partials.__footer')

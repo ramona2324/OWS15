@@ -19,13 +19,21 @@
                         <a href="#"
                             class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
                             <span class="px-1 material-symbols-rounded" style="font-size:20px">
-                                clear_all
+                                how_to_reg
                             </span>
-                            Clearance
+                            Events Attendance
                         </a>
                     </li>
                 </ol>
             </nav>
+        </div>
+
+        {{-- title + button container --}}
+        <div class="flex items-center justify-center py-2 mb-4 rounded text-slate-800 ">
+            <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
+                Events Attendance
+            </h2>
+           
         </div>
 
         {{-- main content --}}

@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -12,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('qr_codes', function (Blueprint $table) {
-            $table->id('qrcode_id');
-            $table->string('qrcode_filename', 100);
+        Schema::create('attendance_records', function (Blueprint $table) {
+            $table->id('attendance_id');
             $table->unsignedBigInteger('student_osasid');
+            $table->unsignedBigInteger('event_id');
             $table->timestamps();
-            
+    
             $table->foreign('student_osasid')->references('student_osasid')->on('students');
+            $table->foreign('event_id')->references('event_id')->on('student_events');
         });
-
     }
 
     /**
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('qr_codes');
+        Schema::dropIfExists('attendance_records');
     }
 };

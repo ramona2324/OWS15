@@ -84,6 +84,7 @@ class StudentController extends Controller
             if ($student) {
                 $student->update($validated); // Update the data of that student
                 // Additional logic if needed
+                Auth::guard('student')->login($student); // logging student with 'student' guard
                 return redirect(route('student_dashboard'))->with('message', 'Successfully save student info!');
             } else {
                 return response()->json(['error' => 'Student not found'], 404);
@@ -112,14 +113,14 @@ class StudentController extends Controller
     public function generateQR($student_id)
     {
         // the content is the padded student_osasid
-        $qrContent = str_pad($student_id, 5, '0', STR_PAD_LEFT);
+        $qrContent = 'OWS-' . str_pad($student_id, 5, '0', STR_PAD_LEFT);
 
         // filename is the osasid with time and its extension.
-        $filename = 'QR' . $qrContent . '_' . time() . '.svg';
+        $filename = $qrContent . '_' . time() . '.svg';
 
-        // Set the size of the QR code
+        // Set the size of the QR code ++
         QR_Code::size(200)
-        ->margin(2)
+        ->margin(5)
         ->generate($qrContent, public_path('images/student/qrcode/' . $filename));
 
         // Store the generated QR code in the storage directory

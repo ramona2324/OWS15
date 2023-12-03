@@ -11,10 +11,6 @@
                 <p class="mt-4 text-white text-xl">To get started, please provide the following information to create
                     your admin account.</p>
             </div>
-            <div class="hidden md:block inset-0 flex items-center justify-center">
-                <!-- Image at the very center -->
-                <img src="/img/Ellips.png" alt="" class="mt-12 mx-auto w-80 ">
-            </div>
             <div class="flex justify-center mt-auto">
                 <div class="w-12 h-12 rounded-full ouryellowbg flex items-center justify-center">
                     <i class='bx bxl-facebook-square' style='color:#ffffff; font-size: 30px;'></i>

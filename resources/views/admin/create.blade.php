@@ -225,31 +225,4 @@
 
 </div>
 
-<script>
-    $(document).ready(function() {
-        // Function to show the modal
-        function showModal() {
-            $('#authentication-modal').removeClass('hidden');
-        }
-
-        // Function to hide the modal
-        function hideModal() {
-            $('#authentication-modal').addClass('hidden');
-        }
-
-        // Show the modal when the "Toggle modal" button is clicked
-        $('[data-modal-toggle="authentication-modal"]').on('click', function() {
-            showModal();
-        });
-
-        // Hide the modal when the close button is clicked
-        $('[data-modal-hide="authentication-modal"]').on('click', function() {
-            hideModal();
-        });
-    });
-</script>
-
-
-
-
 @include('partials.__footer')
