@@ -23,10 +23,8 @@
                             Student Events
                         </a>
                     </li>
-
                 </ol>
             </nav>
-
         </div>
 
         {{-- title + button container --}}

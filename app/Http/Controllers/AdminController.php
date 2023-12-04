@@ -12,6 +12,7 @@ use App\Models\AttendanceRecords;
 use App\Models\Student;
 use App\Models\StudentEvent;
 use App\Models\Scholarship;
+use Illuminate\Console\Scheduling\Event;
 use Intervention\Image\Facades\Image; // see notes below
 use Illuminate\Support\Facades\Log;
 use Illuminate\Session\TokenMismatchException;
@@ -107,7 +108,8 @@ class AdminController extends Controller
     public function showEventDetails($event_id)
     {
         $records = AttendanceRecords::where('event_id', $event_id)->get();
-        return view('admin.student_event.event_details', ['records' => $records]);
+        $event = StudentEvent::where('event_id', $event_id)->first();
+        return view('admin.student_event.event_details', ['records' => $records], ['event' => $event]);
     }
 
     //---------------events attendance views---------------
