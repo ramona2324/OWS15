@@ -98,9 +98,30 @@ class AdminController extends Controller
     }
     public function showEventScanner($event_id)
     {
+        $current_time = Carbon::now();
+        $isTimeIn = true;
+
         $event = StudentEvent::where('event_id', $event_id)->first();
         if ($event) {
-            return view('admin.student_event.qr-scanner', ['event' => $event]);
+
+            $InTime = Carbon::parse($event->event_time_in);
+            $InCutOff = $InTime->addHours(1);
+
+            $OutTime =  Carbon::parse($event->event_time_out);
+            $OutCutOff = $OutTime->addHours(1);
+
+            if($current_time>=$InTime && $current_time<=$InCutOff)
+            {
+                return view('admin.student_event.qr-scanner', ['event' => $event], ['is_']);
+            } else if ($current_time>=$OutTime && $current_time<=$OutCutOff)
+            {
+                return view('admin.student_event.qr-scanner', ['event' => $event]);
+            }
+            else 
+            {
+                return redirect(route('admin_stud_events'))
+                ->with('custom-error', 'Attendance for this event is closed');
+            }
         } else {
             return redirect(route('admin_stud_events'))
                 ->with('custom-error', 'Select event to use scanner');
