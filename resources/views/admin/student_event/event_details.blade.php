@@ -164,7 +164,11 @@
                                 <span class="material-symbols-rounded" style="font-size: 15px">
                                     schedule
                                 </span>
-                                {{ \Carbon\Carbon::parse($record->time_out)->format('g:iA') }}
+                                @if($record->time_out)
+                                 \Carbon\Carbon::parse($record->time_out)->format('g:iA') 
+                                 @else
+                                 --:--
+                                @endif
                             </p>
                         </div>
                     </div>

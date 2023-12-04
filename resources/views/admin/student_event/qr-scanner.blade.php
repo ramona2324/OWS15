@@ -40,6 +40,7 @@
     @csrf
     <input type="text" id="scanner" name="scanner" hidden>
     <input type="text" name="event_id" hidden value="{{ $event->event_id }}">
+    <input type="text" name="in_out" hidden value="{{ $in_out }}">
 </form>
 
 

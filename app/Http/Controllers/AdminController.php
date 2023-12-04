@@ -99,29 +99,27 @@ class AdminController extends Controller
     public function showEventScanner($event_id)
     {
         $current_time = Carbon::now();
-        $isTimeIn = true;
+        $timeInOrOut = '';
 
         $event = StudentEvent::where('event_id', $event_id)->first();
         if ($event) {
 
-            $InTime = Carbon::parse($event->event_time_in);
-            $InCutOff = $InTime->addHours(1);
+            $InTime = Carbon::parse($event->event_date . ' ' . $event->event_time_in);
+            $InCutOff = Carbon::parse($event->event_time_in)->addHours(1);
 
-            $OutTime =  Carbon::parse($event->event_time_out);
+            $OutTime =  Carbon::parse($event->event_date . ' ' . $event->event_time_out);
             $OutCutOff = $OutTime->addHours(1);
 
-            if($current_time>=$InTime && $current_time<=$InCutOff)
-            {
-                return view('admin.student_event.qr-scanner', ['event' => $event], ['is_']);
-            } else if ($current_time>=$OutTime && $current_time<=$OutCutOff)
-            {
-                return view('admin.student_event.qr-scanner', ['event' => $event]);
-            }
-            else 
-            {
+            if ($current_time >= $InTime && $current_time <= $InCutOff) {
+                $timeInOrOut = 'in';
+            } else if ($current_time >= $OutTime && $current_time <= $OutCutOff) {
+                // dd([$current_time, $OutTime, $OutCutOff]);
+                $timeInOrOut = 'out';
+            } else {
                 return redirect(route('admin_stud_events'))
-                ->with('custom-error', 'Attendance for this event is closed');
+                    ->with('custom-error', 'Attendance for this event is closed');
             }
+            return view('admin.student_event.qr-scanner', ['event' => $event], ['in_out' => $timeInOrOut]);
         } else {
             return redirect(route('admin_stud_events'))
                 ->with('custom-error', 'Select event to use scanner');
@@ -355,7 +353,8 @@ class AdminController extends Controller
             return redirect()->back()->with('custom-error', 'Student not found');
         }
         $event_id = $request['event_id'];
-        return view('admin.student_event.qr-result', compact('student', 'event_id'));
+        $in_out = $request['in_out'];
+        return view('admin.student_event.qr-result', compact('student', 'event_id', 'in_out'));
     }
 
     // storing new event
@@ -384,20 +383,25 @@ class AdminController extends Controller
     {
         $ows_id = request('ows_id');
         $event_id = request('event_id');
+        $in_out = request('in_out');
         $currentTime = Carbon::now();
-
 
         $data = [
             'student_osasid' => $ows_id,
             'event_id' => $event_id,
-            'time_in' => $currentTime,
-            'time_out' => $currentTime,
         ];
 
+        if ($in_out === 'in') {
+            $data['time_in'] = $currentTime;
+            $data['time_out'] = NULL;
+        } else if ($in_out === 'out') {
+            $data['time_in'] = NULL;
+            $data['time_out'] = $currentTime;
+        }
+       
         AttendanceRecords::create($data);
 
         $event = StudentEvent::where('event_id', $event_id)->first();
-
         return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
             ->with('message', 'Attendance confirmed!');
     }
