@@ -143,12 +143,13 @@
                             <h4 class="text-center">No attendance records yet! </h4>
                         </div>
                     @endif
-                    <div class="bg-gray-100 p-1 py-2 rounded-md flex flex-row gap-2 space-between">
-                        <div>
-                            <h4>1</h4>
-                        </div>
-                        <div class="bg--300 truncate">
+                    <div class="bg-gray-100 p-1 py-2 mt-2 rounded-md flex flex-row gap-2 justify-between">
+                        <div class="bg--300 truncate flex gap-2">
+                            <h4>{{ $loop->iteration }}.</h4>
                             <h4>{{ $record->student->student_lname }}, {{ $record->student->student_fname }} </h4>
+                        </div>
+                        <div class="bg--300 truncate hidden md:block">
+                            <h4>{{ $record->student->course->course_name }} </h4>
                         </div>
                         <div class="flex gap-1">
                             <p
@@ -171,31 +172,6 @@
             </div>
         </div>
 
-        {{-- old content --}}
-        <div class="flex flex-row mt-24 mb-4 gap-4">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Event Name</th>
-                        <th>Student</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <!-- Add more columns as needed -->
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($records as $record)
-                        <tr>
-                            <td>{{ $record->event->event_name }}</td>
-                            <td>{{ $record->student->student_fname }}</td>
-                            <td>{{ $record->last_created_date }}</td>
-                            <td>{{ $record->last_created_time }}</td>
-                            <!-- Add more columns as needed -->
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
     </div>
 </div>
 
