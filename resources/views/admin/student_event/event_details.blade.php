@@ -9,7 +9,7 @@
     @include('partials.__admin_pageheader')
 
     {{-- main white containter --}}
-    <div class="p-4 mx-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
+    <div class="md:p-4 p-2 md:mx-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
 
         {{-- navigation container --}}
         <div class=" justify-between flex items-center mb-4 rounded  ">
@@ -63,10 +63,10 @@
         </div>
 
         {{-- main content --}}
-        <div class="md:flex gap-2">
+        <div class="md:flex gap-4">
             {{-- details --}}
             <div
-                class="bg--100 relative  border-box truncate w-full mb-2 p-2 bg-white border border-gray-300 rounded-lg shadow-sm">
+                class="bg--100 relative  border-box truncate w-full p-2 bg-white border border-gray-300 rounded-lg shadow-sm">
                 {{-- first row --}}
                 <div class="flex justify-between w-full">
                     <div class="flex items-center bg--300">
@@ -107,10 +107,10 @@
             </div>
             {{-- stats --}}
             <div
-                class="bg--100 relative  border-box truncate w-full mb-2 p-2 bg-white border border-gray-300 rounded-lg shadow-sm">
+                class="bg--100 md:mt-0 mt-2 relative  border-box truncate w-full p-2 border border-gray-300 rounded-lg shadow-sm">
                 {{-- first row --}}
                 <div class=" w-full">
-                    <h3 class="text-center ">
+                    <h3 class="text-center font-medium">
                         Quick Stats
                     </h3>
                 </div>
@@ -121,24 +121,58 @@
             </div>
         </div>
         {{-- Attendance section --}}
-        <div class="flex mt-6 justify-between w-full">
-            <div class="flex items-center bg--300">
-                <h3 class="text-lg font-medium">
-                    {{ $event->event_name }}
-                </h3>
+        <div class="bg--300  p-2 mt-2 justify-between w-full border border-gray-200 rounded-lg">
+            {{-- header --}}
+            <div class="flex w-full relative bg--300 h-8">
+                <div class="w-full flex items-center bg--300">
+                    <h3 class="text-center w-full font-medium">
+                        Attendance Records
+                    </h3>
+                </div>
+                <div class="flex gap-1 absolute right-0">
+                    <button class="bg-gray-200 hover:bg-yellow-300 rounded-full flex items-center p-1">
+                        <span class="material-symbols-rounded" style="font-size: 20px">search</span>
+                    </button>
+                </div>
             </div>
-            <div class="flex gap-1">
-                <button class="bg-gray-200 hover:bg-yellow-300 rounded-full flex items-center p-1">
-                    <span class="material-symbols-rounded" style="font-size: 20px">search</span>
-                </button>
-                {{-- <button class="bg-gray-200 hover:bg-yellow-300 rounded-full flex items-center p-1">
-                    <span class="material-symbols-rounded" style="font-size: 20px">archive</span>
-                </button> --}}
+            {{-- records --}}
+            <div class="mt-2 min-w-full bg--400">
+                @foreach ($records as $record)
+                    @if ($record->student->student_lname=='')
+                        <div class="bg--300 truncate">
+                            <h4 class="text-center">No attendance records yet! </h4>
+                        </div>
+                    @endif
+                    <div class="bg-gray-100 p-1 py-2 rounded-md flex flex-row gap-2 space-between">
+                        <div>
+                            <h4>1</h4>
+                        </div>
+                        <div class="bg--300 truncate">
+                            <h4>{{ $record->student->student_lname }}, {{ $record->student->student_fname }} </h4>
+                        </div>
+                        <div class="flex gap-1">
+                            <p
+                                class="text-xs text-gray-700 bg-green-300 w-fit rounded-full px-1 py-1 flex items-center gap-1">
+                                <span class="material-symbols-rounded" style="font-size: 15px">
+                                    schedule
+                                </span>
+                                {{ \Carbon\Carbon::parse($record->time_in)->format('g:iA') }}
+                            </p>
+                            <p
+                                class="text-xs text-gray-700 bg-green-300 w-fit rounded-full px-2 py-1 flex items-center gap-1">
+                                <span class="material-symbols-rounded" style="font-size: 15px">
+                                    schedule
+                                </span>
+                                {{ \Carbon\Carbon::parse($record->time_out)->format('g:iA') }}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
 
         {{-- old content --}}
-        <div class="flex flex-row mt-2 mb-4 gap-4">
+        <div class="flex flex-row mt-24 mb-4 gap-4">
             <table>
                 <thead>
                     <tr>

@@ -12,6 +12,7 @@ use App\Models\AttendanceRecords;
 use App\Models\Student;
 use App\Models\StudentEvent;
 use App\Models\Scholarship;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Event;
 use Intervention\Image\Facades\Image; // see notes below
 use Illuminate\Support\Facades\Log;
@@ -362,10 +363,14 @@ class AdminController extends Controller
     {
         $ows_id = request('ows_id');
         $event_id = request('event_id');
+        $currentTime = Carbon::now();
+
 
         $data = [
             'student_osasid' => $ows_id,
             'event_id' => $event_id,
+            'time_in' => $currentTime,
+            'time_out' => $currentTime,
         ];
 
         AttendanceRecords::create($data);
