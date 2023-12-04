@@ -74,7 +74,7 @@
                     {{-- second column --}}
                     <div class="w-full bg--100 md:items-center flex flex-col mr-2 truncate">
                         <div class=" h-full items-center flex">
-                            <a href=" {{ route('admin_event_attdc', ['event_id' => $event->event_id]) }}">
+                            <a href=" {{ route('admin_event', ['event_id' => $event->event_id]) }}">
                                 <h4 class="text-md text-gray-700 truncate">{{ $event->event_name }}</h4>
                             </a>
                         </div>

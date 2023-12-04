@@ -104,10 +104,10 @@ class AdminController extends Controller
                 ->with('custom-error', 'Select event to use scanner');
         }
     }
-    public function showEventAttendace($event_id)
+    public function showEventDetails($event_id)
     {
         $records = AttendanceRecords::where('event_id', $event_id)->get();
-        return view('admin.student_event.event_attdc', ['records' => $records]);
+        return view('admin.student_event.event_details', ['records' => $records]);
     }
 
     //---------------events attendance views---------------
