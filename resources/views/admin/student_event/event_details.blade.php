@@ -116,7 +116,7 @@
                 </div>
                 {{-- second row --}}
                 <div class="mt-2 flex gap-1">
-                    hello
+                    charts will be put here
                 </div>
             </div>
         </div>
