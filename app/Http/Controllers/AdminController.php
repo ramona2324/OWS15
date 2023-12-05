@@ -354,6 +354,25 @@ class AdminController extends Controller
         }
         $event_id = $request['event_id'];
         $in_out = $request['in_out'];
+
+        // get event for scanner view
+        $event = StudentEvent::where('event_id', $event_id)->first();
+
+        // checks if there is a record already present
+        $att_record = AttendanceRecords::where([
+            'student_osasid' => $student->student_osasid,
+            'event_id' => $event_id,
+        ])->first();
+
+        if ($att_record) {
+            if ($in_out === 'in') {
+                return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
+                    ->with('custom-error', 'Duplicate time-in attendance!');
+            } else if ($in_out === 'out') {
+                return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
+                    ->with('custom-error', 'Duplicate attendance record!');
+            }
+        }
         return view('admin.student_event.qr-result', compact('student', 'event_id', 'in_out'));
     }
 
@@ -399,7 +418,7 @@ class AdminController extends Controller
                 'student_osasid' => $ows_id,
                 'event_id' => $event_id,
             ])->first();
-            if($att_record->time_in === '') {
+            if ($att_record->time_in === '') {
                 $data['time_in'] = NULL;
                 $data['time_out'] = $currentTime;
             } else {
