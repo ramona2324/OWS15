@@ -138,7 +138,7 @@
             {{-- records --}}
             <div class="mt-2 min-w-full bg--400">
                 @foreach ($records as $record)
-                    @if ($record->student->student_lname=='')
+                    @if ($record->student->student_lname == '')
                         <div class="bg--300 truncate">
                             <h4 class="text-center">No attendance records yet! </h4>
                         </div>
@@ -164,10 +164,10 @@
                                 <span class="material-symbols-rounded" style="font-size: 15px">
                                     schedule
                                 </span>
-                                @if($record->time_out)
-                                 \Carbon\Carbon::parse($record->time_out)->format('g:iA') 
-                                 @else
-                                 --:--
+                                @if ($record->time_out)
+                                    \Carbon\Carbon::parse($record->time_out)->format('g:iA')
+                                @else
+                                    --:--
                                 @endif
                             </p>
                         </div>
