@@ -410,20 +410,24 @@ class AdminController extends Controller
             'event_id' => $event_id,
         ];
 
+        // if time in
         if ($in_out === 'in') {
             $data['time_in'] = $currentTime;
             $data['time_out'] = NULL;
-        } else if ($in_out === 'out') {
+        }
+        // if time out
+        else if ($in_out === 'out') {
             $att_record = AttendanceRecords::where([
                 'student_osasid' => $ows_id,
                 'event_id' => $event_id,
             ])->first();
-            if ($att_record->time_in === '') {
-                $data['time_in'] = NULL;
-                $data['time_out'] = $currentTime;
-            } else {
+            // if existing att record
+            if ($att_record) {
                 $att_record->time_out = $currentTime; // change status to 'Attended'
                 $att_record->save();
+            } else {
+                $data['time_in'] = NULL;
+                $data['time_out'] = $currentTime;
             }
         }
 
