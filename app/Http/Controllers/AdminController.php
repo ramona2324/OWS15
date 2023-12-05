@@ -108,7 +108,7 @@ class AdminController extends Controller
             $InCutOff = Carbon::parse($event->event_time_in)->addHours(1);
 
             $OutTime =  Carbon::parse($event->event_date . ' ' . $event->event_time_out);
-            $OutCutOff = $OutTime->addHours(1);
+            $OutCutOff = Carbon::parse($event->event_time_out)->addHours(1);
 
             if ($current_time >= $InTime && $current_time <= $InCutOff) {
                 $timeInOrOut = 'in';
@@ -395,10 +395,19 @@ class AdminController extends Controller
             $data['time_in'] = $currentTime;
             $data['time_out'] = NULL;
         } else if ($in_out === 'out') {
-            $data['time_in'] = NULL;
-            $data['time_out'] = $currentTime;
+            $att_record = AttendanceRecords::where([
+                'student_osasid' => $ows_id,
+                'event_id' => $event_id,
+            ])->first();
+            if($att_record->time_in === '') {
+                $data['time_in'] = NULL;
+                $data['time_out'] = $currentTime;
+            } else {
+                $att_record->time_out = $currentTime; // change status to 'Attended'
+                $att_record->save();
+            }
         }
-       
+
         AttendanceRecords::create($data);
 
         $event = StudentEvent::where('event_id', $event_id)->first();

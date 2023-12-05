@@ -152,24 +152,41 @@
                             <h4>{{ $record->student->course->course_name }} </h4>
                         </div>
                         <div class="flex gap-1">
-                            <p
-                                class="text-xs text-gray-700 bg-green-300 w-fit rounded-full px-1 py-1 flex items-center gap-1">
-                                <span class="material-symbols-rounded" style="font-size: 15px">
-                                    schedule
-                                </span>
-                                {{ \Carbon\Carbon::parse($record->time_in)->format('g:iA') }}
-                            </p>
-                            <p
-                                class="text-xs text-gray-700 bg-green-300 w-fit rounded-full px-2 py-1 flex items-center gap-1">
-                                <span class="material-symbols-rounded" style="font-size: 15px">
-                                    schedule
-                                </span>
-                                @if ($record->time_out)
-                                    \Carbon\Carbon::parse($record->time_out)->format('g:iA')
-                                @else
+                            @if ($record->time_in)
+                                <p
+                                    class="text-xs text-gray-700 bg-green-300 w-fit rounded-full px-1 py-1 flex items-center gap-1">
+                                    <span class="material-symbols-rounded" style="font-size: 15px">
+                                        schedule
+                                    </span>
+                                    {{ \Carbon\Carbon::parse($record->time_in)->format('g:iA') }}
+                                </p>
+                            @else
+                                <p
+                                    class="text-xs text-gray-700 bg-red-300 w-fit rounded-full px-2 py-1 flex items-center gap-1">
+                                    <span class="material-symbols-rounded" style="font-size: 15px">
+                                        schedule
+                                    </span>
                                     --:--
-                                @endif
-                            </p>
+                                </p>
+                            @endif
+                            @if ($record->time_out)
+                                <p
+                                    class="text-xs text-gray-700 bg-green-300 w-fit rounded-full px-2 py-1 flex items-center gap-1">
+                                    <span class="material-symbols-rounded" style="font-size: 15px">
+                                        schedule
+                                    </span>
+                                    {{ \Carbon\Carbon::parse($record->time_out)->format('g:iA') }}
+                                </p>
+                            @else
+                                <p
+                                    class="text-xs text-gray-700 bg-red-300 w-fit rounded-full px-2 py-1 flex items-center gap-1">
+                                    <span class="material-symbols-rounded" style="font-size: 15px">
+                                        schedule
+                                    </span>
+                                    --:--
+                                </p>
+                            @endif
+
                         </div>
                     </div>
                 @endforeach
