@@ -47,6 +47,7 @@
                         @csrf
                         <input type="text" name="ows_id" hidden value="{{ $student->student_osasid }} ">
                         <input type="text" name="event_id" hidden value="{{ $event_id }}">
+                        <input type="text" name="in_out" hidden value="{{ $in_out }}">
                         <button type="submit" class="w-full h-full">
                             CONFIRM
                         </button>

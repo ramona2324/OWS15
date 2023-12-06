@@ -12,6 +12,8 @@ use App\Models\AttendanceRecords;
 use App\Models\Student;
 use App\Models\StudentEvent;
 use App\Models\Scholarship;
+use Carbon\Carbon;
+use Illuminate\Console\Scheduling\Event;
 use Intervention\Image\Facades\Image; // see notes below
 use Illuminate\Support\Facades\Log;
 use Illuminate\Session\TokenMismatchException;
@@ -96,18 +98,38 @@ class AdminController extends Controller
     }
     public function showEventScanner($event_id)
     {
+        $current_time = Carbon::now();
+        $timeInOrOut = '';
+
         $event = StudentEvent::where('event_id', $event_id)->first();
         if ($event) {
-            return view('admin.student_event.qr-scanner', ['event' => $event]);
+
+            $InTime = Carbon::parse($event->event_date . ' ' . $event->event_time_in);
+            $InCutOff = Carbon::parse($event->event_time_in)->addHours(1);
+
+            $OutTime =  Carbon::parse($event->event_date . ' ' . $event->event_time_out);
+            $OutCutOff = Carbon::parse($event->event_time_out)->addHours(1);
+
+            if ($current_time >= $InTime && $current_time <= $InCutOff) {
+                $timeInOrOut = 'in';
+            } else if ($current_time >= $OutTime && $current_time <= $OutCutOff) {
+                // dd([$current_time, $OutTime, $OutCutOff]);
+                $timeInOrOut = 'out';
+            } else {
+                return redirect(route('admin_stud_events'))
+                    ->with('custom-error', 'Attendance for this event is closed');
+            }
+            return view('admin.student_event.qr-scanner', ['event' => $event], ['in_out' => $timeInOrOut]);
         } else {
             return redirect(route('admin_stud_events'))
                 ->with('custom-error', 'Select event to use scanner');
         }
     }
-    public function showEventAttendace($event_id)
+    public function showEventDetails($event_id)
     {
         $records = AttendanceRecords::where('event_id', $event_id)->get();
-        return view('admin.student_event.event_attdc', ['records' => $records]);
+        $event = StudentEvent::where('event_id', $event_id)->first();
+        return view('admin.student_event.event_details', ['records' => $records], ['event' => $event]);
     }
 
     //---------------events attendance views---------------
@@ -331,7 +353,27 @@ class AdminController extends Controller
             return redirect()->back()->with('custom-error', 'Student not found');
         }
         $event_id = $request['event_id'];
-        return view('admin.student_event.qr-result', compact('student', 'event_id'));
+        $in_out = $request['in_out'];
+
+        // get event for scanner view
+        $event = StudentEvent::where('event_id', $event_id)->first();
+
+        // checks if there is a record already present
+        $att_record = AttendanceRecords::where([
+            'student_osasid' => $student->student_osasid,
+            'event_id' => $event_id,
+        ])->first();
+
+        if ($att_record) {
+            if ($in_out === 'in') {
+                return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
+                    ->with('custom-error', 'Duplicate time-in attendance!');
+            } else if ($in_out === 'out') {
+                return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
+                    ->with('custom-error', 'Duplicate attendance record!');
+            }
+        }
+        return view('admin.student_event.qr-result', compact('student', 'event_id', 'in_out'));
     }
 
     // storing new event
@@ -360,16 +402,38 @@ class AdminController extends Controller
     {
         $ows_id = request('ows_id');
         $event_id = request('event_id');
+        $in_out = request('in_out');
+        $currentTime = Carbon::now();
 
         $data = [
             'student_osasid' => $ows_id,
             'event_id' => $event_id,
         ];
 
+        // if time in
+        if ($in_out === 'in') {
+            $data['time_in'] = $currentTime;
+            $data['time_out'] = NULL;
+        }
+        // if time out
+        else if ($in_out === 'out') {
+            $att_record = AttendanceRecords::where([
+                'student_osasid' => $ows_id,
+                'event_id' => $event_id,
+            ])->first();
+            // if existing att record
+            if ($att_record) {
+                $att_record->time_out = $currentTime; // change status to 'Attended'
+                $att_record->save();
+            } else {
+                $data['time_in'] = NULL;
+                $data['time_out'] = $currentTime;
+            }
+        }
+
         AttendanceRecords::create($data);
 
         $event = StudentEvent::where('event_id', $event_id)->first();
-
         return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
             ->with('message', 'Attendance confirmed!');
     }
