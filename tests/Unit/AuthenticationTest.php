@@ -37,7 +37,9 @@ class AuthenticationTest extends TestCase
 
         $response->assertStatus(200); // Adjust the expected status code as needed
 
-        $this->assertAuthenticatedAs($admin, 'admin');
+        $response = $this->assertAuthenticatedAs($admin, 'admin');
     }
+
+    
 
 }
