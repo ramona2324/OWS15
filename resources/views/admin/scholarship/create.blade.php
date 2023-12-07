@@ -3,7 +3,7 @@
 @include('partials.__admin_sidebar')
 
 {{-- right side of sidebar --}}
-<div class=" md:ml-64 pb-4">
+<div class="md:ml-60 pb-4">
 
     {{-- reusable page header --}}
     @include('partials.__admin_pageheader')
@@ -12,15 +12,15 @@
     <div class="p-4 mx-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
 
         {{-- navigation container --}}
-        <div class="justify-between flex items-center  mb-4 rounded  ">
+        <div class="justify-between bg--400 flex items-center mb-4 rounded ">
             {{-- breadcrumb nav container --}}
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items space-x-1">
                     <li class="inline-flex items-center">
                         <a href="{{ route('admin_dashboard') }}"
                             class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-blue-600 ">
-                            <span class="px-1 material-symbols-rounded" style="font-size:20px">how_to_reg</span>
-                            Student Events
+                            <span class="px-1 material-symbols-rounded" style="font-size:20px">school</span>
+                            Scholarship
                         </a>
                     </li>
                     <li aria-current="page">
@@ -35,13 +35,12 @@
                             </p>
                         </div>
                     </li>
-
                 </ol>
             </nav>
             <div class="flex">
                 <!-- Previous Button -->
-                <a href=" {{ route('admin_stud_events') }}"
-                    class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white  rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
+                <a href=" {{ route('admin_scholarship') }}"
+                    class="flex items-center justify-center px-3 h-8 md:mr-3 text-sm font-medium text-gray-500 bg-white  rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
                     <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -53,7 +52,7 @@
         </div>
 
         {{-- main content --}}
-        <div class="flex flex-row mt-2 mb-4 gap-4">
+        <div class="flex bg-red-600 flex-row mt-2 mb-4 gap-4 w-full relative">
 
             {{-- left --}}
             <div class="w-1/3 hidden min-h-full md:flex items-center justify-center rounded-lg bg-gray-50 ">
@@ -63,10 +62,11 @@
             {{-- right - create new admin form --}}
             <div
                 class="md:w-2/3 w-full px-6 py-6 lg:px-8 relative bg-white rounded-lg overflow-y-auto border border-yellow-500 ">
-                <form action=" {{ route('admin_store_event') }} " method="POST" class=" flex flex-col m-0" enctype="multipart/form-data">
+                <form action=" {{ route('admin_store_event') }} " method="POST" class=" flex flex-col m-0"
+                    enctype="multipart/form-data">
                     @csrf
                     <h2 class="text-center text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
-                        Create New Event
+                        Add New Scholarship
                     </h2>
                     <div class="flex mt-4 gap-4">
                         <span class=" text-red-500 text-xs font-small py-0.5 rounded-full ">
@@ -146,12 +146,9 @@
                     </div>
                 </form>
             </div>
-
         </div>
 
-
     </div>
-
 </div>
 
 
