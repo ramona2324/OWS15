@@ -29,7 +29,6 @@
     </div>
     <video class="min-h-screen min-w-screen" id="preview"></video>
     <div class="border h-14 w-8/12 z-50 absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded-lg">
-
     </div>
 </div>
 
@@ -56,6 +55,8 @@
                 scanner.start(cameras[1]);
             } else if (cameras.length > 0) {
                 scanner.start(cameras[0]);
+                const video = document.getElementById('preview')
+                video.style.transform = 'scaleX(-1)';
             } else {
                 alert('No cameras found');
             }
