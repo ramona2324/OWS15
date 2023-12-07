@@ -143,6 +143,9 @@ class AdminController extends Controller
     {
         return view('admin.scholarship.index');
     }
+    public function showCreateScholarship() {
+        return view('admin.scholarship.create');
+    }
 
     //-------------------------functions for functionality-------------------------
 

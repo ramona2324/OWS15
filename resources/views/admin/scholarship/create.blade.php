@@ -3,7 +3,7 @@
 @include('partials.__admin_sidebar')
 
 {{-- right side of sidebar --}}
-<div class=" md:ml-60 pb-4">
+<div class=" md:ml-64 pb-4">
 
     {{-- reusable page header --}}
     @include('partials.__admin_pageheader')
@@ -35,6 +35,7 @@
                             </p>
                         </div>
                     </li>
+
                 </ol>
             </nav>
             <div class="flex">

@@ -10,7 +10,7 @@
     @include('partials.__admin_pageheader')
 
     {{-- main content --}}
-    <div class="p-4 m-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 90vh">
+    <div class="md:p-4 p-2 md:mx-4 mx-2 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 90vh">
         {{-- navigation container --}}
         <div class="justify-between flex items-center  mb-4 rounded  ">
             {{-- breadcrumb nav container --}}
@@ -72,7 +72,7 @@
                     {{-- second column --}}
                     <div class="w-full bg--100 md:items-center flex flex-col mr-2 truncate">
                         <div class=" h-full items-center flex">
-                            <a href=" {{ route('admin_event', ['event_id' => $event->event_id]) }}">
+                            <a href=" {{ route('admin_event_details', ['event_id' => $event->event_id]) }}">
                                 <h4 class="text-md text-gray-700 truncate">{{ $event->event_name }}</h4>
                             </a>
                         </div>
