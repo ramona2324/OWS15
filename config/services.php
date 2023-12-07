@@ -35,7 +35,8 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_STUDENTCLIENT_ID'), // referenceed from env file
         'client_secret' => env('GOOGLE_STUDENTCLIENT_SECRET'),
-        'redirect' => 'http://127.0.0.1:8000/student/auth/google/callback'
+        'redirect' => 'http://127.0.0.1:8000/student/auth/google/callback',
+        // 'redirect' => 'http://osas-system.tech/student/auth/google/callback'
     ],
 
 ];
