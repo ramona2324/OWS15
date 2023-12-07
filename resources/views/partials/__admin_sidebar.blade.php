@@ -1,6 +1,6 @@
 <button id="sidebtn" data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
     type="button"
-    class="z-49 left-3 top-3 fixed bg-white inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
+    class="z-50 left-3 top-3 fixed bg-white inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
     <span class="sr-only">Open sidebar</span>
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path clip-rule="evenodd" fill-rule="evenodd"
@@ -10,7 +10,7 @@
 </button>
 
 <aside id="logo-sidebar"
-    class=" fixed top-0 left-0 mt-15 z-30 w-60 transition-transform -translate-x-full md:translate-x-0"
+    class=" fixed top-0 left-0 mt-15 z-48 w-60 transition-transform -translate-x-full md:translate-x-0"
     aria-label="Sidebar" style="height: 96vh">
     <div class="h-full rounded-lg m-3 mr-0 shadow-lg bg-red-800 px-3 py-4 overflow-y-auto  ">
         <div class="flex flex-col justify-center items-center mt-9 pb-6">
