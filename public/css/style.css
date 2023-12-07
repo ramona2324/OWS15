@@ -31,3 +31,8 @@
 .error-border {
     border: 1px solid red !important;
 }
+
+/* for the camera */
+#preview {
+    transform: scaleX(-1);
+}
