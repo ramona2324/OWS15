@@ -1,6 +1,6 @@
 {{-- right side header --}}
 <div class="bg--300 flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 justify-between ">
-    <div class="bg-white rounded-full p-2 text-sm font-medium px-4 text-red-800">
+    <div class="ms-10 md:ms-0 bg-white rounded-full p-2 text-sm font-medium px-4 text-red-800">
         Admin Space
     </div>
 
