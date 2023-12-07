@@ -1,12 +1,12 @@
 {{-- right side header --}}
-<div class="bg--300 flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 justify-between ">
+<div class="z-0 bg--300 flex flex-row items-center px-4 py-2 mx-4 my-2 gap-2 justify-between ">
     <div class="ms-10 md:ms-0 bg-white rounded-full p-2 text-sm font-medium px-4 text-red-800">
         Admin Space
     </div>
 
     {{-- profile button --}}
     <button type="button"
-        class="z-40  flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 "
+        class="  flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 "
         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span class="sr-only">Open user menu</span>
         @php
@@ -24,7 +24,7 @@
     </button>
 
     <!-- menu after profile button click -->
-    <div class="absolute right-8 top-12 z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow "
+    <div class="absolute right-8 top-12  hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow "
         id="user-dropdown">
         <div class="px-4 py-3">
             @if (Auth::check())
