@@ -9,7 +9,7 @@
     @include('partials.__admin_pageheader')
 
     {{-- main white containter --}}
-    <div class="md:p-4 p-2 md:mx-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
+    <div class="md:p-4 p-2 md:mx-4 mx-2 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
 
         {{-- navigation container --}}
         <div class=" justify-between flex items-center mb-4 rounded  ">
