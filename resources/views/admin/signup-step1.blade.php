@@ -38,7 +38,7 @@
         <form action="{{ route('admin_signup1store') }}" method="POST" class=" flex flex-col m-0">
             @csrf
             <div class="flex justify-between items-center font-bold">
-                <h1 class="text-2xl  text-gray-800">Create Super Admin Account</h1>
+                <h1 class="text-2xl  text-gray-800">Create Super Admin account</h1>
                 <h3 class="text-gray-700">Step 1</h3>
             </div>
             <div class="flex mt-4 gap-4">
@@ -141,7 +141,7 @@
             <div class="mt-6">
                 <input type="submit"
                     class="block w-full h-10 hover:bg-red-900 text-white font-medium py-2 rounded-full text-center transition duration-300 ourmaroonbg"
-                    value="Create Super Admin Account">
+                    value="Create Super Admin account">
             </div>
         </form>
 

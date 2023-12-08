@@ -40,7 +40,7 @@
             @csrf
             <div class="flex justify-between items-center
             font-bold">
-                <h1 class="text-2xl  text-gray-800">Create Super Admin Account</h1>
+                <h1 class="text-2xl  text-gray-800">Create Super Admin account</h1>
                 <h3 class="text-gray-700">Step 2</h3>
             </div>
             <div class="flex mt-4 gap-4">
