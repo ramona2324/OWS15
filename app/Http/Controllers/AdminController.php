@@ -439,7 +439,28 @@ class AdminController extends Controller
         $event = StudentEvent::where('event_id', $event_id)->first();
         return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
             ->with('message', 'Attendance confirmed!');
+    } // end of method
+
+    public function storeScholarship(Request $request)
+    {
+         // Validate the form data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'provider' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'requirements' => 'nullable|string',
+            'qualifications' => 'nullable|string',
+            'benefits' => 'nullable|string',
+        ]);
+
+        // Save the scholarship to the database
+        Scholarship::create($validated);
+
+        // You can also redirect the user to a success page or perform other actions
+        return redirect()->route('admin_scholarship')->with('message', 'Scholarship added successfully');
+    
     }
+
 }
 
 
