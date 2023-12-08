@@ -58,6 +58,9 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_store_event');
         Route::post('/qr-scanner/result/confirm', [AdminController::class, 'storeAttendance'])
             ->name('admin_confirm_attdc');
+        Route::post('/scholarshsip/create/store', [AdminController::class, 'storeScholarship'])
+            ->name('admin_store_scholarship');
+
     }); //end of auth:admin middleware
 
 
