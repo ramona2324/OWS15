@@ -1,14 +1,9 @@
 /.phpunit.cache
 /node_modules
-/config/services.php
 /public/build
 /public/hot
 /public/storage
-/public/images
 /storage/*.key
-/storage/app/public/admin
-/storage/app/public/student
-/storage/app/public/student/qrcode
 /vendor
 .env
 .env.backup
