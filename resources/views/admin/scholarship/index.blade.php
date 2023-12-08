@@ -39,19 +39,19 @@
         <div class="mt-2 bg--300 gap-4 flex justify-end">
             {{-- for lg --}}
             <span class="flex gap-1">
-                <span class="bg-gray-100 justify-center text-md p-1 flex items-center rounded-full hover:bg-yellow-200 hover:shadow-md transition-all">
+                <span class="bg-gray-100 justify-center text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
                     <div class="bg-white relative flex rounded-full">
                         <input type="text" class="lg:flex hidden rounded-full px-2 min-h-full focus:outline-none">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
+                        <span class="material-symbols-rounded p-1 ouryellowbg text-white rounded-full"
                             style="font-size: 16px">search</span>
                     </div>
                     <a href="" class="flex items-center">
                         <button class="px-2 lg:flex hidden rounded-full">Search</button>
                     </a>
                 </span>
-                <span class="bg-gray-100 justify-center text-md p-1 flex items-center rounded-full hover:bg-yellow-200 hover:shadow-md transition-all">
-                    <a href="{{ route('admin_create_scholarship') }}" class="flex items-center">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
+                <span class="bg-gray-100 justify-center text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
+                    <a href="{{ route('admin_create_scholarship') }}" class="flex items-center ">
+                        <span class="material-symbols-rounded p-1 ouryellowbg text-white rounded-full"
                             style="font-size: 16px">add</span>
                         <span class="lg:flex hidden px-2 rounded-full">Add Scholarship</span>
                     </a>
