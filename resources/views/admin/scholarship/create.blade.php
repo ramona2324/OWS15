@@ -66,33 +66,35 @@
                     * Required
                 </span>
             </div>
-            <form class="w-full bg--600 grid md:grid-cols-2 gap-4 ">
+            <form action=" {{ route('admin_store_scholarship') }} " method="POST"
+                class="w-full bg--600 grid md:grid-cols-2 gap-4 ">
+                @csrf
                 {{-- first column --}}
                 <div>
                     <div class="mb-5 bg--200">
-                        <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Scholarship
+                        <label for="name" class="block mb-1 text-sm font-medium text-gray-900 ">Scholarship
                             name <span class="text-red-500">*</span>
                         </label>
-                        <input type="text" id="base-input"
+                        <input type="text" id="name" name="name"
                             class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     </div>
                     <div class="mb-5 bg--200">
-                        <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Scholarship
+                        <label for="provider" class="block mb-1 text-sm font-medium text-gray-900 ">Scholarship
                             provider <span class="text-red-500">*</span></label>
-                        <input type="text" id="base-input"
+                        <input type="text" id="provider" name="provider"
                             class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     </div>
                     <div class="mb-5 bg--400">
-                        <label for="base-input"
+                        <label for="description"
                             class="block mb-1 text-sm font-medium text-gray-900 ">Descripition</label>
-                        <textarea id="base-input"
+                        <textarea id="description" name="description"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             rows="5"></textarea>
                     </div>
                     <div class="mb-5 bg--400">
-                        <label for="base-input"
+                        <label for="requirements"
                             class="block mb-1 text-sm font-medium text-gray-900 ">Requirements</label>
-                        <textarea id="base-input"
+                        <textarea id="requirements" name="requirements"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             rows="5"></textarea>
                     </div>
@@ -100,15 +102,15 @@
                 {{-- second column --}}
                 <div>
                     <div class="mb-5 bg--400">
-                        <label for="base-input"
+                        <label for="qualifications"
                             class="block mb-1 text-sm font-medium text-gray-900 ">Qualifications</label>
-                        <textarea id="base-input"
+                        <textarea id="qualifications" name="qualifications"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             rows="5"></textarea>
                     </div>
                     <div class="mb-5 bg--400">
-                        <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Benefits</label>
-                        <textarea id="base-input"
+                        <label for="benefits" class="block mb-1 text-sm font-medium text-gray-900 ">Benefits</label>
+                        <textarea id="benefits" name="benefits"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             rows="5"></textarea>
                     </div>
@@ -117,7 +119,6 @@
                         Add Scholarship
                     </button>
                 </div>
-
             </form>
 
         </div>
