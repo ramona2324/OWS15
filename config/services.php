@@ -36,6 +36,8 @@ return [
         'client_id' => env('GOOGLE_STUDENTCLIENT_ID'), // referenceed from env file
         'client_secret' => env('GOOGLE_STUDENTCLIENT_SECRET'),
         'redirect' => env('GOOGLE_STUDENTCLIENT_REDIRECT')
+
+        
     ],
 
 ];
