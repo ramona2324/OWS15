@@ -18,7 +18,7 @@
                 <ol class=" items-center flex space-x-1">
                     <li class="inline-flex items-center">
                         <a href="{{ route('admin_stud_events') }}"
-                            class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-blue-600 ">
+                            class="inline-flex items-center text-sm font-medium text-gray-500 md:text-gray-400 hover:text-blue-600 ">
                             <span class="px-1 material-symbols-rounded" style="font-size:20px">how_to_reg</span>
                             Student Events
                         </a>
@@ -31,10 +31,7 @@
                                     stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <p class=" text-sm font-medium text-gray-700 hover:text-blue-600 ">
-
                                 {{ $event->event_name }}
-
-
                             </p>
                         </div>
                     </li>
