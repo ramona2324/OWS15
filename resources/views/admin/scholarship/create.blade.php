@@ -9,7 +9,7 @@
     @include('partials.__admin_pageheader')
 
     {{-- main white containter --}}
-    <div class="p-4 mx-4 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
+    <div class="md:p-4 p-2 md:mx-4 mx-2 shadow-lg bg-white border-gray-200 rounded-lg " style="min-height: 85vh">
 
         {{-- navigation container --}}
         <div class="justify-between bg--400 flex items-center mb-4 rounded ">
@@ -51,101 +51,55 @@
             </div>
         </div>
 
+        {{-- title + button container --}}
+        <div class="flex flex-col items-center justify-center py-2 rounded text-slate-800 ">
+            <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
+                Scholarship Programs
+            </h2>
+        </div>
+
         {{-- main content --}}
-        <div class="flex bg-red-600 flex-row mt-2 mb-4 gap-4 w-full relative">
+        <div class="flex bg--600 flex-row mt-2 mb-4 gap-4 w-full relative">
 
-            {{-- left --}}
-            <div class="w-1/3 hidden min-h-full md:flex items-center justify-center rounded-lg bg-gray-50 ">
-                <img src="{{ asset('images/amin/cre.png') }}" class="h-max" />
-            </div>
+            <form class="w-full bg--600 ">
+                <div class="mb-5 bg--200">
+                    <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Scholarship
+                        name</label>
+                    <input type="text" id="base-input"
+                        class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                </div>
+                <div class="mb-5 bg--200">
+                    <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Scholarship
+                        provider</label>
+                    <input type="text" id="base-input"
+                        class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                </div>
+                <div class="mb-5 bg--400">
+                    <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Descripition</label>
+                    <textarea id="base-input"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        rows="5"></textarea>
+                </div>
+                <div class="mb-5 bg--400">
+                    <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Requirements</label>
+                    <textarea id="base-input"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        rows="5"></textarea>
+                </div>
+                <div class="mb-5 bg--400">
+                    <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Qualifications</label>
+                    <textarea id="base-input"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        rows="5"></textarea>
+                </div>
+                <div class="mb-5 bg--400">
+                    <label for="base-input" class="block mb-1 text-sm font-medium text-gray-900 ">Benefits</label>
+                    <textarea id="base-input"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        rows="5"></textarea>
+                </div>
+            </form>
 
-            {{-- right - create new admin form --}}
-            <div
-                class="md:w-2/3 w-full px-6 py-6 lg:px-8 relative bg-white rounded-lg overflow-y-auto border border-yellow-500 ">
-                <form action=" {{ route('admin_store_event') }} " method="POST" class=" flex flex-col m-0"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <h2 class="text-center text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
-                        Add New Scholarship
-                    </h2>
-                    <div class="flex mt-4 gap-4">
-                        <span class=" text-red-500 text-xs font-small py-0.5 rounded-full ">
-                            * Required
-                        </span>
-                    </div>
-
-                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {{-- Input Name --}}
-                        <div>
-                            <label for="event_name" class="block text-gray-600 font-bold text-sm">
-                                Event Name
-                                <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text" name="event_name" id="event_name" required
-                                class="mt-1 h-10 px-4 py-2 w-full border-b border-gray-300 focus:outline-none focus:border-yellow-400"
-                                value="{{ old('event_name') }}">
-                            @include('partials.__input_error', ['fieldName' => 'event_name'])
-                        </div>
-
-                        {{-- Input Event Date --}}
-                        <div>
-                            <label for="event_date" class="block text-gray-600 font-bold text-sm">
-                                Event Date
-                                <span class="text-red-500">*</span>
-                            </label>
-                            <input type="date" name="event_date" id="event_date" required
-                                class="mt-1 h-10 px-4 py-2 w-full border-b border-gray-300 focus:outline-none focus:border-yellow-400"
-                                value="{{ old('event_date') }}">
-                            @include('partials.__input_error', ['fieldName' => 'event_date'])
-                        </div>
-
-                        {{-- Input Event Time In --}}
-                        <div>
-                            <label for="event_time_in" class="block text-gray-600 font-bold text-sm">
-                                Event Time In
-                                <span class="text-red-500">*</span>
-                            </label>
-                            <input type="time" name="event_time_in" id="event_time_in" required
-                                class="mt-1 h-10 px-4 py-2 w-full border-b border-gray-300 focus:outline-none focus:border-yellow-400"
-                                value="{{ old('event_time_in') }}">
-                            @include('partials.__input_error', ['fieldName' => 'event_time_in'])
-                        </div>
-
-                        {{-- Input Event Time Out --}}
-                        <div>
-                            <label for="event_time_out" class="block text-gray-600 font-bold text-sm">
-                                Event Time Out
-                                <span class="text-red-500">*</span>
-                            </label>
-                            <input type="time" name="event_time_out" id="event_time_out" required
-                                class="mt-1 h-10 px-4 py-2 w-full border-b border-gray-300 focus:outline-none focus:border-yellow-400"
-                                value="{{ old('event_time_out') }}">
-                            @include('partials.__input_error', ['fieldName' => 'event_time_out'])
-                        </div>
-
-                    </div>
-
-                    {{-- Input Description --}}
-                    <div class="mt-4">
-                        <label for="event_desc" class="block text-gray-600 font-bold text-sm">
-                            Event Description
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <textarea name="event_desc" id="event_desc" required rows="2"
-                            class="mt-1 px-4 py-2 w-full border-b border-gray-300 resize-col focus:outline-none focus:border-yellow-400">{{ old('event_desc') }}</textarea>
-                        @include('partials.__input_error', ['fieldName' => 'event_desc'])
-                    </div>
-
-
-                    {{-- submit button --}}
-                    <div class="mt-6">
-                        <button type="submit"
-                            class="w-full focus:outline-none text-white  bg-red-800 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-md px-5 py-2.5 ">
-                            Create Event
-                        </button>
-                    </div>
-                </form>
-            </div>
         </div>
 
     </div>
