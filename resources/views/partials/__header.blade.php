@@ -16,7 +16,8 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     {{-- alpine js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    {{-- flowbite --}}
+    <script type="text/javascript" src="/js/flowbite.min.js"></script>
 </head>
 
 <body class="min-h-screen min-w-screen p-0 m-0 bg-gray-50">
