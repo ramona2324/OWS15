@@ -38,23 +38,23 @@
         {{-- buttons --}}
         <div class="mt-2 mb-4 bg--300 gap-4 flex justify-end">
             {{-- for lg --}}
-            <span class="flex gap-1">
+            <span class="flex gap-1 bg--400">
                 <span
-                    class="bg-gray-100 justify-center text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
-                    <div class="bg-white relative flex rounded-full">
-                        <input type="text" class="lg:flex hidden rounded-full px-2 min-h-full focus:outline-none">
+                    class="bg-gray-100 justify-center p-1 md:gap-1 flex items-center rounded-full hover:shadow-md transition-all">
+                    <div class="bg-white relative p-0 flex items-center rounded-full">
+                        <input type="text"
+                            class="lg:flex m-0 text-sm hidden rounded-full  max-h-full p-1.5 focus:outline-none border-none focus:ring-none">
+                    </div>
+                    <a href="" class="flex items-center ">
                         <span class="material-symbols-rounded p-1 ouryellowbg text-white rounded-full"
                             style="font-size: 20px">search</span>
-                    </div>
-                    <a href="" class="flex items-center">
-                        <button
-                            class="px-2 lg:flex hidden font-medium text-gray-600 text-sm rounded-full">Search</button>
+                        <button class="px-2 lg:flex hidden font-medium text-gray-600 text-sm rounded-full">Search</button>
                     </a>
                 </span>
                 <a href="{{ route('admin_create_scholarship') }}"
-                    class="bg-gray-100 justify-center text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
+                    class="bg-gray-100 justify-center max-h-fit text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
                     <button
-                        class="flex items-center focus:ring-4 focus:outline-none rounded-full focus:ring-yellow-200">
+                        class="flex items-center  focus:outline-none rounded-full ">
                         <span class="material-symbols-rounded p-1 ouryellowbg text-white  rounded-full"
                             style="font-size: 20px">add</span>
                         <span class="lg:flex hidden font-medium text-gray-600 text-sm px-2 rounded-full">Add
