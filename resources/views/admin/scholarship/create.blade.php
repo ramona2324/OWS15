@@ -76,26 +76,26 @@
                             name <span class="text-red-500">*</span>
                         </label>
                         <input type="text" id="name" name="name"
-                            class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-yellow-500 focus:ring focus:outline-gray-300 block w-full p-2.5 ">
                     </div>
                     <div class="mb-5 bg--200">
                         <label for="provider" class="block mb-1 text-sm font-medium text-gray-900 ">Scholarship
                             provider <span class="text-red-500">*</span></label>
                         <input type="text" id="provider" name="provider"
-                            class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-full focus:ring-yellow-500 focus:ring focus:outline-gray-300 block w-full p-2.5 ">
                     </div>
                     <div class="mb-5 bg--400">
                         <label for="description"
                             class="block mb-1 text-sm font-medium text-gray-900 ">Descripition</label>
                         <textarea id="description" name="description"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:ring focus:outline-gray-300 block w-full p-2.5"
                             rows="5"></textarea>
                     </div>
                     <div class="mb-5 bg--400">
                         <label for="requirements"
                             class="block mb-1 text-sm font-medium text-gray-900 ">Requirements</label>
                         <textarea id="requirements" name="requirements"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:ring focus:outline-gray-300 block w-full p-2.5" 
                             rows="5"></textarea>
                     </div>
                 </div>
@@ -105,13 +105,13 @@
                         <label for="qualifications"
                             class="block mb-1 text-sm font-medium text-gray-900 ">Qualifications</label>
                         <textarea id="qualifications" name="qualifications"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:ring focus:outline-gray-300 block w-full p-2.5"
                             rows="5"></textarea>
                     </div>
                     <div class="mb-5 bg--400">
                         <label for="benefits" class="block mb-1 text-sm font-medium text-gray-900 ">Benefits</label>
                         <textarea id="benefits" name="benefits"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:ring focus:outline-gray-300 block w-full p-2.5"
                             rows="5"></textarea>
                     </div>
                     <button type="submit"
