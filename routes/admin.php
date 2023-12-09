@@ -45,6 +45,8 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_scholarship');
         Route::get('/scholarship/create', [AdminController::class, 'showCreateScholarship'])
             ->name('admin_create_scholarship');
+        Route::get('/scholarship/details/{id}', [AdminController::class, 'showScholarshipDetails'])
+            ->name('admin_scholarship_details');
 
         //-------------------------for functionality routing-------------------------
 

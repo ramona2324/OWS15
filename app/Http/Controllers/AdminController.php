@@ -141,10 +141,15 @@ class AdminController extends Controller
     //---------------scholarship views---------------
     public function showScholarshipIndex()
     {
-        return view('admin.scholarship.index');
+        $scholarships = Scholarship::all();
+        return view('admin.scholarship.index',compact('scholarships'));
     }
     public function showCreateScholarship() {
         return view('admin.scholarship.create');
+    }
+    public function showScholarshipDetails() {
+        
+        return view('admin.scholarship.details');
     }
 
     //-------------------------functions for functionality-------------------------
