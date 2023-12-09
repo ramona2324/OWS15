@@ -47,7 +47,8 @@
                             style="font-size: 20px">search</span>
                     </div>
                     <a href="" class="flex items-center">
-                        <button class="px-2 lg:flex hidden font-medium text-gray-600 text-sm rounded-full">Search</button>
+                        <button
+                            class="px-2 lg:flex hidden font-medium text-gray-600 text-sm rounded-full">Search</button>
                     </a>
                 </span>
                 <a href="{{ route('admin_create_scholarship') }}"
@@ -65,96 +66,32 @@
 
         {{-- main content --}}
         <div class="bg--300 mt-2 mb-4 grid lg:grid-cols-3 md:grid-cols-2 gap-2 ">
-            <div class="bg--300 border rounded-lg p-2 hover:shadow-md transition-all">
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-rounded" style="font-size: 20px">school</span>
-                    <h4 class="truncate">CHED Scholarship Program</h4>
+            @foreach ($scholarships as $scholarship)
+                <div class="bg--300 border rounded-lg p-2 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-rounded" style="font-size: 20px">school</span>
+                        <h4 class="truncate">{{ $scholarship->name }}</h4>
+                    </div>
+                    <div class="flex mt-2 justify-end gap-1">
+                        <a href="{{ route('admin_scholarship_details', ['id' => $scholarship->id]) }}"
+                            class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
+                            <button class="justify-center flex items-center">
+                                <span class="material-symbols-rounded p-1 bg-white rounded-full"
+                                    style="font-size: 16px">read_more</span>
+                                <span class="  px-1 rounded-full">Details</span>
+                            </button>
+                        </a>
+                        <a href=""
+                            class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
+                            <button class="justify-center flex items-center">
+                                <span class="material-symbols-rounded p-1 bg-white rounded-full"
+                                    style="font-size: 16px">group</span>
+                                <span class="  px-1 rounded-full">Grantees</span>
+                            </button>
+                        </a>
+                    </div>
                 </div>
-                <div class="flex mt-2 justify-end gap-1">
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">read_more</span>
-                        <span class="  px-1 rounded-full">Details</span>
-                    </span>
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">group</span>
-                        <span class="  px-1 rounded-full">Grantees</span>
-                    </span>
-                </div>
-            </div>
-            <div class="bg--300 border rounded-lg p-2 hover:shadow-md transition-all">
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-rounded" style="font-size: 20px">school</span>
-                    <h4 class="truncate">CHED Scholarship Program</h4>
-                </div>
-                <div class="flex mt-2 justify-end gap-1">
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">read_more</span>
-                        <span class="  px-1 rounded-full">Details</span>
-                    </span>
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">group</span>
-                        <span class="  px-1 rounded-full">Grantees</span>
-                    </span>
-                </div>
-            </div>
-            <div class="bg--300 border rounded-lg p-2 hover:shadow-md transition-all">
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-rounded" style="font-size: 20px">school</span>
-                    <h4 class="truncate">CHED Scholarship Program</h4>
-                </div>
-                <div class="flex mt-2 justify-end gap-1">
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">read_more</span>
-                        <span class="  px-1 rounded-full">Details</span>
-                    </span>
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">group</span>
-                        <span class="  px-1 rounded-full">Grantees</span>
-                    </span>
-                </div>
-            </div>
-            <div class="bg--300 border rounded-lg p-2 hover:shadow-md transition-all">
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-rounded" style="font-size: 20px">school</span>
-                    <h4 class="truncate">CHED Scholarship Program</h4>
-                </div>
-                <div class="flex mt-2 justify-end gap-1">
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">read_more</span>
-                        <span class="  px-1 rounded-full">Details</span>
-                    </span>
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">group</span>
-                        <span class="  px-1 rounded-full">Grantees</span>
-                    </span>
-                </div>
-            </div>
-            <div class="bg--300 border rounded-lg p-2 hover:shadow-md transition-all">
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-rounded" style="font-size: 20px">school</span>
-                    <h4 class="truncate">CHED Scholarship Program</h4>
-                </div>
-                <div class="flex mt-2 justify-end gap-1">
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">read_more</span>
-                        <span class="  px-1 rounded-full">Details</span>
-                    </span>
-                    <span class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
-                        <span class="material-symbols-rounded p-1 bg-white rounded-full"
-                            style="font-size: 16px">group</span>
-                        <span class="  px-1 rounded-full">Grantees</span>
-                    </span>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
