@@ -63,11 +63,11 @@
         <div class="block bg--600 flex-row mt-2 mb-4 gap-4 w-full relative">
 
             <div id="accordion-color" data-accordion="collapse"
-                data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white">
+                data-active-classes="bg-yellow-100 dark:bg-gray-800 text-yellow-600 dark:text-white">
                 {{-- description --}}
                 <h2 id="description-heading">
                     <button type="button"
-                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3"
+                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-yellow-200 gap-3"
                         data-accordion-target="#description-body" aria-expanded="true" aria-controls="description-body">
                         <span>Description</span>
                         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
@@ -78,54 +78,18 @@
                     </button>
                 </h2>
                 <div id="description-body" class="hidden" aria-labelledby="description-heading">
-                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+                    <div class="p-5 border border-b-0 border-gray-200">
                         <p class="mb-2 text-gray-500 dark:text-gray-400">
                             {{ $scholarship->description }}
                         </p>
                     </div>
                 </div>
-                {{-- 2 --}}
-                <h2 id="requirements-heading">
-                    <button type="button"
-                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3"
-                        data-accordion-target="#requirements-body" aria-expanded="false"
-                        aria-controls="requirements-body">
-                        <span>Requirements</span>
-                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5 5 1 1 5" />
-                        </svg>
-                    </button>
-                </h2>
-                <div id="requirements-body" class="hidden" aria-labelledby="requirements-heading">
-                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                        <p class="text-gray-500 dark:text-gray-400">
-                            {{ $scholarship->requirements }}
-                        </p>
-                    </div>
-                </div>
-                {{-- 3 --}}
-                <h2 id="qualifications-heading">
-                    <button type="button"
-                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3"
-                        data-accordion-target="#qualifications-body" aria-expanded="false"
-                        aria-controls="qualifications-body">
-                        <span>Qualifications</span>
-                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5 5 1 1 5" />
-                        </svg>
-                    </button>
-                </h2>
-                <div id="qualifications-body" class="hidden" aria-labelledby="qualifications-heading">
-                    <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">
-                            {{ $scholarship->qualifications }}
-                        </p>
-                    </div>
-                </div>
+                {{-- requirements --}}
+
+                {{-- qualifications --}}
+
+                {{-- benefits --}}
+
             </div>
 
         </div>
