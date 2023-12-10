@@ -20,7 +20,7 @@
                         <a href="{{ route('admin_scholarship') }}"
                             class="inline-flex items-center text-sm font-medium md:text-gray-500 text-gray-500 hover:text-blue-600 ">
                             <span class="px-1 material-symbols-rounded" style="font-size:20px">school</span>
-                            Scholarship
+                            <p class="max-w-28 truncate inline">Scholarship</p>
                         </a>
                     </li>
                     <li aria-current="page" class="hidden md:inline-flex items-center ">
@@ -30,7 +30,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
-                            <p class=" text-sm font-medium text-gray-700 hover:text-blue-600 ">
+                            <p class=" text-sm font-medium w-28 truncate text-gray-700 hover:text-blue-600 ">
                                 {{ $scholarship->name }}
                             </p>
                         </div>
@@ -68,8 +68,7 @@
                 <h2 id="description-heading">
                     <button type="button"
                         class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3"
-                        data-accordion-target="#description-body" aria-expanded="true"
-                        aria-controls="description-body">
+                        data-accordion-target="#description-body" aria-expanded="true" aria-controls="description-body">
                         <span>Description</span>
                         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -86,12 +85,12 @@
                     </div>
                 </div>
                 {{-- 2 --}}
-                <h2 id="accordion-color-heading-2">
+                <h2 id="requirements-heading">
                     <button type="button"
                         class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3"
-                        data-accordion-target="#accordion-color-body-2" aria-expanded="false"
-                        aria-controls="accordion-color-body-2">
-                        <span>Is there a Figma file available?</span>
+                        data-accordion-target="#requirements-body" aria-expanded="false"
+                        aria-controls="requirements-body">
+                        <span>Requirements</span>
                         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -99,22 +98,20 @@
                         </svg>
                     </button>
                 </h2>
-                <div id="accordion-color-body-2" class="hidden" aria-labelledby="accordion-color-heading-2">
+                <div id="requirements-body" class="hidden" aria-labelledby="requirements-heading">
                     <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed
-                            using the Figma software so everything you see in the library has a design equivalent in our
-                            Figma file.</p>
-                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/"
-                                class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based
-                            on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            {{ $scholarship->requirements }}
+                        </p>
                     </div>
                 </div>
-                <h2 id="accordion-color-heading-3">
+                {{-- 3 --}}
+                <h2 id="qualifications-heading">
                     <button type="button"
                         class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3"
-                        data-accordion-target="#accordion-color-body-3" aria-expanded="false"
-                        aria-controls="accordion-color-body-3">
-                        <span>What are the differences between Flowbite and Tailwind UI?</span>
+                        data-accordion-target="#qualifications-body" aria-expanded="false"
+                        aria-controls="qualifications-body">
+                        <span>Qualifications</span>
                         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -122,22 +119,11 @@
                         </svg>
                     </button>
                 </h2>
-                <div id="accordion-color-body-3" class="hidden" aria-labelledby="accordion-color-heading-3">
+                <div id="qualifications-body" class="hidden" aria-labelledby="qualifications-heading">
                     <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core
-                            components from Flowbite are open source under the MIT license, whereas Tailwind UI is a
-                            paid product. Another difference is that Flowbite relies on smaller and standalone
-                            components, whereas Tailwind UI offers sections of pages.</p>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both
-                            Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you
-                            from using the best of two worlds.</p>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
-                        <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
-                            <li><a href="https://flowbite.com/pro/"
-                                    class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
-                            <li><a href="https://tailwindui.com/" rel="nofollow"
-                                    class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
-                        </ul>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            {{ $scholarship->qualifications }}
+                        </p>
                     </div>
                 </div>
             </div>
