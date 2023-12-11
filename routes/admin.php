@@ -70,8 +70,8 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_update_scholarship');
         Route::get('/scholarship/{id}/archive', [AdminController::class, 'archiveScholarship'])
             ->name('admin_archive_scholarship');
-        Route::get('/scholarship/{id}/unarchive', [AdminController::class, 'unarchiveScholarship'])
-            ->name('admin_unarchive_scholarship');
+        Route::get('/scholarship/{id}/archive/restore', [AdminController::class, 'restoreScholarship'])
+            ->name('admin_restore_scholarship');
     }); //end of auth:admin middleware
 
 

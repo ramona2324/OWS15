@@ -513,7 +513,7 @@ class AdminController extends Controller
         return redirect()->route('admin_scholarship')->with('message', 'Scholarship archived successfully');
     }
 
-    public function unarchiveScholarship($id)
+    public function restoreScholarship($id)
     {
         // Retrieve the scholarship by ID
         $scholarship = Scholarship::find($id);
@@ -525,7 +525,7 @@ class AdminController extends Controller
         $scholarship->archived = false; // Assuming you have an 'archived' column in your scholarships table
         $scholarship->save();
 
-        return redirect()->route('admin_scholarship')->with('message', 'Scholarship unarchived successfully');
+        return redirect()->route('admin_scholarship')->with('message', 'Scholarship restored successfully');
     }
 }
 

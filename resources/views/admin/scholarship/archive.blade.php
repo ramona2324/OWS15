@@ -67,12 +67,12 @@
                         <h4 class="truncate font-medium">{{ $scholarship->name }}</h4>
                     </div>
                     <div class="flex mt-2 font-medium justify-end gap-1">
-                        <a href="{{ route('admin_unarchive_scholarship', ['id' => $scholarship->id]) }}"
+                        <a href="{{ route('admin_restore_scholarship', ['id' => $scholarship->id]) }}"
                             class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
                             <button class="justify-center flex items-center">
                                 <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
                                     style="font-size: 16px">undo</span>
-                                <span class="  px-1 rounded-full">Unarchive</span>
+                                <span class="  px-1 rounded-full">Restore</span>
                             </button>
                         </a>
                     </div>
