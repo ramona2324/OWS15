@@ -18,7 +18,6 @@ class Student extends Authenticatable // extending authenticable makes it proces
     protected $fillable = [ // the attributes for creating a model of student
         'student_lname',
         'student_fname',
-        'student_mi',
         'student_picture',
         'course_id',
         'email',
@@ -33,6 +32,7 @@ class Student extends Authenticatable // extending authenticable makes it proces
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'google_id' => 'string',
     ];
 
     public function course() { // define relationships between the student

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('student_section', 10)->nullable(); // Limit to 10 characters
 
             $table->string('password')->nullable(); // You should hash the password before storing it
-            $table->Decimal('google_id', 21, 0)->nullable();
+            $table->string('google_id', 36);
             $table->timestamps();
             
             $table->foreign('course_id')->references('course_id')->on('courses');
