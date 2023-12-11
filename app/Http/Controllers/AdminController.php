@@ -163,6 +163,18 @@ class AdminController extends Controller
         $scholarships = Scholarship::where('archived', true)->get();
         return view('admin.scholarship.archive', compact('scholarships'));
     }
+    public function showScholarshipGrantees($id)
+    {
+        $scholarship = Scholarship::find($id);
+        
+        if (!$scholarship) {
+            return response()->json(['message' => 'Scholarship not found'], 404);
+        }
+
+        $grantees = $scholarship->students;
+
+        return view('admin.scholarship.grantees', compact('grantees','scholarship'));
+    }
 
     //-------------------------functions for functionality-------------------------
 
