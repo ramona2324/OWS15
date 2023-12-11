@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li
-                class="rounded-lg {{ request()->routeIs('admin_scholarship','admin_create_scholarship','admin_scholarship_details') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
+                class="rounded-lg {{ request()->routeIs('admin_scholarship','admin_create_scholarship','admin_scholarship_details','admin_scholarship_editpage','admin_archived_scholarships','admin_scholarship_grantees') ? 'bg-red-900 border-r-4 border-yellow-500' : '' }}">
                 <a href="{{ route('admin_scholarship') }}" class="@include('partials.__admin_sidenav_class_attrib')">
                     <span class="material-symbols-rounded">school</span>
                     <span class="flex-1 ml-3 whitespace-nowrap">Scholarship</span>
