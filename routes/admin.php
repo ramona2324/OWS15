@@ -45,12 +45,14 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_scholarship');
         Route::get('/scholarship/create', [AdminController::class, 'showCreateScholarship'])
             ->name('admin_create_scholarship');
-        Route::get('/scholarship/details/{id}', [AdminController::class, 'showScholarshipDetails'])
+        Route::get('/scholarship/{id}', [AdminController::class, 'showScholarshipDetails'])
             ->name('admin_scholarship_details');
         Route::get('/scholarship/{id}/edit', [AdminController::class, 'showScholarshipEdit'])
             ->name('admin_scholarship_editpage');
         Route::get('/scholarship/archived', [AdminController::class, 'showArchivedScholarship'])
             ->name('admin_archived_scholarships');
+        Route::get('/scholarship/{id}/grantees', [AdminController::class, 'showScholarshipGrantees'])
+            ->name('admin_scholarship_grantees');
 
         //-------------------------for functionality routing-------------------------
 
@@ -72,6 +74,7 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_archive_scholarship');
         Route::get('/scholarship/{id}/archive/restore', [AdminController::class, 'restoreScholarship'])
             ->name('admin_restore_scholarship');
+            
     }); //end of auth:admin middleware
 
 

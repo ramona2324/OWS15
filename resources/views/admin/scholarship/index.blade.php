@@ -92,7 +92,7 @@
                                 <span class="  px-1 rounded-full">Details</span>
                             </button>
                         </a>
-                        <a href=""
+                        <a href="{{ route('admin_scholarship_grantees', ['id' => $scholarship->id]) }}"
                             class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
                             <button class="justify-center flex items-center">
                                 <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
