@@ -61,18 +61,29 @@
                             Scholarship</span>
                     </button>
                 </a>
+                <a href="{{ route('admin_archived_scholarships') }}"
+                    class="bg-gray-100 justify-center max-h-fit text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
+                    <button
+                        class="flex items-center focus:outline-none rounded-full ">
+                        <span class="material-symbols-rounded p-1 bg-gray-500 text-white  rounded-full"
+                            style="font-size: 20px">archive</span>
+                        <span class="lg:flex hidden font-medium text-gray-600 text-sm px-2 rounded-full">
+                            Archive
+                        </span>
+                    </button>
+                </a>
             </span>
         </div>
 
         {{-- main content --}}
         <div class="bg--300 mt-2 mb-4 grid lg:grid-cols-3 md:grid-cols-2 gap-2 ">
             @foreach ($scholarships as $scholarship)
-                <div class="bg--300 border rounded-lg p-2 hover:shadow-md transition-all">
+                <div class="bg--300 border text-gray-600 rounded-lg p-2 hover:shadow-md transition-all">
                     <div class="flex items-center gap-1">
                         <span class="material-symbols-rounded" style="font-size: 20px">school</span>
-                        <h4 class="truncate">{{ $scholarship->name }}</h4>
+                        <h4 class="truncate font-medium">{{ $scholarship->name }}</h4>
                     </div>
-                    <div class="flex mt-2 justify-end gap-1">
+                    <div class="flex mt-2 font-medium justify-end gap-1">
                         <a href="{{ route('admin_scholarship_details', ['id' => $scholarship->id]) }}"
                             class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
                             <button class="justify-center flex items-center">

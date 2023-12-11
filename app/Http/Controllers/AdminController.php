@@ -141,7 +141,7 @@ class AdminController extends Controller
     //---------------scholarship views---------------
     public function showScholarshipIndex()
     {
-        $scholarships = Scholarship::all();
+        $scholarships = Scholarship::where('archived', false)->get();
         return view('admin.scholarship.index', compact('scholarships'));
     }
     public function showCreateScholarship()
@@ -157,6 +157,11 @@ class AdminController extends Controller
     {
         $scholarship = Scholarship::find($id);
         return view('admin.scholarship.edit', compact('scholarship'));
+    }
+    public function showArchivedScholarship()
+    {
+        $scholarships = Scholarship::where('archived', true)->get();
+        return view('admin.scholarship.archive', compact('scholarships'));
     }
 
     //-------------------------functions for functionality-------------------------
@@ -491,6 +496,36 @@ class AdminController extends Controller
 
         return redirect()->route('admin_scholarship_details', $scholarship->id)
             ->with('message', 'Scholarship updated successfully');
+    }
+
+    public function archiveScholarship($id)
+    {
+        // Retrieve the scholarship by ID
+        $scholarship = Scholarship::find($id);
+        // Check if the scholarship exists
+        if (!$scholarship) {
+            abort(404, 'Scholarship not found');
+        }
+        // Archive the scholarship
+        $scholarship->archived = true; // Assuming you have an 'archived' column in your scholarships table
+        $scholarship->save();
+
+        return redirect()->route('admin_scholarship')->with('message', 'Scholarship archived successfully');
+    }
+
+    public function unarchiveScholarship($id)
+    {
+        // Retrieve the scholarship by ID
+        $scholarship = Scholarship::find($id);
+        // Check if the scholarship exists
+        if (!$scholarship) {
+            abort(404, 'Scholarship not found');
+        }
+        // Archive the scholarship
+        $scholarship->archived = false; // Assuming you have an 'archived' column in your scholarships table
+        $scholarship->save();
+
+        return redirect()->route('admin_scholarship')->with('message', 'Scholarship unarchived successfully');
     }
 }
 

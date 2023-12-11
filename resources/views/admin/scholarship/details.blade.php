@@ -62,13 +62,13 @@
 
         {{-- main content --}}
         <div class="block bg--600 flex-row mt-4 mb-4 gap-4 w-full relative">
-            <div class="bg--500 grid gap-2 mb-6 md:grid-cols-2">
+            <div class="bg--500 grid max-w-full gap-2 mb-6 md:grid-cols-2">
                 <div class="bg--500 border p-2 justify-between rounded-lg flex">
                     <div class="flex bg--300 truncate items-center gap-1">
                         <div>
                             <div class="flex gap-1 bg--300 min-w-full items-center">
                                 <span class="material-symbols-rounded text-red-800" style="font-size: 20px">school</span>
-                                <h4 class="truncate font-medium text-gray-600">{{ $scholarship->name }}</h4>
+                                <h4 class="font-medium truncate text-gray-600">{{ $scholarship->name }}</h4>
                             </div>
                             <p class="text-xs text-left w-full text-gray-700 bg--500">Provider: {{ $scholarship->provider }}</p>
                         </div>
@@ -79,15 +79,15 @@
                             <button class="justify-between bg--300 w-full relative flex items-center">
                                 <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
                                     style="font-size: 16px">edit</span>
-                                <span class="text-center w-full font-medium bg--400 px-1 rounded-full">Edit</span>
+                                <span class="text-center hidden md:block w-full font-medium bg--400 px-1 rounded-full">Edit</span>
                             </button>
                         </a>
-                        <a href=""
+                        <a href="{{ route('admin_archive_scholarship', ['id' => $scholarship->id]) }}"
                             class="bg-gray-100 hover:shadow-md  justify-between text-sm p-1 flex items-center rounded-full">
                             <button class="justify-between bg--300 w-full relative flex items-center">
                                 <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
                                     style="font-size: 16px">archive</span>
-                                <span class="text-center w-full bg--400 font-medium px-1 rounded-full">Archive</span>
+                                <span class="text-center hidden md:block w-full bg--400 font-medium px-1 rounded-full">Archive</span>
                             </button>
                         </a>
                     </div>
@@ -98,7 +98,7 @@
             </div>
             {{-- accordion for details --}}
             <div id="accordion-color" data-accordion="collapse"
-                data-active-classes="bg-yellow-100 mt-6 dark:bg-gray-800 text-yellow-600 dark:text-white">
+                data-active-classes="bg-yellow-100 dark:bg-gray-800 text-yellow-600 dark:text-white">
                 {{-- description --}}
                 <h2 id="description-heading">
                     <button type="button"

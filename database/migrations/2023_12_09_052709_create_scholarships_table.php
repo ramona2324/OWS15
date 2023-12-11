@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('requirements')->nullable();
             $table->text('qualifications')->nullable();
             $table->text('benefits')->nullable();
+            $table->boolean('archived')->default(false);
             $table->timestamps();
         });
     }

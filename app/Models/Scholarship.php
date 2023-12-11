@@ -15,5 +15,6 @@ class Scholarship extends Model
         'requirements',
         'qualifications',
         'benefits',
+        'archived'
     ];
 }
