@@ -18,7 +18,7 @@
                     <li aria-current="page" class="inline-flex items-center">
                         <a href="#"
                             class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
-                            <span class="px-1 material-symbols-rounded" style="font-size:20px">
+                            <span class="px-1 material-symbols-rounded " style="font-size:20px">
                                 school
                             </span>
                             Scholarship
@@ -76,7 +76,7 @@
                         <a href="{{ route('admin_scholarship_details', ['id' => $scholarship->id]) }}"
                             class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
                             <button class="justify-center flex items-center">
-                                <span class="material-symbols-rounded p-1 bg-white rounded-full"
+                                <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
                                     style="font-size: 16px">read_more</span>
                                 <span class="  px-1 rounded-full">Details</span>
                             </button>
@@ -84,7 +84,7 @@
                         <a href=""
                             class="bg-gray-100  justify-center text-sm p-1 flex items-center rounded-full">
                             <button class="justify-center flex items-center">
-                                <span class="material-symbols-rounded p-1 bg-white rounded-full"
+                                <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
                                     style="font-size: 16px">group</span>
                                 <span class="  px-1 rounded-full">Grantees</span>
                             </button>
