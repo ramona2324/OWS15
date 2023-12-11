@@ -67,7 +67,7 @@
                         <span class="material-symbols-rounded p-1 bg-gray-500 text-white  rounded-full"
                             style="font-size: 20px">archive</span>
                         <span class="lg:flex hidden font-medium text-gray-600 text-sm px-2 rounded-full">
-                            Archivej
+                            Archive
                         </span>
                     </button>
                 </a>
