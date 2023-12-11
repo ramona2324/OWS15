@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -1315,
-    "scrollLeft": -1611,
-    "zoomLevel": 0.9,
+    "scrollTop": -1313,
+    "scrollLeft": -1553,
+    "zoomLevel": 0.7,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -612,7 +612,7 @@
           "active": false,
           "left": 2236.2218,
           "top": 1181.4447,
-          "zIndex": 38,
+          "zIndex": 9,
           "widthName": 60,
           "widthComment": 60
         },
@@ -821,7 +821,7 @@
           "active": false,
           "left": 1539.9438,
           "top": 1460.3329,
-          "zIndex": 8,
+          "zIndex": 7,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1060,7 +1060,7 @@
           "active": false,
           "left": 1535,
           "top": 558.9286,
-          "zIndex": 7,
+          "zIndex": 6,
           "widthName": 80.05712890625,
           "widthComment": 60
         },
@@ -1191,7 +1191,7 @@
           "active": false,
           "left": 1694.8095,
           "top": 975.809,
-          "zIndex": 9,
+          "zIndex": 8,
           "widthName": 110.41162109375,
           "widthComment": 60
         },
@@ -1230,7 +1230,7 @@
           "active": false,
           "left": 2246.2225,
           "top": 1789.6662,
-          "zIndex": 40,
+          "zIndex": 10,
           "widthName": 67.75537109375,
           "widthComment": 60
         },
@@ -1286,18 +1286,80 @@
               "widthDefault": 60
             },
             "id": "90c245f1-b308-491f-a46f-9cab200327b8"
+          },
+          {
+            "name": "grant_status_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 90.892578125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "973669ae-b67f-4c6a-8261-10c40f21e17e"
           }
         ],
         "ui": {
           "active": false,
           "left": 2234.4442,
           "top": 1556.333,
-          "zIndex": 37,
+          "zIndex": 11,
           "widthName": 117.62890625,
           "widthComment": 60
         },
         "visible": true,
         "id": "e7bb117e-4588-4667-ab25-b61ad7a72079"
+      },
+      {
+        "name": "scho_grant_status",
+        "comment": "",
+        "columns": [
+          {
+            "name": "grant_status_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 90.892578125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "5ae5a6b4-d183-4b67-a28b-b223a7881a6b"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1702.75,
+          "top": 1701,
+          "zIndex": 12,
+          "widthName": 108.234375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "8d376b3a-f3c0-4cef-94db-01a0d6fd46cc"
       }
     ],
     "indexes": []
@@ -1481,8 +1543,8 @@
           "columnIds": [
             "7f7c048d-7003-409d-8a8f-1c90ae2df137"
           ],
-          "x": 2443.9959578125,
-          "y": 1666.333,
+          "x": 2446.8904890625,
+          "y": 1686.833,
           "direction": "bottom"
         },
         "constraintName": "fk_scholarship_to_student_scholarship",
@@ -1507,7 +1569,7 @@
           "columnIds": [
             "90c245f1-b308-491f-a46f-9cab200327b8"
           ],
-          "x": 2443.9959578125,
+          "x": 2446.8904890625,
           "y": 1556.333,
           "direction": "top"
         },
@@ -1540,6 +1602,32 @@
         "constraintName": "fk_course_to_student",
         "visible": true,
         "id": "9fd3704d-8d21-446d-8bcd-7b3825b1aa25"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "8d376b3a-f3c0-4cef-94db-01a0d6fd46cc",
+          "columnIds": [
+            "5ae5a6b4-d183-4b67-a28b-b223a7881a6b"
+          ],
+          "x": 2127.642578125,
+          "y": 1745.75,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "e7bb117e-4588-4667-ab25-b61ad7a72079",
+          "columnIds": [
+            "973669ae-b67f-4c6a-8261-10c40f21e17e"
+          ],
+          "x": 2234.4442,
+          "y": 1621.583,
+          "direction": "left"
+        },
+        "constraintName": "fk_scho_grant_status_to_student_scholarship",
+        "visible": true,
+        "id": "05a7801d-d201-4538-a3a8-3ff1a14e53d3"
       }
     ]
   }
