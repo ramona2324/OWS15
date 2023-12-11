@@ -48,13 +48,13 @@
                     <a href="" class="flex items-center ">
                         <span class="material-symbols-rounded p-1 ouryellowbg text-white rounded-full"
                             style="font-size: 20px">search</span>
-                        <button class="px-2 lg:flex hidden font-medium text-gray-600 text-sm rounded-full">Search</button>
+                        <button
+                            class="px-2 lg:flex hidden font-medium text-gray-600 text-sm rounded-full">Search</button>
                     </a>
                 </span>
                 <a href="{{ route('admin_create_scholarship') }}"
                     class="bg-gray-100 justify-center max-h-fit text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
-                    <button
-                        class="flex items-center  focus:outline-none rounded-full ">
+                    <button class="flex items-center  focus:outline-none rounded-full ">
                         <span class="material-symbols-rounded p-1 ouryellowbg text-white  rounded-full"
                             style="font-size: 20px">add</span>
                         <span class="lg:flex hidden font-medium text-gray-600 text-sm px-2 rounded-full">Add
@@ -63,8 +63,7 @@
                 </a>
                 <a href="{{ route('admin_archived_scholarships') }}"
                     class="bg-gray-100 justify-center max-h-fit text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
-                    <button
-                        class="flex items-center focus:outline-none rounded-full ">
+                    <button class="flex items-center focus:outline-none rounded-full ">
                         <span class="material-symbols-rounded p-1 bg-gray-500 text-white  rounded-full"
                             style="font-size: 20px">archive</span>
                         <span class="lg:flex hidden font-medium text-gray-600 text-sm px-2 rounded-full">

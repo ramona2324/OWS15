@@ -104,5 +104,4 @@
     </div>
 </div>
 
-
 @include('partials.__footer')
