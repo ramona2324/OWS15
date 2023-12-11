@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        {{-- title + button container --}}
+        {{-- title  --}}
         <div class="flex flex-col items-center justify-center py-2 rounded text-slate-800 ">
             <div>
                 <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
@@ -60,9 +60,45 @@
             </div>
         </div>
 
+        {{-- buttons --}}
+        <div class="mt-2 mb-4 bg--300 gap-4 flex justify-end">
+            {{-- for lg --}}
+            <span class="flex gap-1 bg--400">
+                <span
+                    class="bg-gray-100 justify-center p-1 md:gap-1 flex items-center rounded-full hover:shadow-md transition-all">
+                    <div class="bg-white relative p-0 flex items-center rounded-full">
+                        <input type="text"
+                            class="lg:flex m-0 text-sm hidden rounded-full  max-h-full p-1.5 focus:outline-none border-none focus:ring-none">
+                    </div>
+                    <a href="" class="flex items-center ">
+                        <span class="material-symbols-rounded p-1 ouryellowbg text-white rounded-full"
+                            style="font-size: 20px">search</span>
+                        <button
+                            class="px-2 lg:flex hidden font-medium text-gray-600 text-sm rounded-full">Search</button>
+                    </a>
+                </span>
+                <a href="{{ route('admin_create_scholarship') }}"
+                    class="bg-gray-100 justify-center max-h-fit text-md p-1 flex items-center rounded-full hover:shadow-md transition-all">
+                    <button class="flex items-center  focus:outline-none rounded-full ">
+                        <span class="material-symbols-rounded p-1 ouryellowbg text-white  rounded-full"
+                            style="font-size: 20px">add</span>
+                        <span class="lg:flex hidden font-medium text-gray-600 text-sm px-2 rounded-full">
+                            Add Grantee</span>
+                    </button>
+                </a>
+            </span>
+        </div>
+
         {{-- main content --}}
-        <div class="block bg--600 flex-row mt-4 mb-4 gap-4 w-full relative">
-            
+        <div class="bg--300 mt-2 mb-4 grid lg:grid-cols-3 md:grid-cols-2 gap-2 ">
+            @foreach ($student_grantees as $student_grantee)
+                <div class="bg--300 border text-gray-600 rounded-lg p-2 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-rounded" style="font-size: 20px">school</span>
+                        <h4 class="truncate font-medium">{{ $student_grantee->fname }}</h4>
+                    </div>
+                </div>
+            @endforeach
         </div>
 
     </div>

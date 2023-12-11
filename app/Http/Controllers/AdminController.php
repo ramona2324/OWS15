@@ -171,9 +171,9 @@ class AdminController extends Controller
             return response()->json(['message' => 'Scholarship not found'], 404);
         }
 
-        $grantees = $scholarship->students;
+        $student_grantees = $scholarship->students;
 
-        return view('admin.scholarship.grantees', compact('grantees','scholarship'));
+        return view('admin.scholarship.grantees', compact('student_grantees','scholarship'));
     }
 
     //-------------------------functions for functionality-------------------------
