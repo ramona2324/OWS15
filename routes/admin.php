@@ -47,7 +47,8 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_create_scholarship');
         Route::get('/scholarship/details/{id}', [AdminController::class, 'showScholarshipDetails'])
             ->name('admin_scholarship_details');
-
+        Route::get('/scholarship/{id}/edit', [AdminController::class, 'showScholarshipEdit'])
+            ->name('admin_scholarship_editpage');
         //-------------------------for functionality routing-------------------------
 
         Route::post('/create-store', [AdminController::class, 'storeCreate'])
@@ -62,7 +63,8 @@ Route::group(['prefix' => 'admin'], function () { // all routes here have /admin
             ->name('admin_confirm_attdc');
         Route::post('/scholarshsip/create/store', [AdminController::class, 'storeScholarship'])
             ->name('admin_store_scholarship');
-
+        Route::post('/scholarship/{id}/update', [AdminController::class, 'updateScholarship'])
+            ->name('admin_update_scholarship');
     }); //end of auth:admin middleware
 
 

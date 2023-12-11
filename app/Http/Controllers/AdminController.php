@@ -153,6 +153,11 @@ class AdminController extends Controller
         $scholarship = Scholarship::find($id);
         return view('admin.scholarship.details', compact('scholarship'));
     }
+    public function showScholarshipEdit($id)
+    {
+        $scholarship = Scholarship::find($id);
+        return view('admin.scholarship.edit', compact('scholarship'));
+    }
 
     //-------------------------functions for functionality-------------------------
 
@@ -464,6 +469,28 @@ class AdminController extends Controller
 
         // You can also redirect the user to a success page or perform other actions
         return redirect()->route('admin_scholarship')->with('message', 'Scholarship added successfully');
+    }
+
+    public function updateScholarship(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'provider' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'requirements' => 'nullable|string',
+            'qualifications' => 'nullable|string',
+            'benefits' => 'nullable|string',
+        ]);
+
+        // Find the scholarship by ID
+        $scholarship = Scholarship::findOrFail($id);
+
+        // Update the scholarship with the new data
+        $scholarship->update($request->all());
+
+        return redirect()->route('admin_scholarship_details', $scholarship->id)
+            ->with('message', 'Scholarship updated successfully');
     }
 }
 

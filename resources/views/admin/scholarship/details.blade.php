@@ -37,9 +37,8 @@
                     </li>
                 </ol>
             </nav>
-
+            <!-- Previous Button -->
             <div class="flex">
-                <!-- Previous Button -->
                 <a href=" {{ route('admin_scholarship') }}"
                     class="flex items-center justify-center px-3 h-8  text-sm font-medium text-gray-500 bg-white  rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
                     <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -75,8 +74,8 @@
                         </div>
                     </div>
                     <div class="bg--500 gap-1 flex flex-col">
-                        <a href="{{ route('admin_scholarship_edit', ['id' => $scholarship->id]) }}"
-                            class="bg-gray-100 hover:shadow-md  justify-between text-sm p-1 flex items-center rounded-full">
+                        <a href="{{ route('admin_scholarship_editpage', ['id' => $scholarship->id]) }}"
+                            class="bg-gray-100 hover:shadow-md justify-between text-sm p-1 flex items-center rounded-full">
                             <button class="justify-between bg--300 w-full relative flex items-center">
                                 <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
                                     style="font-size: 16px">edit</span>
