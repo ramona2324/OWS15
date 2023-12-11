@@ -17,4 +17,9 @@ class Scholarship extends Model
         'benefits',
         'archived'
     ];
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'student_scholarship', 'scholarship_id', 'student_id');
+    }
 }

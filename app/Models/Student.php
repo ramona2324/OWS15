@@ -38,4 +38,9 @@ class Student extends Authenticatable // extending authenticable makes it proces
     public function course() { // define relationships between the student
         return $this->belongsTo(Course::class, 'course_id');
     }
+
+    public function scholarships()
+    {
+        return $this->belongsToMany(Scholarship::class, 'student_scholarship', 'scholarship_id', 'student_id');
+    }
 }
