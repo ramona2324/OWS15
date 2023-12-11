@@ -54,20 +54,56 @@
 
         {{-- title + button container --}}
         <div class="flex flex-col items-center justify-center py-2 rounded text-slate-800 ">
-            <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
-                Scholarship Details
-            </h2>
+            <div>
+                <h2 class=" text-lg font-bold leading-none tracking-tight text-slate-800 md:text-xl ">
+                    Scholarship Details
+                </h2>
+            </div>
         </div>
 
         {{-- main content --}}
-        <div class="block bg--600 flex-row mt-2 mb-4 gap-4 w-full relative">
-
+        <div class="block bg--600 flex-row mt-4 mb-4 gap-4 w-full relative">
+            <div class="bg--500 grid gap-2 mb-6 md:grid-cols-2">
+                <div class="bg--500 border p-2 justify-between rounded-lg flex">
+                    <div class="flex bg--300 truncate items-center gap-1">
+                        <div>
+                            <div class="flex gap-1 bg--300 min-w-full items-center">
+                                <span class="material-symbols-rounded text-red-800" style="font-size: 20px">school</span>
+                                <h4 class="truncate font-medium text-gray-600">{{ $scholarship->name }}</h4>
+                            </div>
+                            <p class="text-xs text-left w-full text-gray-700 bg--500">Provider: {{ $scholarship->provider }}</p>
+                        </div>
+                    </div>
+                    <div class="bg--500 gap-1 flex flex-col">
+                        <a href="{{ route('admin_scholarship_edit', ['id' => $scholarship->id]) }}"
+                            class="bg-gray-100 hover:shadow-md  justify-between text-sm p-1 flex items-center rounded-full">
+                            <button class="justify-between bg--300 w-full relative flex items-center">
+                                <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
+                                    style="font-size: 16px">edit</span>
+                                <span class="text-center w-full font-medium bg--400 px-1 rounded-full">Edit</span>
+                            </button>
+                        </a>
+                        <a href=""
+                            class="bg-gray-100 hover:shadow-md  justify-between text-sm p-1 flex items-center rounded-full">
+                            <button class="justify-between bg--300 w-full relative flex items-center">
+                                <span class="material-symbols-rounded p-1 bg-red-800 text-white rounded-full"
+                                    style="font-size: 16px">archive</span>
+                                <span class="text-center w-full bg--400 font-medium px-1 rounded-full">Archive</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg--500 p-2 border rounded-lg">
+                    charts here
+                </div>
+            </div>
+            {{-- accordion for details --}}
             <div id="accordion-color" data-accordion="collapse"
-                data-active-classes="bg-yellow-100 dark:bg-gray-800 text-yellow-600 dark:text-white">
+                data-active-classes="bg-yellow-100 mt-6 dark:bg-gray-800 text-yellow-600 dark:text-white">
                 {{-- description --}}
                 <h2 id="description-heading">
                     <button type="button"
-                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-yellow-200 gap-3"
+                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl  gap-3"
                         data-accordion-target="#description-body" aria-expanded="true" aria-controls="description-body">
                         <span>Description</span>
                         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
@@ -85,10 +121,67 @@
                     </div>
                 </div>
                 {{-- requirements --}}
-
+                <h2 id="requirements-heading">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 gap-3"
+                        data-accordion-target="#requirements-body" aria-expanded="true"
+                        aria-controls="requirements-body">
+                        <span>Requirements</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+                </h2>
+                <div id="requirements-body" class="hidden" aria-labelledby="requirements-heading">
+                    <div class="p-5 border border-b-0 border-gray-200">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            {{ $scholarship->requirements }}
+                        </p>
+                    </div>
+                </div>
                 {{-- qualifications --}}
-
+                <h2 id="qualifications-heading">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 gap-3"
+                        data-accordion-target="#qualifications-body" aria-expanded="true"
+                        aria-controls="qualifications-body">
+                        <span>Qualifications</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+                </h2>
+                <div id="qualifications-body" class="hidden" aria-labelledby="qualifications-heading">
+                    <div class="p-5 border border-b-0 border-gray-200">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            {{ $scholarship->qualifications }}
+                        </p>
+                    </div>
+                </div>
                 {{-- benefits --}}
+                <h2 id="benefits-heading">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b border-gray-200 gap-3"
+                        data-accordion-target="#benefits-body" aria-expanded="true" aria-controls="benefits-body">
+                        <span>Benefits</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+                </h2>
+                <div id="benefits-body" class="hidden" aria-labelledby="benefits-heading">
+                    <div class="p-5 border border-b-0 border-gray-200">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            {{ $scholarship->benefits }}
+                        </p>
+                    </div>
+                </div>
 
             </div>
 
