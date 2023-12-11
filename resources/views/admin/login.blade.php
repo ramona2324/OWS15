@@ -50,7 +50,7 @@
                         value="Login">
                 </div>
                 <a href="#" class="ml-2 mt-4 text-blue-500 text-sm  hover:text-blue-400">Forgot Password?</a>
-                <a href="#" class="ml-2 mt-4 text-blue-500 text-sm  hover:text-blue-400">Don't have account?</a>
+                <a href="{{ route('admin_signup1') }}" class="ml-2 mt-4 text-blue-500 text-sm  hover:text-blue-400">Don't have account?</a>
             </form>
 
         </div>
