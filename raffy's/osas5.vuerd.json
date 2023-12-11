@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -986,
-    "scrollLeft": -1595,
+    "scrollTop": -1315,
+    "scrollLeft": -1611,
     "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
@@ -612,7 +612,7 @@
           "active": false,
           "left": 2236.2218,
           "top": 1181.4447,
-          "zIndex": 7,
+          "zIndex": 38,
           "widthName": 60,
           "widthComment": 60
         },
@@ -821,7 +821,7 @@
           "active": false,
           "left": 1539.9438,
           "top": 1460.3329,
-          "zIndex": 10,
+          "zIndex": 8,
           "widthName": 60,
           "widthComment": 60
         },
@@ -906,7 +906,7 @@
           "active": false,
           "left": 2532.8885,
           "top": 960.1108,
-          "zIndex": 6,
+          "zIndex": 5,
           "widthName": 62.6708984375,
           "widthComment": 60
         },
@@ -1060,7 +1060,7 @@
           "active": false,
           "left": 1535,
           "top": 558.9286,
-          "zIndex": 8,
+          "zIndex": 7,
           "widthName": 80.05712890625,
           "widthComment": 60
         },
@@ -1191,12 +1191,113 @@
           "active": false,
           "left": 1694.8095,
           "top": 975.809,
-          "zIndex": 12,
+          "zIndex": 9,
           "widthName": 110.41162109375,
           "widthComment": 60
         },
         "visible": true,
         "id": "ae1c5ffc-0916-49be-b974-e7de429941c7"
+      },
+      {
+        "name": "scholarship",
+        "comment": "",
+        "columns": [
+          {
+            "name": "scholarship_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 85.103515625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "b04a4180-5e34-47dd-9bf6-2a691520b5ce"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 2246.2225,
+          "top": 1789.6662,
+          "zIndex": 40,
+          "widthName": 67.75537109375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "e8caceb7-c850-4ebe-9a81-bd940e1556a7"
+      },
+      {
+        "name": "student_scholarship",
+        "comment": "",
+        "columns": [
+          {
+            "name": "scholarship_id",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 85.103515625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "7f7c048d-7003-409d-8a8f-1c90ae2df137"
+          },
+          {
+            "name": "student_id",
+            "comment": "",
+            "dataType": "INT(8)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 61.99169921875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "90c245f1-b308-491f-a46f-9cab200327b8"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 2234.4442,
+          "top": 1556.333,
+          "zIndex": 37,
+          "widthName": 117.62890625,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "e7bb117e-4588-4667-ab25-b61ad7a72079"
       }
     ],
     "indexes": []
@@ -1289,32 +1390,6 @@
         "relationshipType": "ZeroN",
         "startRelationshipType": "Dash",
         "start": {
-          "tableId": "2e8cb8ed-3ef5-4494-9e4d-8e3cda17986d",
-          "columnIds": [
-            "660386d7-38ab-48e0-bece-bf8d1abaeb83"
-          ],
-          "x": 1954.71186640625,
-          "y": 1515.3329,
-          "direction": "right"
-        },
-        "end": {
-          "tableId": "9905bae7-2e08-4310-9488-728ad19378a8",
-          "columnIds": [
-            "95154030-d83f-4bd9-8251-a61747e2f261"
-          ],
-          "x": 2236.2218,
-          "y": 1371.5697,
-          "direction": "left"
-        },
-        "constraintName": "fk_course_to_student",
-        "visible": true,
-        "id": "9fd3704d-8d21-446d-8bcd-7b3825b1aa25"
-      },
-      {
-        "identification": false,
-        "relationshipType": "ZeroN",
-        "startRelationshipType": "Dash",
-        "start": {
           "tableId": "9905bae7-2e08-4310-9488-728ad19378a8",
           "columnIds": [
             "7e206533-b142-495f-a087-7bf10c8bcd0f"
@@ -1387,6 +1462,84 @@
         "constraintName": "fk_student event_to_attendance",
         "visible": true,
         "id": "eeb39228-b910-4ef0-8b28-a684c4a20a86"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "e8caceb7-c850-4ebe-9a81-bd940e1556a7",
+          "columnIds": [
+            "b04a4180-5e34-47dd-9bf6-2a691520b5ce"
+          ],
+          "x": 2455.7742578125,
+          "y": 1789.6662,
+          "direction": "top"
+        },
+        "end": {
+          "tableId": "e7bb117e-4588-4667-ab25-b61ad7a72079",
+          "columnIds": [
+            "7f7c048d-7003-409d-8a8f-1c90ae2df137"
+          ],
+          "x": 2443.9959578125,
+          "y": 1666.333,
+          "direction": "bottom"
+        },
+        "constraintName": "fk_scholarship_to_student_scholarship",
+        "visible": true,
+        "id": "69f1f1a5-1f76-40b5-b27d-f70cabb91731"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "9905bae7-2e08-4310-9488-728ad19378a8",
+          "columnIds": [
+            "7e206533-b142-495f-a087-7bf10c8bcd0f"
+          ],
+          "x": 2474.451536328125,
+          "y": 1434.9447,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "e7bb117e-4588-4667-ab25-b61ad7a72079",
+          "columnIds": [
+            "90c245f1-b308-491f-a46f-9cab200327b8"
+          ],
+          "x": 2443.9959578125,
+          "y": 1556.333,
+          "direction": "top"
+        },
+        "constraintName": "fk_student_to_student_scholarship",
+        "visible": true,
+        "id": "d1520fb7-4ac5-40ae-bdd1-d803e3f471ad"
+      },
+      {
+        "identification": false,
+        "relationshipType": "ZeroN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "2e8cb8ed-3ef5-4494-9e4d-8e3cda17986d",
+          "columnIds": [
+            "660386d7-38ab-48e0-bece-bf8d1abaeb83"
+          ],
+          "x": 1954.71186640625,
+          "y": 1515.3329,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "9905bae7-2e08-4310-9488-728ad19378a8",
+          "columnIds": [
+            "95154030-d83f-4bd9-8251-a61747e2f261"
+          ],
+          "x": 2236.2218,
+          "y": 1371.5697,
+          "direction": "left"
+        },
+        "constraintName": "fk_course_to_student",
+        "visible": true,
+        "id": "9fd3704d-8d21-446d-8bcd-7b3825b1aa25"
       }
     ]
   }
