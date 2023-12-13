@@ -141,10 +141,39 @@ class AdminController extends Controller
     //---------------scholarship views---------------
     public function showScholarshipIndex()
     {
-        return view('admin.scholarship.index');
+        $scholarships = Scholarship::where('archived', false)->get();
+        return view('admin.scholarship.index', compact('scholarships'));
     }
-    public function showCreateScholarship() {
+    public function showCreateScholarship()
+    {
         return view('admin.scholarship.create');
+    }
+    public function showScholarshipDetails($id)
+    {
+        $scholarship = Scholarship::find($id);
+        return view('admin.scholarship.details', compact('scholarship'));
+    }
+    public function showScholarshipEdit($id)
+    {
+        $scholarship = Scholarship::find($id);
+        return view('admin.scholarship.edit', compact('scholarship'));
+    }
+    public function showArchivedScholarship()
+    {
+        $scholarships = Scholarship::where('archived', true)->get();
+        return view('admin.scholarship.archive', compact('scholarships'));
+    }
+    public function showScholarshipGrantees($id)
+    {
+        $scholarship = Scholarship::find($id);
+        
+        if (!$scholarship) {
+            return response()->json(['message' => 'Scholarship not found'], 404);
+        }
+
+        $student_grantees = $scholarship->students;
+
+        return view('admin.scholarship.grantees', compact('student_grantees','scholarship'));
     }
 
     //-------------------------functions for functionality-------------------------
@@ -242,61 +271,60 @@ class AdminController extends Controller
     // for creating new admin
     public function storeCreate(Request $request)
     {
-        try {
-            $validated = $request->validate([
-                "admin_lname" => ['required', 'min:2', 'alpha_spaces'],
-                "admin_fname" => ['required', 'min:2', 'alpha_spaces'],
-                "admin_mi" => ['required', 'regex:/^(N\/A|[A-Za-z])$/'], //require to be clearer, user must put N/A if they have no mi
-                "employee_id" => ['required', 'max:6'],
-                "office_id" => ['required'],
-                "admintype_id" => ['required'],
-                "admin_contact" => ['nullable', 'numeric', 'digits_between:10,15'],
-                "email" => ['required', 'email', Rule::unique('admins', 'email')],
+        $validated = $request->validate([
+            "admin_lname" => ['required', 'min:2', 'alpha_spaces'],
+            "admin_fname" => ['required', 'min:2', 'alpha_spaces'],
+            "admin_mi" => ['required', 'regex:/^(N\/A|[A-Za-z])$/'],
+            "employee_id" => ['required', 'max:6'],
+            "office_id" => ['required'],
+            "admintype_id" => ['required'],
+            "admin_contact" => ['nullable', 'numeric', 'digits_between:10,15'],
+            "email" => ['required', 'email', Rule::unique('admins', 'email')],
+        ]);
+
+        // checking if there is a file
+        if ($request->hasFile('admin_image')) {
+            $request->validate([
+                "admin_image" => 'mimes:jpeg,png,bmp,tiff|max:4096'
             ]);
 
-            // checking if there is a file
-            if ($request->hasFile('admin_image')) {
-                $request->validate([ // validation for right format and size
-                    "admin_image" => 'mimes:jpeg,png,bmp,tiff | max:4096'
-                ]);
+            $filenameWithExtension = $request->file("admin_image");
+            $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
+            $extension = $request->file("admin_image")->getClientOriginalExtension();
+            $filenameToStore = $filename . '_' . time() . '.' . $extension;
+            $smallThumbnail = 'small_' . $filename . '_' . time() . '.' . $extension;
 
-                // to avoid duplication of image
-                $filenameWithExtension = $request->file("admin_image"); // gets the filename+extension
-                $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME); // extracts filename only without extension
+            $request->file('admin_image')->storeAs(
+                'public/admin',
+                $filenameToStore
+            );
 
-                $extension = $request->file("admin_image") // gets the extension of the file 
-                    ->getClientOriginalExtension();
+            $request->file('admin_image')->storeAs(
+                'public/admin/thumbnail',
+                $smallThumbnail
+            );
 
-                $filenameToStore = $filename . '_' . time() . '.' . $extension; // filename_timestamp.extention
+            $thumbnail = 'storage/admin/thumbnail/' . $smallThumbnail;
+            $this->createThumbnail($thumbnail, 150, 150);
 
-                $smallThumbnail = 'small_' . $filename . '_' . time() . '.' . $extension; // small_filename_timestamp.extention
+            $validated['admin_image'] = $filenameToStore;
+        }
 
-                $request->file('admin_image')->storeAs( // stores the image to ...
-                    'public/admin',
-                    $filenameToStore
-                );
+        // Generate password based on employee ID and last name
+        $password = $validated['employee_id'] . '_' . strtolower($validated['admin_lname']);
 
-                $request->file('admin_image')->storeAs( // stores the small image to ...
-                    'public/admin/thumbnail',
-                    $smallThumbnail
-                );
+        // Hash the password before storing it
+        $validated['password'] = bcrypt($password);
 
-                $thumbnail = 'storage/admin/thumbnail/' . $smallThumbnail; // assigns the path to the thumbnail image to this variable
-                // example content of $thumbnail is /storage/admin/thumbnail/small_my-image_1670915990.png
-
-                // dd($thumbnail); // <- for debugging only
-                $this->createThumbnail($thumbnail, 150, 150);
-
-                $validated['admin_image'] = $filenameToStore; // stores the new filename to db
-            }
-
+        try {
             Admin::create($validated);
-            return redirect(route('admin_manage'))->with('message', 'Successfully create new admin account!');
+            return redirect(route('admin_manage'))->with('message', 'Successfully create new Admin account!');
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            back();
+            return back();
         }
     }
+
 
     // creating a small thumbnail
     public function createThumbnail($path, $width, $height) // $path is the path of the thumbnail
@@ -439,6 +467,77 @@ class AdminController extends Controller
         $event = StudentEvent::where('event_id', $event_id)->first();
         return redirect(route('admin_event_scanner', ['event_id' => $event_id]))->with('event', $event)
             ->with('message', 'Attendance confirmed!');
+    } // end of method
+
+    public function storeScholarship(Request $request)
+    {
+        // Validate the form data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'provider' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'requirements' => 'nullable|string',
+            'qualifications' => 'nullable|string',
+            'benefits' => 'nullable|string',
+        ]);
+
+        // Save the scholarship to the database
+        Scholarship::create($validated);
+
+        // You can also redirect the user to a success page or perform other actions
+        return redirect()->route('admin_scholarship')->with('message', 'Scholarship added successfully');
+    }
+
+    public function updateScholarship(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'provider' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'requirements' => 'nullable|string',
+            'qualifications' => 'nullable|string',
+            'benefits' => 'nullable|string',
+        ]);
+
+        // Find the scholarship by ID
+        $scholarship = Scholarship::findOrFail($id);
+
+        // Update the scholarship with the new data
+        $scholarship->update($request->all());
+
+        return redirect()->route('admin_scholarship_details', $scholarship->id)
+            ->with('message', 'Scholarship updated successfully');
+    }
+
+    public function archiveScholarship($id)
+    {
+        // Retrieve the scholarship by ID
+        $scholarship = Scholarship::find($id);
+        // Check if the scholarship exists
+        if (!$scholarship) {
+            abort(404, 'Scholarship not found');
+        }
+        // Archive the scholarship
+        $scholarship->archived = true; // Assuming you have an 'archived' column in your scholarships table
+        $scholarship->save();
+
+        return redirect()->route('admin_scholarship')->with('message', 'Scholarship archived successfully');
+    }
+
+    public function restoreScholarship($id)
+    {
+        // Retrieve the scholarship by ID
+        $scholarship = Scholarship::find($id);
+        // Check if the scholarship exists
+        if (!$scholarship) {
+            abort(404, 'Scholarship not found');
+        }
+        // Archive the scholarship
+        $scholarship->archived = false; // Assuming you have an 'archived' column in your scholarships table
+        $scholarship->save();
+
+        return redirect()->route('admin_scholarship')->with('message', 'Scholarship restored successfully');
     }
 }
 
