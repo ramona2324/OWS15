@@ -27,7 +27,7 @@
         {{--  --}}
     </div>
 
-    <video class=" min-h-screen min-w-screen bg-red-400" id="preview" ></video>
+    <video class=" min-h-screen min-w-screen bg--400" id="preview" ></video>
 
     <div class="border h-14 w-8/12 z-50 absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded-lg">
     </div>
