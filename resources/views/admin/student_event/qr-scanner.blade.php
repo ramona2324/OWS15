@@ -57,7 +57,7 @@
             } else if (cameras.length > 0) {
                 scanner.start(cameras[0]);
                 const video = document.getElementById('preview')
-                video.style.transform = 'scaleX(-1)';
+                video.style.transform = scaleX(-1);
             } else {
                 alert('No cameras found');
             }
