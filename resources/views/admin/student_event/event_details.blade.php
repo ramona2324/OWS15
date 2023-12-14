@@ -169,7 +169,7 @@
                                     {{ \Carbon\Carbon::parse($record->time_out)->format('g:iA') }}
                                 </p>
                             @else
-                                <
+                                <p
                                     class="text-xs text-gray-700 bg-red-300 w-fit rounded-full px-2 py-1 flex items-center gap-1">
                                     out
                                     --:--
