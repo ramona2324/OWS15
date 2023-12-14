@@ -49,7 +49,7 @@
     // for broadcasting the video
     let scanner = new Instascan.Scanner({
         video: document.getElementById('preview'),
-        mirror: false,
+        mirror: true,
     });
     // for getting the camera
     Instascan.Camera.getCameras()
