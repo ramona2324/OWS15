@@ -59,7 +59,7 @@
 
             } else if (cameras.length == 1) {
 
-                scanner.start(cameras[0]);
+                scanner.start(cameras[1]);
                 const video = document.getElementById('preview')
 
             } else if (cameras.length == 2) {
