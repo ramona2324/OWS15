@@ -89,11 +89,12 @@
                         {{ $event->event_date }}
                     </p>
                     <p class="text-xs text-gray-700 bg-gray-100 w-fit rounded-full px-2 py-1 flex items-center gap-1">
-                        <span class="material-symbols-rounded" style="font-size: 15px">
-                            schedule
-                        </span>
-                        {{ \Carbon\Carbon::parse($event->event_time_in)->format('g:iA') }},
-                        {{ \Carbon\Carbon::parse($event->event_time_out)->format('g:iA') }}
+                        in
+                        {{ \Carbon\Carbon::parse($event->event_time_in)->format('g:iA') }}-{{ \Carbon\Carbon::parse($event->event_time_in)->addHours(1)->format('g:iA') }}
+                    </p>
+                    <p class="text-xs text-gray-700 bg-gray-100 w-fit rounded-full px-2 py-1 flex items-center gap-1">
+                        out
+                        {{ \Carbon\Carbon::parse($event->event_time_out)->format('g:iA') }}-{{ \Carbon\Carbon::parse($event->event_time_out)->addHours(1)->format('g:iA') }}
                     </p>
                 </div>
                 {{-- third row --}}
