@@ -61,7 +61,6 @@
             if (cameras.length > 0) {
 
                 scanner.start(cameras[rearcam]);
-                const video = document.getElementById('preview')
 
             } else {
                 alert('no cameras found!');
