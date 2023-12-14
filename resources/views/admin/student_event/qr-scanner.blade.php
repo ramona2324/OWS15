@@ -63,10 +63,12 @@
                 const video = document.getElementById('preview')
 
             } else if (cameras.length == 2) {
-                
-                scanner.start(cameras[0]);
+
+                scanner.start(cameras[1]);
                 const video = document.getElementById('preview')
-                video.style.transform = 'scaleX(-1)';
+                video.addEventListener('loadedmetadata', function() {
+                    video.style.transform = 'scaleX(-1)';
+                });
 
             } else if (cameras.length > 2) {
                 scanner.start(cameras[3]);
