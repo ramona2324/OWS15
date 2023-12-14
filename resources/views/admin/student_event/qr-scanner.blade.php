@@ -60,7 +60,7 @@
 
             if (cameras.length > 0) {
 
-                scanner.start(cameras[frontcam]);
+                scanner.start(cameras[rearcam]);
 
             } else {
                 alert('no cameras found!');
