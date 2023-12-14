@@ -52,14 +52,25 @@
     // for getting the camera
     Instascan.Camera.getCameras()
         .then(function(cameras) {
-            if (cameras.length > 0) {
-                scanner.start(cameras[1]);
-            } else if (cameras.length > 0) {
+
+            if (cameras.length == 0) {
+
+                alert('No cameras found');
+
+            } else if (cameras.length == 1) {
+
                 scanner.start(cameras[0]);
                 const video = document.getElementById('preview')
-                video.style.transform = scaleX(-1);
-            } else {
-                alert('No cameras found');
+
+            } else if (cameras.length == 2) {
+                
+                scanner.start(cameras[1]);
+                const video = document.getElementById('preview')
+                video.style.transform = 'scaleX(-1)';
+
+            } else if (cameras.length > 2) {
+                scanner.start(cameras[3]);
+                const video = document.getElementById('preview')
             }
         })
         .catch(function(e) {
