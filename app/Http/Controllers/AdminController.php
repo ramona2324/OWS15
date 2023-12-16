@@ -77,7 +77,8 @@ class AdminController extends Controller
     //---------------office views---------------
     public function showOfficeIndex()
     {
-        return view('admin.office.index');
+        $offices = Office::where('archived', false)->get();
+        return view('admin.office.index', compact('offices'));
     }
 
     //---------------clearance views---------------
