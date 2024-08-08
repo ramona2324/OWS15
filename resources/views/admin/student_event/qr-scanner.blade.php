@@ -4,11 +4,9 @@
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> --}}
 {{-- <script type="text/javascript" src="{{ asset('js/my-script.js') }}"></script> --}}
 
-<script type="text/javascript" src="/js/instascan.min.js"></script>
-
 {{-- container for scanner preview --}}
 <div class="relative flex items-center justify-center w-full bg-black min-h-screen min-w-screen">
-    <a href=" {{ route('admin_stud_events') }} ">
+    <a href=" {{ route('admin_stud_events') }} " class="z-50">
         <button type="button"
             class="absolute top-6 end-6 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -26,8 +24,11 @@
     </div>
     <div
         class=" border-2 border-white w-7/12 h-2/6 md:w-5/12 lg:h-3/6 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        {{--  --}}
     </div>
-    <video class="min-h-screen min-w-screen" id="preview"></video>
+
+    <video class=" min-h-screen min-w-screen bg--400" id="preview" ></video>
+
     <div class="border h-14 w-8/12 z-50 absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded-lg">
     </div>
 </div>
@@ -41,25 +42,30 @@
     <input type="text" name="in_out" hidden value="{{ $in_out }}">
 </form>
 
+<script type="text/javascript" src="/js/instascan.min.js"></script>
 
 {{-- script for qr code scanner --}}
 <script type="text/javascript">
     // for broadcasting the video
     let scanner = new Instascan.Scanner({
-        video: document.getElementById('preview')
+        video: document.getElementById('preview'),
+        mirror: true,
     });
     // for getting the camera
     Instascan.Camera.getCameras()
         .then(function(cameras) {
+
+            let frontcam = 0;
+            let rearcam = 1;
+
             if (cameras.length > 0) {
-                scanner.start(cameras[1]);
-            } else if (cameras.length > 0) {
-                scanner.start(cameras[0]);
-                const video = document.getElementById('preview')
-                video.style.transform = 'scaleX(-1)';
+
+                scanner.start(cameras[rearcam]);
+
             } else {
-                alert('No cameras found');
+                alert('no cameras found!');
             }
+
         })
         .catch(function(e) {
             console.error(e);
